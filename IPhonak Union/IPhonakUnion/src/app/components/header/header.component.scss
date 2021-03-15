@@ -1,0 +1,136 @@
+header{
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+  .container{
+    max-width: 95%;
+    .row:first-of-type{
+      &>div{
+        flex: 1 0 calc(100% / 3);
+
+      }
+    }
+  }
+  .search-form {
+    position: relative;
+    .search {
+      border: 1px solid #000;
+      outline: none;
+      border-radius: 0;
+      text-indent: 27px;
+    }
+    button[type=submit]{
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #333;
+    }
+    .search-box{
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: #fff;
+      display: none;
+      padding: 20px;
+      input[type=text]{
+        width: calc(100% - 30px);
+        border: none;
+        outline: none;
+        font-size: 18px;
+        text-transform: uppercase;
+      }
+      button{
+        position: fixed;
+        top: 15px;
+        right: 25px;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 20px;
+      }
+    }
+  }
+  .logo {
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .icons {
+    text-align: right;
+    a {
+      font-size: 28px;
+      display: inline-block;
+      margin-left: 15px;
+    }
+  }
+  .menu {
+    justify-content: center;
+  }
+  .main-menu{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    &>li {
+      display: inline-block;
+      margin-right: 25px;
+      padding-bottom: 16px;
+      cursor: pointer;
+      &:hover{
+        border-bottom: 1px solid #000;
+        color: #555;
+      }
+      a:hover + .submenu,
+      &:hover > .submenu,
+      .submenu:hover{
+        display: flex;
+      }
+      .submenu {
+        background-color: #fff;
+        position: absolute;
+        top: 104px;
+        left: 0;
+        width: 100%;
+        padding: 40px;
+        display: none;
+        transition: .5s all;
+        font-size: 14px;
+        &>div {
+          margin-right: 20px;
+          width: 20%;
+          ul {
+            li{
+              margin-bottom: 10px;
+              cursor: pointer;
+              color: #000;
+              &:hover{
+                color: #555;
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+        h5 {
+          text-transform: uppercase;
+          cursor: pointer;
+          color: #000;
+          font-size: 14px;
+          &:hover{
+            color: #555;
+            text-decoration: underline;
+          }
+        }
+        ul {
+          list-style: none;
+          padding: 0;
+        }
+      }
+    }
+  }
+}

@@ -11,5 +11,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  openSearchBox(seachBox:any){
+    seachBox.style.display = "block";
+    document.body.style.overflow = "hidden"
+  }
 }
