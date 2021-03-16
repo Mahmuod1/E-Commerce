@@ -2,6 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="">
+        <button class="open-menu d-xl-none" (click)="openMenu()"><i class="fas fa-bars"></i></button>
         <form class="search-form">
           <input type="search" placeholder="Search" class="search" (focus)="openSearchBox(searchBox)">
           <button type="submit"><i class="fas fa-search"></i></button>
@@ -167,6 +168,228 @@
           </div>
         </li>
       </ul>
+    </div>
+    <div class="menu-md" *ngIf="screenMdActive">
+      <button (click)="openMenu()">X</button>
+
+      <div class="menu-container">
+        <ul class="main-menu-md">
+          <li>
+            <div class="main-links-container">
+              <a>Shop By Collection</a>
+              <i class="fas fa-plus" data-toggle="collapse" data-target="#ShopByCollection"></i>
+            </div>
+            <div class="submenu collapse" id="ShopByCollection">
+              <div>
+                <div class="d-flex justify-content-between px-2 py-3">
+                  <h5><a>Shop</a></h5>
+                  <i class="fas fa-plus" data-toggle="collapse" data-target="#shop"></i>
+                </div>
+                <ul class="collapse" id="shop">
+                  <li><a>All Product</a></li>
+                  <li><a>New Releases</a></li>
+                  <li><a>Last Chance To Buy</a></li>
+                </ul>
+                <div class="d-flex justify-content-between px-2 py-3">
+                  <h5><a>Wireless Charging</a></h5>
+                  <i class="fas fa-plus" data-toggle="collapse" data-target="#WirelessCharging"></i>
+                </div>
+                <ul class="collapse" id="WirelessCharging">
+                  <li><a>Multi-Device Wireless Chargers</a></li>
+                  <li><a>Single-Device Wireless Chargers</a></li>
+                  <li><a>Portable Wireless Chargers</a></li>
+                </ul>
+              </div>
+              <div>
+                <div class="d-flex justify-content-between px-2 py-3">
+                  <h5><a>Protect & Carry</a></h5>
+                  <i class="fas fa-plus" data-toggle="collapse" data-target="#ProtectCarry"></i>
+                </div>
+                <ul class="collapse" id="ProtectCarry">
+                  <li><a>iPhone Cases</a></li>
+                  <li><a>AirPods Cases</a></li>
+                  <li><a>iPad Sleeves</a></li>
+                  <li><a>MacBook Sleeves</a></li>
+                  <li><a>Accessory Organizers</a></li>
+                  <li><a>iPhone Screen Protector</a></li>
+                  <li><a>Apple Watch Straps</a></li>
+                </ul>
+              </div>
+              <div>
+                <div class="d-flex justify-content-between px-2 py-3">
+                  <h5><a>Cables</a></h5>
+                  <i class="fas fa-plus" data-toggle="collapse" data-target="#cables"></i>
+                </div>
+                <ul class="collapse" id="cables">
+                  <li><a>USB-A to Lightning</a></li>
+                  <li><a>USB-C to Lightning</a></li>
+                  <li><a>USB-A to USB-C</a></li>
+                  <li><a>USB-C to USB-C</a></li>
+                  <li><a>Universal Cable</a></li>
+                  <li><a>Apple Watch Cable</a></li>
+                  <li><a>Audio & Video</a></li>
+                  <li><a>Which Cable Do I Need?</a></li>
+                </ul>
+              </div>
+              <div>
+                <div class="d-flex justify-content-between px-2 py-3">
+                  <h5><a>Power Sources</a></h5>
+                  <i class="fas fa-plus" data-toggle="collapse" data-target="#powerSources"></i>
+                </div>
+                <ul class="collapse" id="powerSources">
+                  <li><a>Wall Chargers</a></li>
+                  <li><a>Power Banks</a></li>
+                  <li><a>Car Chargers</a></li>
+                </ul>
+                <div class="d-flex justify-content-between px-2 py-3">
+                  <h5><a>Hubs</a></h5>
+                  <i class="fas fa-plus" data-toggle="collapse" data-target="#hubs"></i>
+                </div>
+                <ul class="collapse" id="hubs">
+                  <li><a>USB-C Smart Hub</a></li>
+                </ul>
+              </div>
+              <div>
+                <div class="d-flex justify-content-between px-2 py-3">
+                  <h5><a>Speakers</a></h5>
+                  <i class="fas fa-plus" data-toggle="collapse" data-target="#speakers"></i>
+                </div>
+                <ul class="collapse" id="speakers">
+                  <li><a>PR/01 Speaker</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="main-links-container">
+              <a>Shop By Device</a>
+              <i class="fas fa-plus" data-toggle="collapse" data-target="#ShopBySevice"></i>
+            </div>
+            <div class="submenu collapse" id="ShopBySevice">
+              <div>
+                <div class="d-flex justify-content-between px-2 py-3">
+                  <h5><a>iPhone</a></h5>
+                  <i class="fas fa-plus" data-toggle="collapse" data-target="#iphone"></i>
+                </div>
+                <ul class="collapse" id="iphone">
+                  <li><a>iPhone 12 Mini</a></li>
+                  <li><a>iPhone 12</a></li>
+                  <li><a>iPhone 12 Pro</a></li>
+                  <li><a>iPhone 12 Pro Max</a></li>
+                  <li><a>iPhone 11 Pro</a></li>
+                  <li><a>iPhone 11</a></li>
+                  <li><a>iPhone 11 Pro Max</a></li>
+                </ul>
+              </div>
+              <div>
+                <div class="d-flex justify-content-between px-2 py-3">
+                  <h5><a>iPhone</a></h5>
+                  <i class="fas fa-plus" data-toggle="collapse" data-target="#iphoneX"></i>
+                </div>
+                <ul class="collapse" id="iphoneX">
+                  <li><a>iPhone Xs</a></li>
+                  <li><a>iPhone XR</a></li>
+                  <li><a>iPhone Xs Max</a></li>
+                  <li><a>iPhone SE</a></li>
+                </ul>
+                <div class="d-flex justify-content-between px-2 py-3">
+                  <h5><a>AirPods</a></h5>
+                  <i class="fas fa-plus" data-toggle="collapse" data-target="#airPods"></i>
+                </div>
+                <ul class="collapse" id="airPods">
+                  <li><a>AirPods Pro</a></li>
+                  <li><a>AirPods Gen 1 &amp; 2</a></li>
+                </ul>
+              </div>
+              <div>
+                <div class="d-flex justify-content-between px-2 py-3">
+                  <h5><a>MacBook</a></h5>
+                  <i class="fas fa-plus" data-toggle="collapse" data-target="#macBook"></i>
+                </div>
+                <ul class="collapse" id="macBook">
+                  <li><a>12" MacBooks</a></li>
+                  <li><a>13" MacBooks</a></li>
+                  <li><a>15" MacBooks</a></li>
+                  <li><a>16" MacBooks</a></li>
+                </ul>
+                <div class="d-flex justify-content-between px-2 py-3">
+                  <h5><a>Apple Watch</a></h5>
+                  <i class="fas fa-plus" data-toggle="collapse" data-target="#appleWatch"></i>
+                </div>
+                <ul class="collapse" id="appleWatch">
+                  <li><a>Apple Watch (38mm / 40mm)</a></li>
+                  <li><a>Apple Watch (42mm / 44mm)</a></li>
+                </ul>
+              </div>
+              <div>
+                <div class="d-flex justify-content-between px-2 py-3">
+                  <h5><a>iPad</a></h5>
+                  <i class="fas fa-plus" data-toggle="collapse" data-target="#iPad"></i>
+                </div>
+                <ul class="collapse" id="iPad">
+                  <li><a>iPad Pro 11"</a></li>
+                  <li><a>iPad Pro 12.9"</a></li>
+                  <li><a>iPad Air (4th Gen)</a></li>
+                  <li><a>iPad (7th &amp; 8th Gen)</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="main-links-container">
+              <a>Explore</a>
+              <i class="fas fa-plus" data-toggle="collapse" data-target="#explore"></i>
+            </div>
+            <div class="submenu collapse" id="explore">
+              <div>
+                <div class="d-flex justify-content-between px-2 py-3">
+                  <h5><a>Collections</a></h5>
+                  <i class="fas fa-plus" data-toggle="collapse" data-target="#collections"></i>
+                </div>
+                <ul class="collapse" id="collections">
+                  <li><a>The Heritage Collection</a></li>
+                  <li><a>Sage Collection</a></li>
+                  <li><a>Classic Leather Collection</a></li>
+                  <li><a>PD Charging Collection</a></li>
+                  <li><a>Work from Home</a></li>
+                </ul>
+              </div>
+              <div>
+                <div class="d-flex justify-content-between px-2 py-3">
+                  <h5><a>Collaborations</a></h5>
+                  <i class="fas fa-plus" data-toggle="collapse" data-target="#collaborations"></i>
+                </div>
+                <ul class="collapse" id="collaborations">
+                  <li><a>Maison Kitsuné x Native Union</a></li>
+                  <li><a>Tom Dixon x Native Union</a></li>
+                  <li><a>La Boite Concept x Native Union</a></li>
+                </ul>
+              </div>
+              <div>
+                <div class="d-flex justify-content-between px-2 py-3">
+                  <h5><a>Journal</a></h5>
+                  <i class="fas fa-plus" data-toggle="collapse" data-target="#journal"></i>
+                </div>
+                <ul class="collapse" id="journal">
+                  <li><a>Discover Our Journal</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div class="login-search">
+          <p><a>log in</a></p>
+          <p><a>search</a></p>
+        </div>
+
+      </div>
+      <div class="links">
+        <a ><i class="fab fa-instagram"></i></a>
+        <a ><i class="fab fa-facebook-f"></i></a>
+        <a ><i class="fab fa-twitter"></i></a>
+        <a ><i class="fab fa-linkedin"></i></a>
+      </div>
+
     </div>
   </div>
 </header>
