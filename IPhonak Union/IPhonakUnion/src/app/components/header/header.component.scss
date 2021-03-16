@@ -3,6 +3,7 @@ header{
   top: 0;
   border-bottom: 1px solid #ccc;
   background-color: #fff;
+  z-index: 9999999;
   .container{
     max-width: 95%;
     .row:first-of-type{

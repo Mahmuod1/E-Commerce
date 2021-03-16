@@ -33,12 +33,16 @@
               "src/favicon.ico",
               "src/assets"
             ],
+
             "styles": [
+
               "src/styles.scss"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.js"
+              "./node_modules/bootstrap/dist/js/bootstrap.js",
+              "./node_modules/popper/farms/index.js"
+
             ]
           },
           "configurations": {
