@@ -75,7 +75,7 @@ router.get('/bestSellers',(req,resp)=>{
 
 ////////////// Find "get" last 5 products with price less than 1000$
 router.get('/lastchance',(req,resp)=>{
-  Product.find({"quantity.quantity":{ $lt: 10 }},(err,data)=>{
+  Product.find({"quantity.quantity":{ $lt: 5 }},(err,data)=>{
     if(!err){
        resp.status(200).send(data)
     }else resp.status(400).send(err)

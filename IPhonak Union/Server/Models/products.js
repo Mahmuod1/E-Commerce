@@ -23,6 +23,9 @@ const productSchema = new Schema(
     bundle:{
       type:Boolean
     },
+    images:{
+      type:Array
+    },
     quantity: { 
       type: Array,
       required: true
