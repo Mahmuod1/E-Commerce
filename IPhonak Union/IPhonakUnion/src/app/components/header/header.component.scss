@@ -143,6 +143,11 @@ header{
     overflow-y: hidden;
     padding: 5px;
     min-width: 340px;
+    transform: translateX(-100%);
+    transition: .5s all;
+    &.animat{
+      transform: translateX(0px);
+    }
     .menu-container {
       max-height: 100%;
       overflow-y: auto;
@@ -213,6 +218,9 @@ header{
       }
     }
   }
+}
+.icon-bar{
+  background-color: #fff;
 }
 @media (max-width:1200px) {
   header{

@@ -169,15 +169,16 @@
         </li>
       </ul>
     </div>
-    <div class="menu-md" *ngIf="screenMdActive">
+    <nav class="menu-md "  [class.animat]="screenMdActive">
       <button (click)="openMenu()">X</button>
 
       <div class="menu-container">
         <ul class="main-menu-md">
           <li>
-            <div class="main-links-container">
+            <div class="main-links-container navbar-toggle" data-toggle="collapse" data-target="#ShopByCollection" (click)="togglePLus()">
               <a>Shop By Collection</a>
-              <i class="fas fa-plus" data-toggle="collapse" data-target="#ShopByCollection"></i>
+              <i class="fas fa-minus" *ngIf="plusOrMins"></i>
+              <i class="fas fa-plus" *ngIf="!plusOrMins"></i>
             </div>
             <div class="submenu collapse" id="ShopByCollection">
               <div>
@@ -390,6 +391,6 @@
         <a ><i class="fab fa-linkedin"></i></a>
       </div>
 
-    </div>
+    </nav>
   </div>
 </header>

@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   screenMdActive = false;
+  plusOrMins = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -22,5 +23,8 @@ export class HeaderComponent implements OnInit {
     } else {
       document.body.style.overflow = "auto";
     }
+  }
+  togglePLus(){
+    this.plusOrMins = !this.plusOrMins
   }
 }

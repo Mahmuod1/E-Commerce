@@ -1,10 +1,10 @@
 
 
-<app-header></app-header>
+
 <owl-carousel-o  [options]="customOptions">
   <ng-container *ngFor="let slide of slidesStore">
     <ng-template carouselSlide [id]="slide.id">
-      <img [src]="slide.src" [alt]="slide.alt" [title]="slide.title">
+      <img [srcset]="slide.src" [alt]="slide.alt" [title]="slide.title">
       <div class="carousel-caption d-none d-md-block">
         <h5 class="carousel-title">Third slide label</h5>
         <div class="btn-container">
@@ -68,7 +68,7 @@
 <div class="col-md-6">
 
 <div class="overlay">
-  <img style="width: 550px; height: 550px;"  src="https://cdn.shopify.com/s/files/1/0066/9050/4822/files/ValentinesDay2020_2178_square_200x.progressive.jpg?v=1582919805%20200w,%20//cdn.shopify.com/s/files/1/0066/9050/4822/files/ValentinesDay2020_2178_square_400x.progressive.jpg?v=1582919805%20400w,%20//cdn.shopify.com/s/files/1/0066/9050/4822/files/ValentinesDay2020_2178_square_600x.progressive.jpg?v=1582919805%20600w,%20//cdn.shopify.com/s/files/1/0066/9050/4822/files/ValentinesDay2020_2178_square_700x.progressive.jpg?v=1582919805%20700w,%20//cdn.shopify.com/s/files/1/0066/9050/4822/files/ValentinesDay2020_2178_square_800x.progressive.jpg?v=1582919805%20800w,%20//cdn.shopify.com/s/files/1/0066/9050/4822/files/ValentinesDay2020_2178_square_1000x.progressive.jpg?v=1582919805%201000w,%20//cdn.shopify.com/s/files/1/0066/9050/4822/files/ValentinesDay2020_2178_square_1200x.progressive.jpg?v=1582919805%201200w" usemap="#image-map">
+  <img style="width: 550px; height: 550px;"  srcset="https://cdn.shopify.com/s/files/1/0066/9050/4822/files/ValentinesDay2020_2178_square_200x.progressive.jpg?v=1582919805%20200w,%20//cdn.shopify.com/s/files/1/0066/9050/4822/files/ValentinesDay2020_2178_square_400x.progressive.jpg?v=1582919805%20400w,%20//cdn.shopify.com/s/files/1/0066/9050/4822/files/ValentinesDay2020_2178_square_600x.progressive.jpg?v=1582919805%20600w,%20//cdn.shopify.com/s/files/1/0066/9050/4822/files/ValentinesDay2020_2178_square_700x.progressive.jpg?v=1582919805%20700w,%20//cdn.shopify.com/s/files/1/0066/9050/4822/files/ValentinesDay2020_2178_square_800x.progressive.jpg?v=1582919805%20800w,%20//cdn.shopify.com/s/files/1/0066/9050/4822/files/ValentinesDay2020_2178_square_1000x.progressive.jpg?v=1582919805%201000w,%20//cdn.shopify.com/s/files/1/0066/9050/4822/files/ValentinesDay2020_2178_square_1200x.progressive.jpg?v=1582919805%201200w" usemap="#image-map">
 <a href="" title="" style="position: absolute; left: 26.5%; top: 29%; width: 10%; height: 10%; z-index: 2;"></a><a href="" title="" style="position: absolute; left: 61%; top: 51%; width: 20.5%; height: 14%; z-index: 2;"></a> -->
 
 
