@@ -16,6 +16,13 @@ const productSchema = new Schema(
       type: String,
       required: true,
     },
+    type:{
+      type:Object,
+      required:true
+    },
+    bundle:{
+      type:Boolean
+    },
     quantity: { 
       type: Array,
       required: true
