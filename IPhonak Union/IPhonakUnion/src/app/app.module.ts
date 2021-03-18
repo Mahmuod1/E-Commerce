@@ -8,6 +8,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ExplorationPageComponent } from './pages/exploration-page/exploration-page.component';
+
+
 import { ProductsComponent } from './components/products/products.component';
 
 @NgModule({
@@ -16,8 +19,8 @@ import { ProductsComponent } from './components/products/products.component';
     HeaderComponent,
     FooterComponent,
     HomePageComponent,
+    ExplorationPageComponent,
     ProductsComponent
-
   ],
   imports: [
     BrowserModule,
@@ -25,6 +28,7 @@ import { ProductsComponent } from './components/products/products.component';
     HttpClientModule,
     BrowserAnimationsModule,
     CarouselModule,
+
 
   ],
   providers: [],

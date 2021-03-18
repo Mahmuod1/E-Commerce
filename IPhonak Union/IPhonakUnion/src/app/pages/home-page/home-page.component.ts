@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
+
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -39,6 +40,7 @@ export class HomePageComponent implements OnInit {
 ]
 
 
+
   animateRight='';
   animateLeft=''
   moveIn(){
@@ -53,22 +55,26 @@ this.animateLeft='animate__bounceInRight'
 moveFromRight(){
   this.animateRight=''
 }
+
+
+
 customOptions: OwlOptions = {
+  animateOut: 'fadeOut',
   loop: true,
   mouseDrag: true,
   touchDrag: false,
   pullDrag: false,
   dots: true,
+  autoplay:true  ,
   autoplayMouseleaveTimeout:2000,
   autoplaySpeed:1000,
+navText:[],
   navSpeed: 700,
-  navText: ['', ''],
-  
   responsive: {
     0: {
       items: 1
     },
-    400: {
+    450: {
       items:1
     },
     740: {
@@ -81,7 +87,14 @@ customOptions: OwlOptions = {
       items:1
     }
   },
-  nav: true
+  nav: false
+}
+goPrev(owl:any){
+  owl.prev()
+}
+goNext(owl:any){
+owl.next()
 }
 
 }
+

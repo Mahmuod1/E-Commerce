@@ -8,6 +8,36 @@ body {
   background: #f6f6f6;
   line-height: 1.65;
 }
+.owl-container .prev {
+
+  position: absolute;
+  background:rgba(255, 255, 255);
+
+  cursor: pointer;
+  top: 50% !important;
+  left:7% ;
+  z-index: 100;
+  font-size: 1.5rem;
+  padding: 0 10px;
+  border-radius: 50%;
+  overflow: hidden;
+transition: transform .9s;
+}
+.owl-container .next {
+
+  position: absolute;
+  background:rgba(255, 255, 255);
+  font-size: 1.5rem;
+  cursor: pointer;
+  top: 50% !important;
+  right: 7%;
+  z-index: 100;
+  border-radius: 50%;
+  padding: 0 10px;
+  overflow: hidden;
+transition: transform .9s;
+}
+
 .carousel-indicators li{
  position: relative;
  top: 60%;
@@ -73,26 +103,25 @@ body {
 }
 .first-img{
   background-image: url("//cdn.shopify.com/s/files/1/0066/9050/4822/files/charge-and-sync-08.2020_7384d929-0066-449c-907c-86ccb2af6540_750x960_crop_center.jpg?v=1596649455 750w, //cdn.shopify.com/s/files/1/0066/9050/4822/files/charge-and-sync-08.2020_7384d929-0066-449c-907c-86ccb2af6540_1000x.jpg?v=1596649455 1000w, //cdn.shopify.com/s/files/1/0066/9050/4822/files/charge-and-sync-08.2020_7384d929-0066-449c-907c-86ccb2af6540_1500x.jpg?v=1596649455 1500w" ) ;
-  background-size: contain;
-    background-attachment: fixed;
-    width: 449px;
-    height: 600px;
+  background-size: cover;
+background-position: center;
+height: 500px;
+
 }
 .second-img{
   background-image: url("//cdn.shopify.com/s/files/1/0066/9050/4822/files/protect-and-carry-08.2020_f9fe2eaa-942f-4857-8aff-d8e604624070_750x960_crop_center.jpg?v=1596649508 750w, //cdn.shopify.com/s/files/1/0066/9050/4822/files/protect-and-carry-08.2020_f9fe2eaa-942f-4857-8aff-d8e604624070_1000x.jpg?v=1596649508 1000w, //cdn.shopify.com/s/files/1/0066/9050/4822/files/protect-and-carry-08.2020_f9fe2eaa-942f-4857-8aff-d8e604624070_1500x.jpg?v=1596649508 1500w") ;
-  background-size: contain;
-    background-attachment: fixed;
-    width: 449px;
-    height: 600px;
+  background-size: cover;
+background-position: center;
+height: 500px;
 }
 .third-img{
 
 
   background-image: url('//cdn.shopify.com/s/files/1/0066/9050/4822/files/shop-by-device-08.2020_d4d92078-cf7a-4b0e-aab9-5b5d023a6591_750x960_crop_center.jpg?v=1596649563 750w, //cdn.shopify.com/s/files/1/0066/9050/4822/files/shop-by-device-08.2020_d4d92078-cf7a-4b0e-aab9-5b5d023a6591_1000x.jpg?v=1596649563 1000w, //cdn.shopify.com/s/files/1/0066/9050/4822/files/shop-by-device-08.2020_d4d92078-cf7a-4b0e-aab9-5b5d023a6591_1500x.jpg?v=1596649563 1500w');
 
-    background-attachment: fixed;
-    width: 449px;
-    height: 600px;
+  background-size: cover;
+  background-position: center;
+  height: 500px;
 
 
 }
@@ -105,23 +134,10 @@ overflow: hidden;
 transition: transform .9s;
 bottom: 36px;
 }
-.icon-container:hover{
+.prev:hover,.next:hover{
   transform: scale(1.1245);
 }
-.btn {
-	position: relative;
-	padding: 1.4rem 4.2rem;
-	padding-right: 3.1rem;
-	font-size: 1.4rem;
-	color:#222;
-	letter-spacing: 1.1rem;
-	text-transform: uppercase;
-	transition: all 500ms cubic-bezier(0.77, 0, 0.175, 1);
-	cursor: pointer;
-	user-select: none;
 
-
-}
 .carousel-item::after{
   position: absolute;
     content: '';
@@ -141,7 +157,21 @@ bottom: 36px;
 .carousel-item img{
   object-fit: cover;
 }
+// The Main Button///////////////////////////////
+.btn {
+	position: relative;
+	padding: 1.4rem 4.2rem;
+	padding-right: 3.1rem;
+	font-size: 1.4rem;
+	color:#222;
+	letter-spacing: 1.1rem;
+	text-transform: uppercase;
+	transition: all 500ms cubic-bezier(0.77, 0, 0.175, 1);
+	cursor: pointer;
+	user-select: none;
 
+
+}
 .btn:before, .btn:after {
 	content: '';
 	position: absolute;
@@ -163,7 +193,24 @@ bottom: 36px;
 	background: #222;
 	transition-delay: .35s;
 }
+.custom-row {
+  display: flex;
+  flex-wrap: wrap;
 
+  margin-left: -15px;
+}.custom-height{
+  height: 535px;
+}
+@media (max-width: 869px) {
+.custome-width{
+  width: 128%;
+}
+}
+.img-container-footer{
+  background-image: url('//cdn.shopify.com/s/files/1/0066/9050/4822/files/About-NU-3_750x960_crop_center.jpg?v=1568688747 750w, //cdn.shopify.com/s/files/1/0066/9050/4822/files/About-NU-3_1000x.jpg?v=1568688747 1000w, //cdn.shopify.com/s/files/1/0066/9050/4822/files/About-NU-3_1500x.jpg?v=1568688747 1500w');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .from-left:before,
 .from-left:after {
 	top: 0;
@@ -195,7 +242,7 @@ font-weight: 900;
 .from-left:hover:after {
 	width: 100%;
 }
-
+// The Main Button///////////////////////////////
 // Start Owl Carousel
 
 #sync2 {
@@ -243,7 +290,21 @@ div.owl-next, div.owl-prev {
 
 .owl-prev, .owl-next {
   position: absolute !important;
+  color: #FFF;
+  font-size: 14px;
+  margin: 5px;
+  padding: 4px 7px;
+  background: #D6D6D6;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 3px;
+  top: 50%;
+  position: absolute;
+  left: 10px;
 }
+/* .owl-carousel .owl-item img {
+  cursor: grab;
+} */
 
 button {
   z-index: 99999999999 !important;
@@ -273,11 +334,9 @@ button {
   font: 1.3rem;
 }
 
-body {
-  background: #bdbdbd;
-}
 
-nav {
+
+/* nav {
   background-color: #606799;
 }
 
@@ -322,4 +381,43 @@ i {
     font-size: 13px;
     margin: 0 0 15px 0;
   }
+} */
+
+
+.link {
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 20px;
+  color: rgba(34, 34, 34, 0.774);
+  font-size: 1.6rem;
+  position: relative;
+  transition: clip-path 275ms ease;
+  &:focus  span::before, &:focus span::before {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .click-effect{
+    position: relative;
+    display: inline-block;
+
+    &::before {
+      position: absolute;
+      content: attr(data-content);
+      color: #222;
+      text-decoration: underline;
+
+      clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+      transition: clip-path 275ms ease;
+    }
+  }
+}
+.custome-shadow{
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+  transition: .9s;
+}
+.custome-shadow:hover{
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+.card-text:hover{
+color: rgba(34, 34, 34, 0.616);
+cursor: pointer;
 }
