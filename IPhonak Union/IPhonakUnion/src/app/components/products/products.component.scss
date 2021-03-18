@@ -1,0 +1,32 @@
+.products {
+  h2 {
+    text-transform: uppercase;
+    background-color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+    font-weight: normal;
+    letter-spacing: 2px;
+  }
+  .product-color {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    li {
+      width: 17px;
+      height: 17px;
+      margin: 7px;
+      border: 1px solid #ccc;
+      &.active{
+        border: 1px solid #000;
+      }
+      img {
+        max-width: 100%;
+        width: 17px;
+        height: 17px;
+        cursor: pointer;
+      }
+    }
+  }
+}

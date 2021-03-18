@@ -1,1 +1,20 @@
-<p>products works!</p>
+<div class="d-flex">
+  <div class="sidebar col-2">sidebar</div>
+  <div class="products col-10">
+    <h2>All Products</h2>
+    <div class="container-products d-flex flex-wrap">
+      <div class="col-4 mb-4"  *ngFor="let product of productsList index as x">
+        <div class="bg-transparent border-0 card text-center">
+          <img class="w-100" src="{{product.images[0]}}" alt="">
+          <p>{{product.productName}}</p>
+          <p>{{product.price | currency :"EGP":"code"}}</p>
+          <ul class="product-color">
+            <li *ngFor="let color of product.quantity index as i"  #productImg>
+              <img *ngIf="color.src" src="{{color.src}}" alt="" (click)="changeImage(productImg,i,x)">
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
