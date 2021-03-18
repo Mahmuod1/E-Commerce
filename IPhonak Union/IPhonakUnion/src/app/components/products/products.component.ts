@@ -34,8 +34,10 @@ export class ProductsComponent implements OnInit {
       productImg.parentElement.children[i].classList.remove('active')
     }
     productImg.classList.add('active');
-    console.log(productImg)
+    console.log(productImg.parentElement.previousElementSibling.parentElement.querySelector('img'))
     let image = this.productsList[productIndex].images[colorIndex];
     console.log(colorIndex,productIndex)
+    productImg.parentElement.previousElementSibling.parentElement.querySelector('img').setAttribute('src',image)
+
   }
 }

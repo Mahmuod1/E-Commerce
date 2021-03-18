@@ -1,15 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import SwiperCore, {
-  Navigation,
-  Pagination,
-  Scrollbar,
-  A11y,
-  Swiper,
-} from 'swiper/core';
 
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+
+
 @Component({
   selector: 'app-exploration-page',
   templateUrl: './exploration-page.component.html',
