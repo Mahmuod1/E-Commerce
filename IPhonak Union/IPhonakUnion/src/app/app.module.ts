@@ -1,5 +1,6 @@
 import { NgModule ,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http'
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExplorationPageComponent } from './pages/exploration-page/exploration-page.component';
 
 
+import { ProductsComponent } from './components/products/products.component';
 
 @NgModule({
   declarations: [
@@ -17,11 +19,13 @@ import { ExplorationPageComponent } from './pages/exploration-page/exploration-p
     HeaderComponent,
     FooterComponent,
     HomePageComponent,
-    ExplorationPageComponent
+    ExplorationPageComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     CarouselModule,
 

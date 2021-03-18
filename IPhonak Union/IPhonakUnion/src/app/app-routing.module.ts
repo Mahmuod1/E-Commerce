@@ -6,7 +6,9 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 const routes: Routes = [
   {path:'home-page',component:HomePageComponent,children:[
     {path:'exploration/:explore',component:ExplorationPageComponent}
-  ]}
+  ]},
+  {path:'',redirectTo:'home-page',pathMatch:'full'},
+  {path:'home-page',component:HomePageComponent}
 ];
 
 @NgModule({
