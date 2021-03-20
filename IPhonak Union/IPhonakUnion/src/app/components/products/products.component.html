@@ -9,8 +9,7 @@
           <p>{{product.productName}}</p>
           <p>{{product.price | currency :"EGP":"code"}}</p>
           <ul class="product-color">
-            <li *ngFor="let color of product.quantity index as i"  #productImg>
-              <img *ngIf="color.src" src="{{color.src}}" alt="" (click)="changeImage(productImg,i,x)">
+            <li *ngFor="let color of product.quantity index as i" [ngStyle]="{'background-image': 'url(' + color.src + ')'}" #productImg (click)="changeImage(productImg,i,x)">
             </li>
           </ul>
         </div>
