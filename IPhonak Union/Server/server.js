@@ -9,6 +9,7 @@ const productsRoutes=require('./controllers/products');
 const app = express();
 const PORT = 4750;
 
+app.use(cors("*"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 

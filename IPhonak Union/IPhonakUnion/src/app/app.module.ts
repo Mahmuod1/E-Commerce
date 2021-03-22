@@ -9,6 +9,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductsComponent } from './components/products/products.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,9 @@ import { ProductsComponent } from './components/products/products.component';
     HeaderComponent,
     FooterComponent,
     HomePageComponent,
-    ProductsComponent
+    ProductsComponent,
+    LoginPageComponent,
+    RegistrationPageComponent
 
   ],
   imports: [
@@ -25,6 +30,8 @@ import { ProductsComponent } from './components/products/products.component';
     HttpClientModule,
     BrowserAnimationsModule,
     CarouselModule,
+    ReactiveFormsModule,
+    FormsModule
 
   ],
   providers: [],

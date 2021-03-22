@@ -1,0 +1,76 @@
+.user-input-wrp {
+	position: relative;
+	width: 50%;
+}
+.user-input-wrp .inputText{
+	width: 400px;
+    height: 40px;
+    background-color: #f6f6f6;
+    border: 0.5px solid;
+	outline: none;
+ 	
+    opacity: 0.5;
+}
+.user-input-wrp .inputText:focus{
+	border-width: medium medium 2px;
+}
+.user-input-wrp .floating-label {
+	position: absolute;
+	pointer-events: none;
+	top: 8px;
+	left: 10px;
+	transition: 0.2s ease all;
+    opacity: 0.7;
+}
+.user-input-wrp input:focus ~ .floating-label,
+.user-input-wrp input:not(:focus):valid ~ .floating-label{
+	top: -12px;
+    padding: 2px;
+    background-color: #fff;
+	left: 10px;
+	font-size: 13px;
+	opacity: 1;
+}
+
+input{
+	width: 400px;
+	border-radius: 0;
+	background-color: #fafafa;
+	padding: 12px 14px;
+}
+
+input:valid{
+	background-color: rgb(232, 240, 254) !important;
+}
+
+form button{
+	width: 400px;
+	border-radius: 0%;
+}
+
+@media (max-width:500px) {
+	input{
+		width: 300px;
+		border-radius: 0;
+		position: relative;
+		left: 50px;	
+	}
+	.user-input-wrp .floating-label {
+		position: absolute;
+		pointer-events: none;
+		top: 8px;
+		left: 59px;
+		transition: 0.2s ease all;
+		opacity: 0.7;
+	}
+	.user-input-wrp input:focus ~ .floating-label,
+	.user-input-wrp input:not(:focus):valid ~ .floating-label{
+	top: -12px;
+    padding: 2px;
+    background-color: #fff;
+	left: 59px;
+	font-size: 13px;
+	opacity: 1;
+	}
+
+}

@@ -34,7 +34,7 @@ router.delete('/delete/:productName',(req,resp)=>{
     })
 })
 
-/////////// Update "" Product by Name
+/////////// Update "put" Product by Name
 router.put('/update/:productName',(req,resp) => {
     var products = req.body
     Product.updateOne({productName:req.params.productName},products,(err,data) => {
@@ -75,7 +75,7 @@ router.get('/bestSellers',(req,resp)=>{
 
 ////////////// Find "get" last 5 products with price less than 1000$
 router.get('/lastchance',(req,resp)=>{
-  Product.find({"quantity.quantity":{ $lt: 5 }},(err,data)=>{
+  Product.find({"quantity.quantity":{ $lt: 10 }},(err,data)=>{
     if(!err){
        resp.status(200).send(data)
     }else resp.status(400).send(err)

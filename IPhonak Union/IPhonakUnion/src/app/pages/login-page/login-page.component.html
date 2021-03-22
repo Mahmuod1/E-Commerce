@@ -1,0 +1,68 @@
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center py-5">
+        <div class="col-12 text-center">
+            <h3><small>REGISTER</small></h3>
+            <p>Please fill in the information below:</p>
+        </div>
+        <ng-container *ngIf="registerationForm">
+            <form class="col-12" class="text-center" [formGroup]="registerationForm" ngNativeValidate (ngSubmit)="submitData(registerationForm.value,$event)" method="POST" action="/home-page">
+
+                <div class="form-group">
+                    <div class="user-input-wrp">
+                        <input type="text" class="form-control" required formControlName="firstName" [class.is-invalid]="firstName!.invalid && firstName!.touched"/>
+                        <label class="floating-label">First Name</label>
+                        <div style="width: 400px;" *ngIf="firstName!.invalid && firstName!.touched">
+                            <small *ngIf="firstName!.errors?.minlength" class="text-danger">
+                                First name can't be less than 4 characters!!
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="user-input-wrp">
+                        <input type="text" class="form-control" formControlName="lastName" required [class.is-invalid]="lastName!.invalid && lastName!.touched"/>
+                        <label class="floating-label">Last Name</label>
+                        <div style="width: 400px;" *ngIf="lastName!.invalid && lastName!.touched">
+                            <small *ngIf="lastName!.errors?.minlength" class="text-danger">
+                                Last name can't be less than 4 characters!!
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="user-input-wrp">
+                        <input type="email" class="form-control" formControlName="email" required [class.is-invalid]="email!.invalid && email!.touched" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+                        <label class="floating-label">Email</label>
+                        <div  style="width: 400px;">
+                            <div *ngIf="email!.invalid && email!.touched">
+                                <small *ngIf="email!.errors?.pattern" class="text-danger">
+                                    Invalid Email address!!
+                                </small>
+                            </div>
+                            <small *ngIf="errorFromServer" class="text-danger">
+                                Email already exists!!
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="user-input-wrp">
+                        <input type="password" class="form-control" formControlName="password" required [class.is-invalid]="password!.invalid && password!.touched" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$"/>
+                        <label class="floating-label">Password</label>
+                        <div style="width: 400px;" *ngIf="password!.invalid && password!.touched">
+                            <small *ngIf="password!.errors?.pattern" class="text-danger">
+                                Password must be at least 4 characters, no more than 8 characters, and must include at least one upper case letter!!
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button class="submitBtn"  type="submit"  class="btn btn-secondary">Create My Account</button>
+                </div>
+            </form>
+        </ng-container>
+    </div>
+</div>
