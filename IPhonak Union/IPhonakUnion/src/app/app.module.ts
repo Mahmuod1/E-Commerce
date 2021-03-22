@@ -8,6 +8,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ExplorationPageComponent } from './pages/exploration-page/exploration-page.component';
+
+
 import { ProductsComponent } from './components/products/products.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,10 +22,15 @@ import { RegistrationPageComponent } from './pages/registration-page/registratio
     HeaderComponent,
     FooterComponent,
     HomePageComponent,
+<<<<<<< HEAD
     ProductsComponent,
     LoginPageComponent,
     RegistrationPageComponent
 
+=======
+    ExplorationPageComponent,
+    ProductsComponent
+>>>>>>> 7d312d5f4eacc0ace14fc023609d8ecb40182591
   ],
   imports: [
     BrowserModule,
@@ -32,6 +40,7 @@ import { RegistrationPageComponent } from './pages/registration-page/registratio
     CarouselModule,
     ReactiveFormsModule,
     FormsModule
+
 
   ],
   providers: [],

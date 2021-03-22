@@ -1,0 +1,32 @@
+
+<div class="owl-container">
+  <owl-carousel-o #owl  [options]="customOptions">
+    <ng-container *ngFor="let slide of slidesStore" >
+      <ng-template carouselSlide >
+        <img  [srcset]="slide.img"  class="d-block w-100"  style="cursor: grab;">
+
+          <h5 class="carousel-title">{{slide.title}}</h5>
+          <h4 class="text-light">{{slide.price}}</h4>
+
+
+      </ng-template>
+
+    </ng-container>
+  </owl-carousel-o>
+  <span (click)='goPrev(owl)'class="prev shadow"><i class="fas fa-chevron-left"></i></span>
+  <span (click)='goNext(owl)'class="next shadow"><i class="fas fa-chevron-right"></i></span>
+ <!--  <swiper>
+    <ng-template swiperSlide>
+
+    </ng-template>
+
+    <ng-template swiperSlide *ngFor="let slide of slidesStore">
+
+        <img  [srcset]="slide.img" alt="">
+
+    </ng-template>
+  </swiper> -->
+ </div>
+<!--   <span (click)='goPrev(owl)'class="prev"><i class="fas fa-chevron-left"></i></span>
+  <span (click)='goNext(owl)'class="next"><i class="fas fa-chevron-right"></i></span> -->
+
