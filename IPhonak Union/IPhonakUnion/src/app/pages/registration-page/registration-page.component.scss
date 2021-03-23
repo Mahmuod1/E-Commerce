@@ -44,15 +44,16 @@ input{
 	pointer-events: none;
 	top: 10px;
 	font-size: 12px;
-	left: 300px;
+	left: 259px;
 	transition: 0.2s ease all;
     opacity: 0.7;
+	width: 150px;
 }
 
-form button{
+/* form button{
 	width: 400px;
 	border-radius: 0%;
-}
+} */
 
 input:valid{
 	background-color: rgb(232, 240, 254) !important;
@@ -64,6 +65,33 @@ a{
 }
 a:hover{
 	opacity: 0.5;
+}
+
+form .loginBtn {
+    display: inline-block;
+    text-align: center;
+	width: 400px;
+    color: white;
+    background: black; /* default color */
+
+    /* "to left" / "to right" - affects initial color */
+    background: linear-gradient(to left, black 50%, white 50%) right;
+    background-size: 200%;
+    transition: .5s ease-out;
+}
+form .loginBtn:hover {
+    background-position: left;
+	color: black;
+}
+
+.loginBtn button{
+	color: #fff;
+	width: 400px;
+	left: 50px;
+}
+
+.loginBtn button:hover{
+	color: black;
 }
 
 @media (max-width:500px) {
@@ -96,7 +124,7 @@ a:hover{
 	pointer-events: none;
 	top: 10px;
 	font-size: 12px;
-	left: 250px;
+	left: 210px;
 	transition: 0.2s ease all;
     opacity: 0.7;
 }

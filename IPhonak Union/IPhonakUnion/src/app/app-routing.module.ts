@@ -12,12 +12,9 @@ const routes: Routes = [
   ]},
   {path:'',redirectTo:'home-page',pathMatch:'full'},
   {path:'home-page',component:HomePageComponent},
-<<<<<<< HEAD
   {path:'registration-page',component:LoginPageComponent},
-  {path:'login',component:RegistrationPageComponent}
-=======
+  {path:'login',component:RegistrationPageComponent},
   {path:'products',component:ProductsComponent}
->>>>>>> 7d312d5f4eacc0ace14fc023609d8ecb40182591
 ];
 
 @NgModule({

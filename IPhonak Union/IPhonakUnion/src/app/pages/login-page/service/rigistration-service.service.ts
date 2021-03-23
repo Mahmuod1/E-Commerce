@@ -11,6 +11,6 @@ export class RigistrationServiceService {
   constructor(private _http:HttpClient) { }
 
   registerForm(user:User){
-    return this._http.post<any>(this._url,user)
+    return this._http.post<User>(this._url,user)
   }
 }

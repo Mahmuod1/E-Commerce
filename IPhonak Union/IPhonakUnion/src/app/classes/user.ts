@@ -6,3 +6,8 @@ export class User {
         public password:any,
     ){}
 }
+
+export interface ILogin{
+    loginEmail:string,
+    loginPassword:string
+}

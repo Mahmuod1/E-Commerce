@@ -91,4 +91,14 @@ router.get('/getBundle',(req,resp)=>{
     }else resp.status(400).send(err)
   })
 })
+
+///////////// Get "get" Products by type
+router.get('/:productType',(req,resp)=>{
+  Product.find({"type.type":req.params.productType},(err,data) =>{
+    if(!err){
+      resp.status(200).send(data)
+    }else resp.status(400).send(err)
+  })
+})
+
 module.exports=router

@@ -48,6 +48,33 @@ form button{
 	border-radius: 0%;
 }
 
+form .loginBtn {
+    display: inline-block;
+    text-align: center;
+	width: 400px;
+    color: white;
+    background: black; /* default color */
+
+    /* "to left" / "to right" - affects initial color */
+    background: linear-gradient(to left, black 50%, white 50%) right;
+    background-size: 200%;
+    transition: .5s ease-out;
+}
+form .loginBtn:hover {
+    background-position: left;
+	color: black;
+}
+
+.loginBtn button{
+	color: #fff;
+	width: 400px;
+	left: 50px;
+}
+
+.loginBtn button:hover{
+	color: black;
+}
+
 @media (max-width:500px) {
 	input{
 		width: 300px;

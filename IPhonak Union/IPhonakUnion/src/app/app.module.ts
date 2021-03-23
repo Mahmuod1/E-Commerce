@@ -22,15 +22,11 @@ import { RegistrationPageComponent } from './pages/registration-page/registratio
     HeaderComponent,
     FooterComponent,
     HomePageComponent,
-<<<<<<< HEAD
     ProductsComponent,
     LoginPageComponent,
-    RegistrationPageComponent
-
-=======
+    RegistrationPageComponent,
     ExplorationPageComponent,
     ProductsComponent
->>>>>>> 7d312d5f4eacc0ace14fc023609d8ecb40182591
   ],
   imports: [
     BrowserModule,
