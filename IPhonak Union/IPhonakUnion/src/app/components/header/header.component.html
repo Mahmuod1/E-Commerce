@@ -1,25 +1,49 @@
 <header class="pt-3">
   <div class="container">
     <div class="row">
+      <!-- Start Search Section -->
       <div class="">
+        <!-- Show Menu Button -->
         <button class="open-menu d-xl-none" (click)="openMenu()"><i class="fas fa-bars"></i></button>
-        <form class="search-form">
-          <input type="search" placeholder="Search" class="search" (focus)="openSearchBox(searchBox)">
+        <!-- Search Form  -->
+        <form class="search-form" [class.active]="searchMod">
+          <input type="search" placeholder="SEARCH..." class="search" (focus)="openSearchBox()" [(ngModel)]="SearchValue" autocomplete="off"name="Search" (keyup)="search()">
           <button type="submit"><i class="fas fa-search"></i></button>
-          <div class="search-box" #searchBox>
-            <input type="text" placeholder="SEARCH...">
-            <button>X</button>
+          <div class="search-box" [class.open]="searchMod" #searchBox>
+            <div>
+              <button (click)="closeSearchBox()">X</button>
+            </div>
+            <div *ngIf="SearchValue!==''">
+              <div class="border-bottom d-flex mb-5 mt-5 pt-5 text-capitalize justify-content-between">
+                <p>{{productsSearch.length}} results</p>
+                <a routerLink="search" (click)="saveSearchData()">View all</a>
+              </div>
+              <div class="d-flex">
+                <!-- Start -->
+                <!-- Start Product Search Conatiner -->
+                <div class="d-flex">
+                  <div class="col-3" *ngFor="let product of productsSearch | slice: 0: 4" >
+                    <img src="{{product.image}}" alt="">
+                    <h5>{{product.name}}</h5>
+                    <p>{{product.price | currency :"EGP":"code"}}</p>
+                  </div>
+                </div>
+                <!-- End Product Search Container -->
+              </div>
+            </div>
           </div>
         </form>
       </div>
+      <!-- End Search Section -->
       <div class="logo">
-        <h2><a>IPhonak union</a></h2>
+        <h2><a routerLink="home-page" class="text-body text-decoration-none">IPhonak union</a></h2>
       </div>
       <div class="icons">
         <a><i class="far fa-user-circle"></i></a>
         <a><i class="fas fa-shopping-bag"></i></a>
       </div>
     </div>
+    <!-- End Logo And Search Section -->
     <div class="row menu">
       <ul class="main-menu">
         <li>
@@ -169,31 +193,37 @@
         </li>
       </ul>
     </div>
-    <nav class="menu-md "  [class.animat]="screenMdActive">
+    <!-- Start Mobil Nav Bar -->
+    <nav class="menu-md mobil-menu"  [class.animat]="screenMdActive">
       <button (click)="openMenu()">X</button>
 
       <div class="menu-container">
         <ul class="main-menu-md">
           <li>
-            <div class="main-links-container navbar-toggle" data-toggle="collapse" data-target="#ShopByCollection" (click)="togglePLus()">
+            <div class="main-links-container navbar-toggle mb-3" data-toggle="collapse" data-target="#ShopByCollection" (click)="togglePLus(toggleBtn)">
               <a>Shop By Collection</a>
-              <i class="fas fa-minus" *ngIf="plusOrMins"></i>
-              <i class="fas fa-plus" *ngIf="!plusOrMins"></i>
+              <button class="toggle-button">
+                <i #toggleBtn class="toggle-plus"></i>
+              </button>
             </div>
             <div class="submenu collapse" id="ShopByCollection">
               <div>
-                <div class="d-flex justify-content-between px-2 py-3">
-                  <h5><a>Shop</a></h5>
-                  <i class="fas fa-plus" data-toggle="collapse" data-target="#shop"></i>
+                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#all-products" (click)="togglePLus(toggleBtn1)">
+                  <h5><a>All Products</a></h5>
+                  <button  class="toggle-button">
+                    <i #toggleBtn1 class="toggle-plus"></i>
+                  </button>
                 </div>
-                <ul class="collapse" id="shop">
-                  <li><a>All Product</a></li>
+                <ul class="collapse " id="all-products">
+                  <li><a routerLink="products">All Product</a></li>
                   <li><a>New Releases</a></li>
                   <li><a>Last Chance To Buy</a></li>
                 </ul>
-                <div class="d-flex justify-content-between px-2 py-3">
+                <div class="d-flex justify-content-between px-2 py-3"  data-toggle="collapse" data-target="#WirelessCharging" (click)="togglePLus(toggleBtn3)">
                   <h5><a>Wireless Charging</a></h5>
-                  <i class="fas fa-plus" data-toggle="collapse" data-target="#WirelessCharging"></i>
+                  <button  class="toggle-button">
+                    <i #toggleBtn3 class="toggle-plus"></i>
+                  </button>
                 </div>
                 <ul class="collapse" id="WirelessCharging">
                   <li><a>Multi-Device Wireless Chargers</a></li>
@@ -202,9 +232,11 @@
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3">
+                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#ProtectCarry" (click)="togglePLus(toggleBtn4)">
                   <h5><a>Protect & Carry</a></h5>
-                  <i class="fas fa-plus" data-toggle="collapse" data-target="#ProtectCarry"></i>
+                  <button  class="toggle-button">
+                    <i #toggleBtn4 class="toggle-plus"></i>
+                  </button>
                 </div>
                 <ul class="collapse" id="ProtectCarry">
                   <li><a>iPhone Cases</a></li>
@@ -217,9 +249,11 @@
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3">
+                <div class="d-flex justify-content-between px-2 py-3"  data-toggle="collapse" data-target="#cables" (click)="togglePLus(toggleBtn5)">
                   <h5><a>Cables</a></h5>
-                  <i class="fas fa-plus" data-toggle="collapse" data-target="#cables"></i>
+                  <button  class="toggle-button">
+                    <i #toggleBtn5 class="toggle-plus"></i>
+                  </button>
                 </div>
                 <ul class="collapse" id="cables">
                   <li><a>USB-A to Lightning</a></li>
@@ -233,27 +267,33 @@
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3">
+                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#powerSources" (click)="togglePLus(toggleBtn6)">
                   <h5><a>Power Sources</a></h5>
-                  <i class="fas fa-plus" data-toggle="collapse" data-target="#powerSources"></i>
+                  <button  class="toggle-button">
+                    <i #toggleBtn6 class="toggle-plus"></i>
+                  </button>
                 </div>
                 <ul class="collapse" id="powerSources">
                   <li><a>Wall Chargers</a></li>
                   <li><a>Power Banks</a></li>
                   <li><a>Car Chargers</a></li>
                 </ul>
-                <div class="d-flex justify-content-between px-2 py-3">
+                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#hubs" (click)="togglePLus(toggleBtn7)">
                   <h5><a>Hubs</a></h5>
-                  <i class="fas fa-plus" data-toggle="collapse" data-target="#hubs"></i>
+                  <button  class="toggle-button">
+                    <i #toggleBtn7 class="toggle-plus"></i>
+                  </button>
                 </div>
                 <ul class="collapse" id="hubs">
                   <li><a>USB-C Smart Hub</a></li>
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3">
+                <div class="d-flex justify-content-between px-2 py-3"  data-toggle="collapse" data-target="#speakers" (click)="togglePLus(toggleBtn8)">
                   <h5><a>Speakers</a></h5>
-                  <i class="fas fa-plus" data-toggle="collapse" data-target="#speakers"></i>
+                  <button  class="toggle-button">
+                    <i #toggleBtn8 class="toggle-plus"></i>
+                  </button>
                 </div>
                 <ul class="collapse" id="speakers">
                   <li><a>PR/01 Speaker</a></li>
@@ -262,15 +302,19 @@
             </div>
           </li>
           <li>
-            <div class="main-links-container">
+            <div class="main-links-container my-3"  data-toggle="collapse" data-target="#ShopBySevice" (click)="togglePLus(toggleBtn9)">
               <a>Shop By Device</a>
-              <i class="fas fa-plus" data-toggle="collapse" data-target="#ShopBySevice"></i>
+              <button class="toggle-button">
+                <i #toggleBtn9 class="toggle-plus"></i>
+              </button>
             </div>
             <div class="submenu collapse" id="ShopBySevice">
               <div>
-                <div class="d-flex justify-content-between px-2 py-3">
+                <div class="d-flex justify-content-between px-2 py-3"  data-toggle="collapse" data-target="#iphone" (click)="togglePLus(iphone)">
                   <h5><a>iPhone</a></h5>
-                  <i class="fas fa-plus" data-toggle="collapse" data-target="#iphone"></i>
+                  <button class="toggle-button">
+                    <i #iphone class="toggle-plus"></i>
+                  </button>
                 </div>
                 <ul class="collapse" id="iphone">
                   <li><a>iPhone 12 Mini</a></li>
@@ -280,32 +324,31 @@
                   <li><a>iPhone 11 Pro</a></li>
                   <li><a>iPhone 11</a></li>
                   <li><a>iPhone 11 Pro Max</a></li>
-                </ul>
-              </div>
-              <div>
-                <div class="d-flex justify-content-between px-2 py-3">
-                  <h5><a>iPhone</a></h5>
-                  <i class="fas fa-plus" data-toggle="collapse" data-target="#iphoneX"></i>
-                </div>
-                <ul class="collapse" id="iphoneX">
                   <li><a>iPhone Xs</a></li>
                   <li><a>iPhone XR</a></li>
                   <li><a>iPhone Xs Max</a></li>
                   <li><a>iPhone SE</a></li>
                 </ul>
-                <div class="d-flex justify-content-between px-2 py-3">
+              </div>
+              <div>
+                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#airPods"(click)="togglePLus(airPods)">
                   <h5><a>AirPods</a></h5>
-                  <i class="fas fa-plus" data-toggle="collapse" data-target="#airPods"></i>
+                  <button class="toggle-button">
+                    <i #airPods class="toggle-plus"></i>
+                  </button>
                 </div>
                 <ul class="collapse" id="airPods">
                   <li><a>AirPods Pro</a></li>
                   <li><a>AirPods Gen 1 &amp; 2</a></li>
+                  <li><a>All AirPods</a></li>
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3">
+                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#macBook" (click)="togglePLus(macBook)">
                   <h5><a>MacBook</a></h5>
-                  <i class="fas fa-plus" data-toggle="collapse" data-target="#macBook"></i>
+                  <button class="toggle-button">
+                    <i #macBook class="toggle-plus"></i>
+                  </button>
                 </div>
                 <ul class="collapse" id="macBook">
                   <li><a>12" MacBooks</a></li>
@@ -313,9 +356,11 @@
                   <li><a>15" MacBooks</a></li>
                   <li><a>16" MacBooks</a></li>
                 </ul>
-                <div class="d-flex justify-content-between px-2 py-3">
+                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#appleWatch" (click)="togglePLus(appleWatch)">
                   <h5><a>Apple Watch</a></h5>
-                  <i class="fas fa-plus" data-toggle="collapse" data-target="#appleWatch"></i>
+                  <button class="toggle-button">
+                    <i #appleWatch class="toggle-plus"></i>
+                  </button>
                 </div>
                 <ul class="collapse" id="appleWatch">
                   <li><a>Apple Watch (38mm / 40mm)</a></li>
@@ -323,9 +368,11 @@
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3">
+                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#iPad" (click)="togglePLus(iPad)">
                   <h5><a>iPad</a></h5>
-                  <i class="fas fa-plus" data-toggle="collapse" data-target="#iPad"></i>
+                  <button class="toggle-button">
+                    <i #iPad class="toggle-plus"></i>
+                  </button>
                 </div>
                 <ul class="collapse" id="iPad">
                   <li><a>iPad Pro 11"</a></li>
@@ -337,15 +384,19 @@
             </div>
           </li>
           <li>
-            <div class="main-links-container">
+            <div class="main-links-container my-3" data-toggle="collapse" data-target="#explore" (click)="togglePLus(explore)">
               <a>Explore</a>
-              <i class="fas fa-plus" data-toggle="collapse" data-target="#explore"></i>
+              <button class="toggle-button">
+                <i #explore class="toggle-plus"></i>
+              </button>
             </div>
             <div class="submenu collapse" id="explore">
               <div>
-                <div class="d-flex justify-content-between px-2 py-3">
+                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#collections" (click)="togglePLus(collections)">
                   <h5><a>Collections</a></h5>
-                  <i class="fas fa-plus" data-toggle="collapse" data-target="#collections"></i>
+                  <button class="toggle-button">
+                    <i #collections class="toggle-plus"></i>
+                  </button>
                 </div>
                 <ul class="collapse" id="collections">
                   <li><a>The Heritage Collection</a></li>
@@ -356,9 +407,11 @@
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3">
+                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#collaborations" (click)="togglePLus(collaborations)">
                   <h5><a>Collaborations</a></h5>
-                  <i class="fas fa-plus" data-toggle="collapse" data-target="#collaborations"></i>
+                  <button class="toggle-button">
+                    <i #collaborations class="toggle-plus"></i>
+                  </button>
                 </div>
                 <ul class="collapse" id="collaborations">
                   <li><a>Maison Kitsuné x Native Union</a></li>
@@ -367,9 +420,11 @@
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3">
+                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#journal" (click)="togglePLus(journal)">
                   <h5><a>Journal</a></h5>
-                  <i class="fas fa-plus" data-toggle="collapse" data-target="#journal"></i>
+                  <button class="toggle-button">
+                    <i #journal class="toggle-plus"></i>
+                  </button>
                 </div>
                 <ul class="collapse" id="journal">
                   <li><a>Discover Our Journal</a></li>
@@ -378,9 +433,10 @@
             </div>
           </li>
         </ul>
+
         <div class="login-search">
           <p><a>log in</a></p>
-          <p><a>search</a></p>
+          <p><a (click)="openSearchBox()">search</a></p>
         </div>
 
       </div>
@@ -392,5 +448,6 @@
       </div>
 
     </nav>
+    <!-- End Mobil Nav Bar -->
   </div>
 </header>

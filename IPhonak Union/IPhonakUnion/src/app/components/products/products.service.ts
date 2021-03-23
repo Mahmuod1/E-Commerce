@@ -11,8 +11,8 @@ export class ProductsService {
   _url:string = "http://localhost:4750/collection/products/getAll";
   constructor(private _http:HttpClient) { }
 
-  fetchProds():Observable<IProduct>{
-    return this._http.get<IProduct>(this._url,{headers:{}}).pipe(
+  fetchProds():Observable<IProduct[]>{
+    return this._http.get<IProduct[]>(this._url,{headers:{}}).pipe(
       catchError(
         (err)=>{
           return throwError(err.message);

@@ -12,6 +12,10 @@ import { ExplorationPageComponent } from './pages/exploration-page/exploration-p
 
 
 import { ProductsComponent } from './components/products/products.component';
+import { ReplacePipe } from './custm-pipes/replace.pipe';
+import { FormsModule } from '@angular/forms';
+import { SearchPipe } from './custm-pipes/search.pipe';
+import { SearchResultComponent } from './pages/search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,10 @@ import { ProductsComponent } from './components/products/products.component';
     FooterComponent,
     HomePageComponent,
     ExplorationPageComponent,
-    ProductsComponent
+    ProductsComponent,
+    ReplacePipe,
+    SearchPipe,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +35,7 @@ import { ProductsComponent } from './components/products/products.component';
     HttpClientModule,
     BrowserAnimationsModule,
     CarouselModule,
+    FormsModule
 
 
   ],

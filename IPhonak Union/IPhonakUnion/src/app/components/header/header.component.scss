@@ -4,6 +4,9 @@ header{
   border-bottom: 1px solid #ccc;
   background-color: #fff;
   z-index: 9999999;
+  a {
+    color: #333;
+  }
   .container{
     max-width: 95%;
     .row:first-of-type{
@@ -14,6 +17,19 @@ header{
   }
   .search-form {
     position: relative;
+    &.active {
+      position: absolute;
+      left: 0;
+      width: 98%;
+      .search {
+        position: absolute;
+        width: calc(100% - 30px);
+        border: none;
+        z-index: 1000;
+        font-size: 18px;
+        text-transform: uppercase;
+      }
+    }
     .search {
       border: 1px solid #000;
       outline: none;
@@ -40,12 +56,13 @@ header{
       background-color: #fff;
       display: none;
       padding: 20px;
+      &.open{
+        display: block;
+      }
       input[type=text]{
         width: calc(100% - 30px);
         border: none;
         outline: none;
-        font-size: 18px;
-        text-transform: uppercase;
       }
       button{
         position: fixed;
@@ -55,6 +72,10 @@ header{
         border: none;
         outline: none;
         font-size: 20px;
+        z-index: 1001;
+      }
+      img {
+        max-width: 100%;
       }
     }
   }
@@ -77,6 +98,7 @@ header{
     list-style: none;
     padding: 0;
     margin: 0;
+
     &>li {
       display: inline-block;
       margin-right: 25px;
@@ -218,6 +240,49 @@ header{
       }
     }
   }
+  .mobil-menu {
+    a {
+      color: #fafafa;
+    }
+    .toggle-button {
+      border: none;
+      background-color: transparent;
+      outline: none;
+      position: relative;
+      width: 11px;
+      height: 11px;
+      .toggle-plus {
+        color: #fff;
+        transition: .5s all;
+        &::before,
+        &::after {
+          position: absolute;
+          content: '';
+          background-color: #fff;
+          top: 0;
+          left: 0;
+        }
+        &::before {
+          width: 1px;
+          height: 11px;
+          left: calc(50% - .5px);
+        }
+        &::after {
+          width: 11px;
+          height: 1px;
+          top: calc(50% - .5px);
+          left: 1px;
+          opacity: 1;
+        }
+        &.minus {
+          &::before {
+            opacity: 0;
+          }
+        }
+      }
+    }
+
+  }
 }
 .icon-bar{
   background-color: #fff;
@@ -227,9 +292,14 @@ header{
     padding-bottom: 15px;
   }
   .row.menu,
-  .search-form,
   .fa-user-circle{
     display: none;
+  }
+  .search-form {
+    display: none;
+    &.active {
+      display: block;
+    }
   }
   .open-menu{
     border: none;
@@ -237,5 +307,17 @@ header{
     background-color: transparent;
     font-size: 20px;
 
+  }
+}
+
+@keyframes rotate {
+  0%{
+    transform: rotate(0deg);
+  }
+  50%{
+    transform: rotate(45deg);
+  }
+  100%{
+    transform: rotate(90deg);
   }
 }
