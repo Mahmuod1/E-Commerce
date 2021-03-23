@@ -14,6 +14,12 @@ import { ExplorationPageComponent } from './pages/exploration-page/exploration-p
 import { ProductsComponent } from './components/products/products.component';
 import { ButtonComponent } from './components/button/button.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { ReplacePipe } from './custm-pipes/replace.pipe';
+import { SearchPipe } from './custm-pipes/search.pipe';
+import { SearchResultComponent } from './pages/search-result/search-result.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
 
 @NgModule({
   declarations: [
@@ -21,10 +27,16 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
     HeaderComponent,
     FooterComponent,
     HomePageComponent,
+    ProductsComponent,
+    LoginPageComponent,
+    RegistrationPageComponent,
     ExplorationPageComponent,
     ProductsComponent,
     ButtonComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ReplacePipe,
+    SearchPipe,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +44,8 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
     HttpClientModule,
     BrowserAnimationsModule,
     CarouselModule,
+    ReactiveFormsModule,
+    FormsModule
 
 
   ],

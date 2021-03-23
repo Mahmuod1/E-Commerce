@@ -1,3 +1,4 @@
+
 .products {
   h2 {
     text-transform: uppercase;
@@ -23,6 +24,59 @@
       cursor: pointer;
       &.active{
         border: 1px solid #000;
+      }
+    }
+  }
+}
+.sidebar {
+  min-width: 300px;
+  ul {
+    list-style: none;
+    padding: 0;
+    a {
+      color: #000;
+      display: inline-block;
+      width: 100%;
+    }
+    a:hover {
+      color: #777;
+    }
+    .menu-header {
+      cursor: pointer;
+      font-weight: 900;
+      font-size: 14px;
+      .text{
+        &::before{
+          content: '-';
+        }
+      }
+      .icon {
+        font-size: 14px;
+      }
+    }
+    h4 {
+      font-size: 14px;
+      font-weight: 900;
+      text-transform: uppercase;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    ul {
+      li {
+        margin: 10px 0;
+        cursor: pointer;
+        padding: 5px;
+        &.active{
+          background-color: #000;
+          a {
+            color: #fff;
+          }
+        }
+      }
+      &:last-child {
+        h4 {
+          margin-top: 20px;
+        }
       }
     }
   }

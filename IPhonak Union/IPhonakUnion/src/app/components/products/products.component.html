@@ -1,19 +1,145 @@
 <div class="d-flex">
-  <div class="sidebar col-2">sidebar</div>
-  <div class="products col-10">
+  <!-- Start Side Bar Menu -->
+  <div class="sidebar col-2 border p-3 pl-5">
+    <!-- Start Nav Bar For  -->
+    <nav>
+      <ul>
+        <h4>shop by collection</h4>
+        <li class="my-2">
+          <div class="d-flex justify-content-between pl-1 menu-header" (click)="togglePLus(shop)" data-toggle="collapse" data-target="#shop">
+            <span class="text">shop</span>
+            <span class="icon" #shop>
+              (<i class="fas fa-plus"></i>)
+            </span>
+          </div>
+          <ul class="collapse pl-2" id="shop">
+            <li class="active"><a routerLink="products">All Product</a></li>
+            <li><a routerLink="products">Best Sellers</a></li>
+            <li><a routerLink="products">Last Chance To Buy</a></li>
+          </ul>
+        </li>
+        <li class="my-2">
+          <div class="d-flex justify-content-between pl-1 menu-header" (click)="togglePLus(wireless)" data-toggle="collapse" data-target="#wirelessCharging">
+            <span class="text">Wireless Charging</span>
+            <span class="icon" #wireless>
+              (<i class="fas fa-plus"></i>)
+            </span>
+          </div>
+          <ul class="collapse pl-2" id="wirelessCharging">
+            <li><a routerLink="products">Multi-Device Wireless Chargers</a></li>
+            <li><a routerLink="products">Single-Device Wireless Chargers</a></li>
+            <li><a routerLink="products">Portable Wireless Chargers</a></li>
+          </ul>
+        </li>
+        <li class="my-2">
+          <div class="d-flex justify-content-between pl-1 menu-header" (click)="togglePLus(protectCarry)" data-toggle="collapse" data-target="#protectCarry">
+            <span class="text">Protect & Carry</span>
+            <span class="icon" #protectCarry>
+              (<i class="fas fa-plus"></i>)
+            </span>
+          </div>
+          <ul class="collapse pl-2" id="protectCarry">
+            <li><a routerLink="products">iPhone Cases</a></li>
+            <li><a routerLink="products">AirPods Cases</a></li>
+            <li><a routerLink="products">iPad Sleeves</a></li>
+            <li><a routerLink="products">MacBook Sleeves</a></li>
+            <li><a routerLink="products">Accessory Organizers</a></li>
+            <li><a routerLink="products">iPhone Screen Protector</a></li>
+            <li><a routerLink="products">Apple Watch Straps</a></li>
+          </ul>
+        </li>
+        <li class="my-2">
+          <div class="d-flex justify-content-between pl-1 menu-header" (click)="togglePLus(cables)" data-toggle="collapse" data-target="#cables">
+            <span class="text">Cables</span>
+            <span class="icon" #cables>
+              (<i class="fas fa-plus"></i>)
+            </span>
+          </div>
+          <ul class="collapse pl-2" id="cables">
+            <li><a routerLink="products">USB-A to Lightning</a></li>
+            <li><a routerLink="products">USB-C to Lightning</a></li>
+            <li><a routerLink="products">USB-A to USB-C</a></li>
+            <li><a routerLink="products">USB-C to USB-C</a></li>
+            <li><a routerLink="products">Universal Cable</a></li>
+            <li><a routerLink="products">Apple Watch Cable</a></li>
+            <li><a routerLink="products">Audio & Video</a></li>
+            <li><a routerLink="products">Which Cable Do I Need?</a></li>
+          </ul>
+        </li>
+        <li class="my-2">
+          <div class="d-flex justify-content-between pl-1 menu-header" (click)="togglePLus(powerSources)" data-toggle="collapse" data-target="#powerSources">
+            <span class="text">Power Sources</span>
+            <span class="icon" #powerSources>
+              (<i class="fas fa-plus"></i>)
+            </span>
+          </div>
+          <ul class="collapse pl-2" id="powerSources">
+            <li><a routerLink="products">Wall Chargers</a></li>
+            <li><a routerLink="products">Power Banks</a></li>
+            <li><a routerLink="products">Car Chargers</a></li>
+          </ul>
+        </li>
+        <li class="my-2">
+          <div class="d-flex justify-content-between pl-1 menu-header" (click)="togglePLus(hubs)" data-toggle="collapse" data-target="#hubs">
+            <span class="text">Hubs</span>
+            <span class="icon" #hubs>(<i class="fas fa-plus"></i>)</span>
+          </div>
+          <ul class="collapse pl-2" id="hubs">
+            <li><a routerLink="products">USB-C Smart Hub</a></li>
+          </ul>
+        </li>
+        <li class="my-2">
+          <div class="d-flex justify-content-between pl-1 menu-header" (click)="togglePLus(speakers)" data-toggle="collapse" data-target="#speakers">
+            <span class="text">Speakers</span>
+            <span class="icon" #speakers>(<i class="fas fa-plus"></i>)</span>
+          </div>
+          <ul class="collapse pl-2" id="speakers">
+            <li><a routerLink="products">PR/01 Speaker</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="mt-5">
+        <h4>Shop By Device</h4>
+        <li class="my-2" *ngFor="let category of productsCategory index as c">
+          <div class="d-flex justify-content-between pl-1 menu-header" (click)="togglePLus(iconContainer)" data-toggle="collapse" attr.data-target="#{{category.name|lowercase|replace}}">
+            <span class="text">{{category.name}}</span>
+            <span class="icon" #iconContainer>(<i class="fas fa-plus"></i>)</span>
+            </div>
+          <ul class="collapse pl-2" attr.id="{{category.name|lowercase|replace}}">
+            <li class="" *ngFor="let model of category.model">
+              <div class="d-flex justify-content-between pl-1 menu-header" (click)="togglePLus(childIcon)" data-toggle="collapse" attr.data-target="#{{model.modelName|lowercase|replace}}">
+                <span class="text">{{model.modelName}}</span>
+                <span class="icon" #childIcon>(<i class="fas fa-plus"></i>)</span>
+              </div>
+              <ul class="collapse pl-2" attr.id="{{model.modelName|lowercase|replace}}">
+                <li *ngFor="let type of model.type"><a routerLink="#">{{type}}</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul>
+
+      </ul>
+    </nav>
+  </div>
+  <!-- End Side Bar Menu -->
+  <!-- Start Products Section -->
+  <div class="products col-10 p-0">
     <h2>All Products</h2>
     <div class="container-products d-flex flex-wrap">
       <div class="col-4 mb-4"  *ngFor="let product of productsList index as x">
-        <div class="bg-transparent border-0 card text-center">
-          <img class="w-100" src="{{product.images[0]}}" alt="">
+        <div  class="bg-transparent border-0 card text-center">
+          <img class="w-100" src="{{product.quantity[0].srcImage}}" alt="">
           <p>{{product.productName}}</p>
           <p>{{product.price | currency :"EGP":"code"}}</p>
           <ul class="product-color">
-            <li *ngFor="let color of product.quantity index as i" [ngStyle]="{'background-image': 'url(' + color.src + ')'}" #productImg (click)="changeImage(productImg,i,x)">
+            <li *ngFor="let color of product.quantity index as i" [ngStyle]="{'background-image': 'url(' + color.srcColor + ')'}" #productImg (click)="changeImage(productImg,i,x)">
             </li>
           </ul>
         </div>
       </div>
     </div>
   </div>
+  <!-- End Products Sections -->
 </div>

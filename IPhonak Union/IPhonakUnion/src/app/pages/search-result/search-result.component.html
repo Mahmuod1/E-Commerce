@@ -1,0 +1,12 @@
+<div class="text-center p-4">
+  <h2>search</h2>
+  <p>{{searchResult.length}} results for {{searchKey}}</p>
+</div>
+
+<div class="d-flex flex-wrap">
+  <div class="col-4" *ngFor="let product of searchResult">
+    <img class="w-100" src="{{product.image}}" alt="">
+    <p class="text-center">{{product.name}}</p>
+    <p class="text-center">{{product.price | currency : 'EGP' : 'code'}}</p>
+  </div>
+</div>
