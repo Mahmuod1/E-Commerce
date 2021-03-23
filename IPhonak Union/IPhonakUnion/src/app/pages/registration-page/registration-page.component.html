@@ -1,0 +1,33 @@
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center py-5">
+        <div class="col-12 text-center py-5">
+            <h3><small>LOGIN</small></h3>
+            <small>Please enter your e-mail and password:</small>
+        </div>  
+            <form class="col-12" class="text-center" ngNativeValidate [formGroup]="loginForm" (ngSubmit)="submitData(loginForm.value,$event)">
+
+                <div class="form-group">
+                    <div class="user-input-wrp">
+                        <input type="text" class="form-control" required formControlName="loginEmail"/>
+                        <label class="floating-label">Email</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="user-input-wrp" style="width: 400px;">
+                        <input type="text" class="form-control" required formControlName="loginPassword"/>
+                        <label class="floating-label">Password</label>
+                        <span class="floating-span">Forgot password?</span>
+                    </div>
+                </div>
+                <div class="loginBtn">
+                    <div>
+                        <button class="submitBtn" class="btn" type="submit">LOGIN</button>
+                    </div>
+                </div>
+            </form>
+    </div>
+    <div class="text-center">
+        <span>Don't have an account?</span><a routerLink='/registration-page'>Create one</a>
+    </div>
+</div>
