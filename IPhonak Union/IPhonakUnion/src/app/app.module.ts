@@ -12,6 +12,8 @@ import { ExplorationPageComponent } from './pages/exploration-page/exploration-p
 
 
 import { ProductsComponent } from './components/products/products.component';
+import { ButtonComponent } from './components/button/button.component';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ProductsComponent } from './components/products/products.component';
     FooterComponent,
     HomePageComponent,
     ExplorationPageComponent,
-    ProductsComponent
+    ProductsComponent,
+    ButtonComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

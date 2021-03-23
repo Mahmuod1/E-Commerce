@@ -1,0 +1,198 @@
+<div class="container-fluid pt-3 mt-3">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/home-page">Home</a></li>
+      <li class="breadcrumb-item active" >{{product[0].productName}}</li>
+    </ol>
+  </nav>
+  <div class="row d-flex">
+    <div class="col-md-6 order-2 product-details pl-4 ml-4 pb-5 mb-5">
+      <div class="product-name">
+        <h3 *ngIf='product[0]?.productName'>{{product[0]?.productName}}</h3>
+      </div>
+      <p>The Textured Italian leather Iphone case</p>
+      <div class="row">
+        <div class="col-6 ">
+          <div class="colors-container d-flex">
+            <div *ngFor='let colorImage of product[0].quantity index as indx'>
+              <span class="img-color-src"><img class="src" (click)='replaceImage(indx)' style="cursor: pointer;"
+                  [src]="colorImage.srcColor" alt=""></span>
+            </div>
+          </div>
+          <div class="rating-and-reviews d-flex ">
+            <div class="rating">
+              <div class="container d-flex justify-content-start">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="stars">
+                      <form action=""> <input class="star star-5" id="star-5" type="radio" name="star" /> <label
+                          class="star star-5" for="star-5"></label> <input class="star star-4" checked id="star-4"
+                          type="radio" name="star" /> <label class="star star-4" for="star-4"></label> <input
+                          class="star star-3" id="star-3" type="radio" name="star" /> <label class="star star-3"
+                          for="star-3"></label> <input class="star star-2" id="star-2" type="radio" name="star" />
+                        <label class="star star-2" for="star-2"></label> <input class="star star-1" id="star-1"
+                          type="radio" name="star" /> <label class="star star-1" for="star-1"></label>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="reviews"></div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row pt-4 pr-1 pl-1 pb-4 custome-border text-center">{{product[0].price | currency:'EPG'}}
+
+          </div>
+          <div class="row justify-content-between d-flex flex-row">
+            <div class="quantity col-md-4 col-sm border">
+              <div class="d-flex row">
+                <div class="col-md-4"><i class="fas fa-window-minimize notFinished" (click)='minQuantity($event,add)' style=" font-size: large;"></i>
+                </div>
+                <div class="col-md-4">
+                  <div>{{quantity}}</div>
+                </div>
+                <div class="mt-1 col-md-4 custome-tolibe"><i #add class="fas fa-plus notFinished   " (click)='addQuantity($event)' style="font-size: large; "></i>
+                </div>
+
+              </div>
+             
+            </div>
+            <div class="text-danger" *ngIf='quantityIsExceed'>
+              cannot buy more than this quantity</div>
+            <div class="btn-container col-md-8 col-sm-12" style="width:73% ;">
+              <div class="btn from-left carousel-Btn">add to cart</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion" id="accordionExample">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Description
+              </button>
+            </h2>
+          </div>
+
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              {{product[0].description[0]}}
+              <ul>
+                <li>{{product[0].description[1]}}</li>
+                <li>{{product[0].description[2]}}</li>
+                <li>{{product[0].description[3]}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-4 text-center">
+          <img src="https://cdn.shopify.com/s/files/1/0066/9050/4822/files/llw-600.png?v=1602266896"
+            class="d-block w-100" alt="">
+          Lifetime Limited Warranty
+        </div>
+        <div class="col-4 text-center">
+          <img src="https://cdn.shopify.com/s/files/1/0066/9050/4822/files/14-day-returns-600.png?v=1602110251"
+            class="d-block w-100" alt="">
+          14-Day Returns
+
+        </div>
+        <div class="col-4 text-center">
+          <img src="https://cdn.shopify.com/s/files/1/0066/9050/4822/files/secure-checkout-600.png?v=1602110251"
+            class="d-block w-100" alt="">
+          Secure Checkout
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5 order-1 product-img ">
+      <div *ngIf='!isLoaded'>
+        <div class="spinner-grow text-dark" role="status">
+
+        </div>
+
+      </div>
+
+      <div *ngIf='isLoaded'>
+        <div class="owl-container">
+
+          <owl-carousel-o #owl [options]="customOptions">
+            <ng-container *ngFor="let slide of product[0].images index as i;" ;>
+
+              <ng-template carouselSlide>
+
+                <img [src]="slide" (click)='show($event)' #image style="cursor: grab" />
+
+
+
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+          <span (click)="goPrev(owl)" class="prev shadow"><i class="fas fa-chevron-left"></i></span>
+          <span (click)="goNext(owl)" class="next shadow"><i class="fas fa-chevron-right"></i></span>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 mt-2">
+          <div class="owl-container">
+
+            <owl-carousel-o #owl [options]="customOptionsSmallSlider">
+              <ng-container *ngFor="let slide of product[0].images index as i;" ;>
+
+                <ng-template carouselSlide>
+
+                  <img [src]="slide" (click)='showSmallSlider($event)' #image style="cursor: grab" />
+
+
+
+                </ng-template>
+              </ng-container>
+            </owl-carousel-o>
+            <span (click)="goPrevSmallSlider(owl)" class="prev shadow"><i class="fas fa-chevron-left"></i></span>
+            <span (click)="goNextSmallSlider(owl)" class="next shadow"><i class="fas fa-chevron-right"></i></span>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-12 justify-content-center d-flex align-content-center">
+      <h3>Recommended Products</h3>
+    </div>
+  </div>
+  <div class="row pt-5 mt-5 d-flex justify-content-center mb-5 pb-5 ">
+
+
+
+    <div class="col-8">
+      <div class="owl-container">
+        <owl-carousel-o #owlRec [options]="customOptionsRec">
+          <ng-container *ngFor="let slide of recommendedProducts">
+            <ng-template carouselSlide>
+              <a [routerLink]="['/product-details/',slide.productName]">
+                <img [srcset]="slide.images[0]" class="rounded" data-id='{{slide.price}}' />
+              </a>
+              <p>{{slide.productName}}</p>
+              <p>{{slide.price |currency:'EGP'}}</p>
+
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+        <span (click)="goPrevRec(owlRec)" class="prev shadow"><i class="fas fa-chevron-left"></i></span>
+        <span (click)="goNextRec(owlRec)" class="next shadow"><i class="fas fa-chevron-right"></i></span>
+      </div>
+    </div>
+
+
+  </div>
+</div>
