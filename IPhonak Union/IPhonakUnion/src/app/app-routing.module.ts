@@ -7,6 +7,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { SearchResultComponent } from './pages/search-result/search-result.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
+import { CollectionComponent } from './pages/collection/collection.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'home-page',pathMatch:'full'},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'search',component:SearchResultComponent},
   {path:'registration-page',component:LoginPageComponent},
   {path:'login',component:RegistrationPageComponent},
-  {path:'products',component:ProductsComponent}
+  {path:'products/:type',component:ProductsComponent},
+  {path:'collection/:model/:type',component:CollectionComponent}
 ];
 
 @NgModule({

@@ -20,6 +20,7 @@ import { SearchResultComponent } from './pages/search-result/search-result.compo
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
+import { CollectionComponent } from './pages/collection/collection.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { RegistrationPageComponent } from './pages/registration-page/registratio
     ProductDetailsComponent,
     ReplacePipe,
     SearchPipe,
-    SearchResultComponent
+    SearchResultComponent,
+    CollectionComponent
   ],
   imports: [
     BrowserModule,

@@ -12,10 +12,30 @@ export class ProductsService {
   constructor(private _http:HttpClient) { }
 
   fetchProds():Observable<IProduct[]>{
-    return this._http.get<IProduct[]>(this._url,{headers:{}}).pipe(
+    return this._http.get<IProduct[]>(this._url).pipe(
       catchError(
         (err)=>{
           return throwError(err.message);
+        }
+      )
+    )
+  }
+
+  allProducts(url:string):Observable<IProduct[]>{
+    return this._http.get<IProduct[]>("http://localhost:4750/collection/products/"+url).pipe(
+      catchError(
+        (err)=>{
+          return throwError(err.message);
+        }
+      )
+    )
+  }
+
+  fetchProductType(url:string):Observable<IProduct[]>{
+    return this._http.get<IProduct[]>(url).pipe(
+      catchError(
+        (erro)=>{
+          return throwError(erro.message)
         }
       )
     )
