@@ -12,3 +12,9 @@ export interface ILogin{
     password:string,
     token:string
 }
+
+export interface IProfile{
+    firstName:string,
+    lastName:string,
+    email:string
+}

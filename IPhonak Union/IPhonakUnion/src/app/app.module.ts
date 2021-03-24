@@ -1,6 +1,6 @@
 import { NgModule ,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +20,9 @@ import { SearchResultComponent } from './pages/search-result/search-result.compo
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthInterceptor } from './auth/auth.interceptor'
 
 @NgModule({
   declarations: [
@@ -36,7 +39,8 @@ import { RegistrationPageComponent } from './pages/registration-page/registratio
     ProductDetailsComponent,
     ReplacePipe,
     SearchPipe,
-    SearchResultComponent
+    SearchResultComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,
@@ -47,9 +51,8 @@ import { RegistrationPageComponent } from './pages/registration-page/registratio
     ReactiveFormsModule,
     FormsModule
 
-
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},AuthGuard],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

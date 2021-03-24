@@ -101,4 +101,13 @@ router.get('/:productName/:productType',(req,resp)=>{
   })
 })
 
+///////////// Get "get" Products by typeType Only
+router.get('/:productType',(req,resp)=>{
+  Product.find({"type.type":req.params.productType},(err,data) =>{
+    if(!err){
+      resp.status(200).send(data)
+    }else resp.status(400).send(err)
+  })
+})
+
 module.exports=router
