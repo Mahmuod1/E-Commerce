@@ -20,13 +20,11 @@ import { SearchResultComponent } from './pages/search-result/search-result.compo
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
-<<<<<<< HEAD
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor'
-=======
 import { CollectionComponent } from './pages/collection/collection.component';
->>>>>>> fa9154d2874c2c065fe2a33058de0588564f6b9d
+import { AdminAddProductComponent } from './dashbored/admin-add-product/admin-add-product.component';
 
 @NgModule({
   declarations: [
@@ -44,11 +42,9 @@ import { CollectionComponent } from './pages/collection/collection.component';
     ReplacePipe,
     SearchPipe,
     SearchResultComponent,
-<<<<<<< HEAD
-    ProfilePageComponent
-=======
-    CollectionComponent
->>>>>>> fa9154d2874c2c065fe2a33058de0588564f6b9d
+    ProfilePageComponent,
+    CollectionComponent,
+    AdminAddProductComponent
   ],
   imports: [
     BrowserModule,
