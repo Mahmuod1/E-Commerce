@@ -42,7 +42,6 @@ export class LoginPageComponent implements OnInit {
 
   
   submitData(formData: User,event:Event){
-    console.log(formData)
     this.registrationService.registerForm(formData).subscribe(
       data => {
         console.log("Success:",data)

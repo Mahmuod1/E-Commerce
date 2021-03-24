@@ -8,6 +8,7 @@ import { User } from 'src/app/classes/user';
 export class RigistrationServiceService {
 
   _url="http://localhost:4750/account/users/create"
+  
   constructor(private _http:HttpClient) { }
 
   registerForm(user:User){

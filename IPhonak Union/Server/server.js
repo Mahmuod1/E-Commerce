@@ -2,7 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 const cors=require('cors');
+require('./Config/passportConfig')
+require("dotenv").config();
 
+
+const passport=require('passport')
 const usersRoutes=require('./controllers/users');
 const productsRoutes=require('./controllers/products');
 
@@ -12,8 +16,8 @@ const PORT = 4750;
 app.use(cors("*"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-
 app.use(cors("*"));
+app.use(passport.initialize());
 
 mongoose.connect('mongodb+srv://Islam:DvKkhRzqlHRiHVR3@iphonakcluster.zyldk.mongodb.net/iphonakUnion?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
 .then(()=>console.log('Connected to mongodb!'))

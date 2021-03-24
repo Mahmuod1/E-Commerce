@@ -8,6 +8,7 @@ export class User {
 }
 
 export interface ILogin{
-    loginEmail:string,
-    loginPassword:string
+    email:string,
+    password:string,
+    token:string
 }
