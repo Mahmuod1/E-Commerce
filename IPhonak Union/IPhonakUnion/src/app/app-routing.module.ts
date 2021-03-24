@@ -9,6 +9,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { AuthGuard } from './auth/auth.guard';
+import { CollectionComponent } from './pages/collection/collection.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'home-page',pathMatch:'full'},
@@ -22,7 +23,9 @@ const routes: Routes = [
   {path:'registration-page',component:LoginPageComponent},
   {path:'login',component:RegistrationPageComponent},
   {path:'products',component:ProductsComponent},
-  {path:'profile-page',component:ProfilePageComponent,canActivate:[AuthGuard]}
+  {path:'profile-page',component:ProfilePageComponent,canActivate:[AuthGuard]},
+  {path:'products/:type',component:ProductsComponent},
+  {path:'collection/:model/:type',component:CollectionComponent}
 ];
 
 @NgModule({

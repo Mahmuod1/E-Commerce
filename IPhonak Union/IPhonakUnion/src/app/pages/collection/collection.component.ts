@@ -1,21 +1,17 @@
-import { Component, OnInit, ViewChildren, ElementRef, QueryList } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ProductsService } from 'src/app/components/products/products.service';
 import { ICategory, IProduct } from 'src/app/shared/product';
-import { ProductsService } from './products.service';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  selector: 'app-collection',
+  templateUrl: './collection.component.html',
+  styleUrls: ['./collection.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class CollectionComponent implements OnInit {
 
-  @ViewChildren('iconContainer')
-  iconContainer!: QueryList<ElementRef>;
-  activeLink:any='';
-  allProducts:any;
-  productsList:IProduct[]=[];
-  plusOrMins:boolean=false;
+  activetype:any='';
+  activeMedol:any='';
   productsCategory:ICategory[]=[
     {name:"iPhone",model:[
       {modelName:"IPhone 12 Min",type:["Cases","Wireless Charging","Cables","Power Sources","Speakers"]},
@@ -35,32 +31,37 @@ export class ProductsComponent implements OnInit {
     ]
   }
   ];
-
-  constructor(private productServer:ProductsService,private activatedRouter:ActivatedRoute) {
+  productsList:IProduct[]=[];
+  errorMessage:string= '';
+  constructor(private collection: ProductsService,private activetedType: ActivatedRoute,private router:Router) {
 
   }
 
   ngOnInit(): void {
+    // let activequerytype = this.activetedType.snapshot.queryParamMap.get('type');
+    // let activequerymodel = this.activetedType.snapshot.queryParamMap.get('model');
 
-    this.activatedRouter.paramMap.subscribe((params:ParamMap)=>{
-      this.activeLink = params.get('type');
-      this.allProducts=this.productServer.allProducts(this.activeLink);
-      this.allProducts = this.productServer.allProducts(this.activeLink).subscribe(
-        (products)=>{
-          this.productsList = products
-        },
-        (err)=>{
-          console.log("e")
-          console.log(err)
+    this.activetedType.paramMap.subscribe((params:ParamMap)=>{
+      this.activetype = params.get('model')
+      this.activeMedol = params.get('type')
+      console.log("type",this.activetype)
+      console.log("medol",this.activeMedol)
+      this.collection.fetchProductType('http://localhost:4750/collection/products/'+this.activeMedol+"/"+this.activetype).subscribe(
+        (data)=>{
+          if(data){
+          this.productsList = data
+          console.log(this.productsList)
+          // console.log(activequeryParams)
         }
-      )
+      },
+      (err)=>{
+        console.log('err')
+        console.log(err)
+      }
+    )
     })
 
-    document.querySelector('.collapse .active')?.parentElement?.classList.add('show');
-    document.querySelector('.collapse .active')?.parentElement?.previousElementSibling?.querySelector('.fas')?.classList.remove('fa-plus');
-    document.querySelector('.collapse .active')?.parentElement?.previousElementSibling?.querySelector('.fas')?.classList.add('fa-minus');
   }
-
 
   changeImage(productImg:any,colorIndex:number,productIndex:number){
     for (var i = 0; i < productImg.parentElement.children.length; i++){
@@ -70,12 +71,13 @@ export class ProductsComponent implements OnInit {
     let image = this.productsList[productIndex].quantity[colorIndex].srcImage;
     productImg.parentElement.previousElementSibling.parentElement.querySelector('img').setAttribute('src',image)
   }
-
   togglePLus(ele:HTMLElement){
-
     ele.firstElementChild?.classList.toggle('fa-minus');
     ele.firstElementChild?.classList.toggle('fa-plus');
-
   }
-
+  roterNa(type:any,medol:any){
+    // console.log("type",type)
+    // console.log("medol",medol)
+    // this.router.navigate(['/collection',[medol,type]])
+  }
 }
