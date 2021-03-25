@@ -57,12 +57,18 @@
                 </div>
 
               </div>
-             
+
             </div>
             <div class="text-danger" *ngIf='quantityIsExceed'>
               cannot buy more than this quantity</div>
             <div class="btn-container col-md-8 col-sm-12" style="width:73% ;">
-              <div class="btn from-left carousel-Btn">add to cart</div>
+              <div class="btn from-left carousel-Btn" (click)='addToCartFromDetailsPage({
+                productName:product[0].productName,
+                image:product[0].images[0],
+                price:product[0].price,
+                quantity:quantity
+
+              })'>add to cart</div>
             </div>
           </div>
         </div>

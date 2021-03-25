@@ -1,3 +1,4 @@
+import { CartService } from './../cart/cart.service';
 import { ProductsService } from './../../components/products/products.service';
 import { IProduct } from './../../shared/product';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -15,6 +16,7 @@ export class ProductDetailsComponent implements OnInit {
   constructor(private productByName: ProductByNameService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private cartService:CartService
   ) { }
 
 imageColorIndex=0;
@@ -26,6 +28,7 @@ imageColorIndex=0;
   productName: any;
   product: IProduct | any;
   // when Initial the Component
+  user:any;
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((product: ParamMap) => {
       console.log(product)
@@ -49,7 +52,10 @@ imageColorIndex=0;
       console.log(this.recommendedProducts[0].images[0], 'image')
 
     })
-
+    this.cartService.getUserFromDatabase('asdfsdf@gmai.com').subscribe((user)=>{
+      this.user=user;
+      console.log(this.user,'user in cart')
+      })
   }
 
   // After Initial the Component
@@ -234,5 +240,17 @@ console.log(this.imageColorIndex,'index in min')
 
 
   }
+
+
+
+addToCartFromDetailsPage(product:any){
+  // this.productByName.getUserToke();
+  this.cartService.addToCart(this.user[0].cart,product);
+  let cart = this.cartService.getAllCart(this.user[0].cart)
+  console.log(cart,'cart')
+  console.log(this.user)
+}
+
+
 
 }

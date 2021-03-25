@@ -12,7 +12,6 @@ import { ExplorationPageComponent } from './pages/exploration-page/exploration-p
 
 
 import { ProductsComponent } from './components/products/products.component';
-import { ButtonComponent } from './components/button/button.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { ReplacePipe } from './custm-pipes/replace.pipe';
 import { SearchPipe } from './custm-pipes/search.pipe';
@@ -20,6 +19,7 @@ import { SearchResultComponent } from './pages/search-result/search-result.compo
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +32,12 @@ import { RegistrationPageComponent } from './pages/registration-page/registratio
     RegistrationPageComponent,
     ExplorationPageComponent,
     ProductsComponent,
-    ButtonComponent,
+   
     ProductDetailsComponent,
     ReplacePipe,
     SearchPipe,
-    SearchResultComponent
+    SearchResultComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
