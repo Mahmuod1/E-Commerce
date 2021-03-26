@@ -61,7 +61,6 @@ rating: 4}];
     this.searchMod = true;
     this.screenMdActive = false;
     document.body.style.overflow = "hidden"
-    console.log(this.searchMod)
   }
   closeSearchBox() {
     this.searchMod = false;
@@ -94,15 +93,14 @@ rating: 4}];
   saveSearchData() {
     localStorage.setItem('searchList',JSON.stringify(this.productsSearch))
     localStorage.setItem('searchKey',JSON.stringify(this.SearchValue))
-    // let searchKey = localStorage.getItem('searchKey')
-    // let searchKeyPars = JSON.parse(searchKey?searchKey:'')
-    // this.router.navigate(['search',searchKeyPars]);
     this.searchMod = false;
     this.SearchValue = '';
     document.body.style.overflow = "auto";
-    if (location.pathname === '/search'){
-      location.reload()
-      console.log('don')
-    }
+  }
+  showCart(cart:HTMLElement){
+    cart.style.transform='translateX(0)'
+  }
+  closeCart(cart:HTMLElement){
+    cart.style.transform='translateX(100%)'
   }
 }
