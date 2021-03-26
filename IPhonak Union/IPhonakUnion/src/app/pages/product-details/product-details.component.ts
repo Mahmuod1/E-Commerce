@@ -4,7 +4,6 @@ import { IProduct } from './../../shared/product';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ProductByNameService } from './product-by-name.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ButtonComponent } from 'src/app/components/button/button.component';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
@@ -31,31 +30,26 @@ imageColorIndex=0;
   user:any;
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((product: ParamMap) => {
-      console.log(product)
       this.productName = product.get('productName')
 
 
       this.productByName.getProductByName(this.productName).subscribe(product => {
-        console.log(this.isLoaded)
         if (product) {
 
           this.isLoaded = true;
-          console.log(this.isLoaded)
         }
 
         this.product = product;
-        console.log(this.product[0].images)
       })
     })
     this.productByName.getNewReleasesProducts().subscribe(products => {
       this.recommendedProducts = products;
-      console.log(this.recommendedProducts[0].images[0], 'image')
 
     })
-    this.cartService.getUserFromDatabase('asdfsdf@gmai.com').subscribe((user)=>{
+    this.cartService.getUserFromDataBase().subscribe(user=>{
       this.user=user;
-      console.log(this.user,'user in cart')
-      })
+    })
+
   }
 
   // After Initial the Component
@@ -145,20 +139,14 @@ imageColorIndex=0;
   }
 
   showSmallSlider(e: any) {
-    console.log(e.target.getAttribute('src'), 'src')
     let src = e.target.getAttribute('src')
     this.product[0].images[0] = src
-    console.log(this.product[0].images[0], 'main')
-    console.log(src)
   }
 
   replaceImage(colorIndex: any) {
-console.log(this.product[0].quantity,'image color')
 this.imageColorIndex=colorIndex;
     this.product[0].images[0] = this.product[0].quantity[colorIndex].srcImage;
     this.quantity=1;
-    console.log(this.imageColorIndex,'colorized')
-    console.log(this.product[0].quantity[this.imageColorIndex].quantity,'quantity')
   }
 
   customOptionsRec: OwlOptions = {
@@ -212,18 +200,13 @@ this.imageColorIndex=colorIndex;
         e.target.classList.add('notFinished')
         e.target.classList.remove('finished')
       }
-      console.log(this.imageColorIndex,'index in add')
 
-      console.log(this.product[0].quantity[this.imageColorIndex].quantity)
-      console.log(e.target.classList)
       this.quantity++;
       this.quantityIsExceed=false;
     }
   }
 
 minQuantity(e: any,add:any) {
-console.log(add)
-console.log(add.classList)
     if (this.quantity <= 1) {
       this.quantity = 1;
     }
@@ -235,7 +218,6 @@ if(this.quantity<=this.product[0]?.quantity[this.imageColorIndex].quantity){
   add.classList.remove('finished')
 
 }
-console.log(this.imageColorIndex,'index in min')
     }
 
 
@@ -246,9 +228,17 @@ console.log(this.imageColorIndex,'index in min')
 addToCartFromDetailsPage(product:any){
   // this.productByName.getUserToke();
   this.cartService.addToCart(this.user[0].cart,product);
-  let cart = this.cartService.getAllCart(this.user[0].cart)
-  console.log(cart,'cart')
-  console.log(this.user)
+  console.log(this.user[0])
+ try {
+
+  this.cartService.updateUserCart({cart:this.user[0].cart}).subscribe(user=>{
+    console.log(user)
+
+  })
+ } catch (error) {
+   console.log(error)
+ }
+
 }
 
 

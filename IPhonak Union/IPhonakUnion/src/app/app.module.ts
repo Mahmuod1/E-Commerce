@@ -1,6 +1,6 @@
 import { NgModule ,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +20,11 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthInterceptor } from './auth/auth.interceptor'
+import { CollectionComponent } from './pages/collection/collection.component';
+import { AdminAddProductComponent } from './dashbored/admin-add-product/admin-add-product.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +36,15 @@ import { CartComponent } from './pages/cart/cart.component';
     LoginPageComponent,
     RegistrationPageComponent,
     ExplorationPageComponent,
-    ProductsComponent,
-   
     ProductDetailsComponent,
     ReplacePipe,
+    ProductsComponent,
     SearchPipe,
     SearchResultComponent,
-    CartComponent
+    CartComponent,
+    ProfilePageComponent,
+    CollectionComponent,
+    AdminAddProductComponent
   ],
   imports: [
     BrowserModule,
@@ -48,9 +55,8 @@ import { CartComponent } from './pages/cart/cart.component';
     ReactiveFormsModule,
     FormsModule
 
-
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},AuthGuard],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

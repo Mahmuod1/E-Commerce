@@ -40,23 +40,36 @@ removeProductFromCart(cart:any,removedProduct:any){
 let productIndex = cart.findIndex((product:any)=>{
   return product.productName == removedProduct.productName
 })
-cart.splice(productIndex,1)
+ cart.splice(productIndex,1)
 }
+
+
 
 getAllCart(cart:any){
 return cart;
 }
+_url='http://localhost:4750/account/users/get/'
+getUserFromDataBase(){
+  const userId=JSON.parse(this.getUserToken())
+ return this._http.get(this._url+userId).pipe(
+catchError((error)=>{
+  return throwError(error.message)
+})
+ )
 
-getUserFromDatabase(id:any)
-{
-  return this._http.request('GET','http://localhost:4750/account/users/'+id+'/get',
-  ).pipe(
+}
+
+updateUserCart(user:any){
+  const userId=JSON.parse(this.getUserToken())
+  return this._http.put('http://localhost:4750/account/users/update/'+userId,user).pipe(
     catchError(error=>{
       return throwError(error.message)
     })
   )
 }
-getUserToke(){
+
+
+getUserToken(){
   const token= localStorage.getItem('token');
   const user_id=token!.split('.')[1];
   console.log(token?.split('.')[1])

@@ -6,13 +6,6 @@ const jwtHelper=require('../Config/jwtHelper')
 const _ = require('lodash');
 require("dotenv").config();
 
-//-------Create "post" New User
-/* router.post('/create', (req, resp)=>{
-    let newUser = req.body;
-    User.create(newUser, (err, data)=>{
-      err ? resp.status(400).send(err) : resp.status(201).send(data)
-    })
-}) */
 
 //-------Create "post" New User anotherWay
 router.post('/create',(req,resp,next) => {
@@ -57,8 +50,8 @@ router.get('/account',jwtHelper.verifyJwtToken,(req,resp,next) => {
 })
 
 //-------Get "get" user by email
-router.get('/:email/get',(req,resp)=>{
-    User.find({email:req.params.email},(err,data)=>{
+router.get('/get/:id',(req,resp)=>{
+    User.find({_id:req.params.id},(err,data)=>{
       if(!err){
         if(data.length == 0) resp.status(200).send("User E-Mail is not correct!!") 
         else resp.status(200).send(data)
@@ -66,9 +59,9 @@ router.get('/:email/get',(req,resp)=>{
     })
 })
 
-//-------Delete "delete" user by email
-router.delete('/:email/delete',(req,resp)=>{
-    User.deleteOne({email:req.params.email},(err,data)=>{
+//-------Delete "delete" user by id
+router.delete('/delete/:id',(req,resp)=>{
+    User.deleteOne({_id:req.params.id},(err,data)=>{
       if(!err){
         if(data.deletedCount == 0)  resp.status(200).send("No User Register with that mail!")
         else resp.status(200).send(data)

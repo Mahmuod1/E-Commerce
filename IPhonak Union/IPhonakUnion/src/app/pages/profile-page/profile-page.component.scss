@@ -1,16 +1,7 @@
-.bgColor{
-    background-color: white;
-}
-
-button{
-	width: 150px;
-	border-radius: 0%;
-}
-
 .loginBtn {
     display: inline-block;
     text-align: center;
-	width: 150px;
+	width: 200px;
     color: white;
     background: black; /* default color */
 
@@ -19,7 +10,6 @@ button{
     background-size: 200%;
     transition: .5s ease-out;
 }
-
 .loginBtn:hover {
     background-position: left;
 	color: black;
@@ -27,7 +17,7 @@ button{
 
 .loginBtn button{
 	color: #fff;
-	width: 150px;
+	width: 200px;
 	left: 50px;
 }
 

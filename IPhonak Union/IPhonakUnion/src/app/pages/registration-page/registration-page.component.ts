@@ -21,13 +21,10 @@ export class RegistrationPageComponent implements OnInit {
   submitData(formData:ILogin,event:Event){
     this.loginService.loginForm(formData).subscribe(
       data => {
-        console.log("work");
         this.loginService.setToken(data['token']);
-        this.router.navigate(['/home-page']);
+        this.router.navigate(['/profile-page']);
       },
       err => {
-        console.log(formData)
-        console.log("not working");
         this.serverErrorMessage = err.error.message;
         event.preventDefault();
       }

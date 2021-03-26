@@ -1,7 +1,25 @@
+<nav aria-label="breadcrumb " >
+  <ol class="breadcrumb pl-3">
+    <li class="breadcrumb-item"><a routerLink="/home-page" class="text-dark">Home</a></li>
+    <li class="breadcrumb-item active" >cart</li>
+  </ol>
+</nav>
 <div class="cart_section">
+
   <div class="container-fluid">
-    <div class="cart_title">Shopping Cart<small> (1 item in your cart) </small></div>
-    <div *ngFor='let product of cart'>
+
+
+    <div class="row justify-content-center mb-3">
+      <div class="col-3">
+        <h2 class="mb-2">One Step to Get Our Awesome Products</h2>
+        <img src="../../../assets/undraw_unboxing_pbmf.svg"  class='d-block w-100' alt="">
+      </div>
+    </div>
+    <div class="cart_title">Shopping Cart
+      <span *ngIf='items ==0'> Your Cart Is Empty <i class="fas fa-frown" style="color: orange;"></i></span>
+      <span *ngIf='items >0'> ({{items}} In Your Cart)</span>
+    </div>
+    <div *ngFor='let product of user![0]?.cart'>
       <div class="row">
         <div class="col-lg-10 offset-lg-1">
             <div class="cart_container">
@@ -20,11 +38,14 @@
                                     <div class="cart_item_title">
 
                                     </div>
-                                    <div class="cart_item_text"><span style="background-color:#999999;"></span>color</div>
+
                                 </div>
                                 <div class="cart_item_quantity cart_info_col">
                                     <div class="cart_item_title">Quantity</div>
-                                    <div class="cart_item_text">{{product.quantity}}</div>
+                                    <div class="cart_item_text"><i #add class="fas fa-plus notFinished   "  (click)='addQuantity(product.quantity,product,$event)' style="font-size: smaller;"></i> {{product.quantity}}
+                                      <i class="fas fa-window-minimize notFinished" (click)='minQuantity(product.quantity,product,add)' style=" font-size: smaller;"></i>
+                                    </div>
+                                   <a  routerLink='/cart' style="color: #222d;"  (click)='deleteProductFromCart(product) '>Remove</a>
                                 </div>
                                 <div class="cart_item_price cart_info_col">
                                     <div class="cart_item_title">Price</div>
@@ -32,8 +53,9 @@
                                 </div>
                                 <div class="cart_item_total cart_info_col">
                                     <div class="cart_item_title">Total</div>
-                                    <div class="cart_item_text">800</div>
+                                    <div class="cart_item_text">{{product.quantity*product.price}}</div>
                                 </div>
+                              
                             </div>
                         </li>
                     </ul>
@@ -49,7 +71,7 @@
       <div class="order_total">
         <div class="order_total_content text-md-right">
             <div class="order_total_title">Order Total:</div>
-            <div class="order_total_amount">800</div>
+            <div class="order_total_amount">{{total}}</div>
         </div>
     </div>
     </div>
