@@ -10,7 +10,7 @@ import { ICategory, IProduct } from 'src/app/shared/product';
 })
 export class CollectionComponent implements OnInit {
 
-  activetype:any='';
+  activeParamsType:any='';
   activeMedol:any='';
   productsCategory:ICategory[]=[
     {name:"iPhone",model:[
@@ -38,20 +38,19 @@ export class CollectionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // let activequerytype = this.activetedType.snapshot.queryParamMap.get('type');
-    // let activequerymodel = this.activetedType.snapshot.queryParamMap.get('model');
-
     this.activetedType.paramMap.subscribe((params:ParamMap)=>{
-      this.activetype = params.get('model')
-      this.activeMedol = params.get('type')
-      console.log("type",this.activetype)
+      this.activeMedol = params.get('model')
+      this.activeParamsType = params.get('type')
+      console.log("type",this.activeParamsType)
       console.log("medol",this.activeMedol)
-      this.collection.fetchProductType('http://localhost:4750/collection/products/'+this.activeMedol+"/"+this.activetype).subscribe(
+      this.collection.fetchProductType('http://localhost:4750/collection/products/'+this.activeMedol+"/"+this.activeParamsType).subscribe(
         (data)=>{
           if(data){
           this.productsList = data
           console.log(this.productsList)
-          // console.log(activequeryParams)
+            if (this.productsList.length == 0) {
+              this.errorMessage = `COLLECTION ${this.activeMedol} / ${this.activeParamsType} IS EMPTY`
+            }
         }
       },
       (err)=>{

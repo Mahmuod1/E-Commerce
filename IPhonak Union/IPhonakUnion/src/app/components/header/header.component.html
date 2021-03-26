@@ -16,7 +16,7 @@
             <div *ngIf="SearchValue!==''">
               <div class="border-bottom d-flex mb-5 mt-5 pt-5 text-capitalize justify-content-between">
                 <p>{{productsSearch.length}} results</p>
-                <a routerLink="search" (click)="saveSearchData()">View all</a>
+                <a [routerLink]="['/search',SearchValue]" (click)="saveSearchData()">View all</a>
               </div>
               <div class="d-flex">
                 <!-- Start -->
@@ -40,7 +40,18 @@
       </div>
       <div class="icons">
         <a routerLink='/profile-page'><i class="far fa-user-circle"></i></a>
-        <a><i class="fas fa-shopping-bag"></i></a>
+        <a (click)="showCart(cart)"><i class="fas fa-shopping-bag"></i></a>
+      </div>
+    </div>
+    <div class="user-cart" #cart>
+      <div class="card">
+        <div class="card-header d-flex justify-content-between">
+          <h3>cart</h3>
+          <span class="close" (click)="closeCart(cart)">X</span>
+        </div>
+        <div class="card-body">
+          <p>your cart is empty</p>
+        </div>
       </div>
     </div>
     <!-- End Logo And Search Section -->

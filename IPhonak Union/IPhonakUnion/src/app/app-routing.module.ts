@@ -19,7 +19,7 @@ const routes: Routes = [
   {path:'product-details/:productName',component:ProductDetailsComponent},
   {path:'',redirectTo:'home-page',pathMatch:'full'},
   {path:'home-page',component:HomePageComponent},
-  {path:'search',component:SearchResultComponent},
+  {path:'search/:value',component:SearchResultComponent},
   {path:'registration-page',component:LoginPageComponent},
   {path:'login',component:RegistrationPageComponent},
   {path:'products',component:ProductsComponent},
