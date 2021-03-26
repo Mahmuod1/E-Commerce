@@ -10,6 +10,7 @@ import { RegistrationPageComponent } from './pages/registration-page/registratio
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { AuthGuard } from './auth/auth.guard';
 import { CollectionComponent } from './pages/collection/collection.component';
+import { AdminInterFaceComponent } from './dashbored/admin-inter-face/admin-inter-face.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'home-page',pathMatch:'full'},
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path:'products',component:ProductsComponent},
   {path:'profile-page',component:ProfilePageComponent,canActivate:[AuthGuard]},
   {path:'products/:type',component:ProductsComponent},
-  {path:'collection/:model/:type',component:CollectionComponent}
+  {path:'collection/:model/:type',component:CollectionComponent},
+  {path:'dash-bored',component:AdminInterFaceComponent}
 ];
 
 @NgModule({

@@ -16,7 +16,7 @@ router.post('/create',(req,resp)=> {
 })
 
 ///////////// Get "get" all Products
-router.get('/getAll',(req,resp)=>{
+router.get('/all-produts',(req,resp)=>{
     Product.find({},(err,data)=>{
       if(!err){
          resp.status(200).send(data)
@@ -56,7 +56,7 @@ router.get('/find/:productName',(req,resp)=>{
 })
 
 ////////////// Find "get" last 5 products added to the collection
-router.get('/newReleases',(req,resp)=>{
+router.get('/new-releases',(req,resp)=>{
     Product.find({},(err,data)=>{
       if(!err){
          resp.status(200).send(data)
@@ -65,7 +65,7 @@ router.get('/newReleases',(req,resp)=>{
 })
 
 ////////////// Find "get" last 5 products with price less than 1000$
-router.get('/bestSellers',(req,resp)=>{
+router.get('/best-sellers',(req,resp)=>{
   Product.find({$or:[{price:{$lt:1000}}]},(err,data)=>{
     if(!err){
        resp.status(200).send(data)
@@ -74,7 +74,7 @@ router.get('/bestSellers',(req,resp)=>{
 })
 
 ////////////// Find "get" last 5 products with price less than 1000$
-router.get('/lastchance',(req,resp)=>{
+router.get('/last-chance-to-buy',(req,resp)=>{
   Product.find({"quantity.quantity":{ $lt: 10 }},(err,data)=>{
     if(!err){
        resp.status(200).send(data)
@@ -84,7 +84,7 @@ router.get('/lastchance',(req,resp)=>{
 
 
 ///////////// Get "get" all Products with Bundle
-router.get('/getBundle',(req,resp)=>{
+router.get('/bundles',(req,resp)=>{
   Product.find({"bundle":{$exists: true}},(err,data)=>{
     if(!err){
        resp.status(200).send(data)
@@ -101,9 +101,27 @@ router.get('/:productName/:productType',(req,resp)=>{
   })
 })
 
-///////////// Get "get" Products by typeType Only
+///////////// Get "get" Products by type.Type Only
 router.get('/:productType',(req,resp)=>{
   Product.find({"type.type":req.params.productType},(err,data) =>{
+    if(!err){
+      resp.status(200).send(data)
+    }else resp.status(400).send(err)
+  })
+})
+
+///////////// Get "get" Products by category type.Type
+router.get('/:category/:productType',(req,resp)=>{
+  Product.find({"category":req.params.productName,"type.type":req.params.productType},(err,data) =>{
+    if(!err){
+      resp.status(200).send(data)
+    }else resp.status(400).send(err)
+  })
+})
+
+///////////// Get "get" Products by type.kind Only
+router.get('/:productKind',(req,resp)=>{
+  Product.find({"type.kind":req.params.productKind},(err,data) =>{
     if(!err){
       resp.status(200).send(data)
     }else resp.status(400).send(err)

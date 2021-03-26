@@ -26,6 +26,8 @@ export class RegistrationPageComponent implements OnInit {
       },
       err => {
         this.serverErrorMessage = err.error.message;
+        console.log(this.serverErrorMessage);
+        
         event.preventDefault();
       }
     )

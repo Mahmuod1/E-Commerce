@@ -11,6 +11,7 @@ import { LoginServiceService } from '../registration-page/login-service.service'
 export class ProfilePageComponent implements OnInit {
 
   userDetails:any;
+  checkAdmin:boolean=false;
 
   constructor(private loginService:LoginServiceService,private router:Router) { }
 
@@ -18,6 +19,9 @@ export class ProfilePageComponent implements OnInit {
     this.loginService.profileForm().subscribe(
       res => {
         this.userDetails = res['user']
+        if(this.userDetails.firstName === 'admin'){
+          this.checkAdmin=true;    
+        }
       },
       err => {
         console.log(err.message)
@@ -28,6 +32,10 @@ export class ProfilePageComponent implements OnInit {
   logoutFunc (){
     this.loginService.deleteToken();
     this.router.navigate(['/login'])
-  } 
+  }
 
+  openAdminDashBored(){
+    console.log('Open Admin dash bored');
+    
+  }
 }

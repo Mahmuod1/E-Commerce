@@ -5,7 +5,6 @@
     color: white;
     background: black; /* default color */
 
-    /* "to left" / "to right" - affects initial color */
     background: linear-gradient(to left, black 50%, white 50%) right;
     background-size: 200%;
     transition: .5s ease-out;
@@ -23,4 +22,12 @@
 
 .loginBtn button:hover{
 	color: black;
+}
+
+a{
+	color: black;
+    text-decoration: none;
+}
+a:hover{
+	opacity: 0.5;
 }

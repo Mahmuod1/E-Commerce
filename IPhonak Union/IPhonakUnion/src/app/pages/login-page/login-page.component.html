@@ -15,6 +15,9 @@
                             <small *ngIf="firstName!.errors?.minlength" class="text-danger">
                                 First name can't be less than 4 characters!!
                             </small>
+                            <small *ngIf="firstName!.errors?.forbiddenName" class="text-danger">
+                                {{firstName!.errors?.forbiddenName.value}} is not allowed!!
+                            </small>
                         </div>
                     </div>
                 </div>
@@ -50,11 +53,11 @@
 
                 <div class="form-group">
                     <div class="user-input-wrp">
-                        <input type="password" class="form-control" formControlName="password" required [class.is-invalid]="password!.invalid && password!.touched" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$"/>
+                        <input type="password" class="form-control" formControlName="password" required [class.is-invalid]="password!.invalid && password!.touched" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$"/>
                         <label class="floating-label">Password</label>
                         <div style="width: 400px;" *ngIf="password!.invalid && password!.touched">
                             <small *ngIf="password!.errors?.pattern" class="text-danger">
-                                Password must be at least 4 characters, no more than 8 characters, and must include at least one upper case letter!!
+                                Password must be at least 6 characters, and must include at least one capital character & one number!!
                             </small>
                         </div>
                     </div>

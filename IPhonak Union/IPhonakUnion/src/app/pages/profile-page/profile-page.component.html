@@ -32,11 +32,20 @@
                 <hr>
                 <span><small>No addresses are currently saved</small></span>
             </div>
-            <div class="loginBtn">
-                <div>
-                    <button class="submitBtn" class="btn" type="submit">MANAGE ADDRESSES</button>
+            <div *ngIf="checkAdmin else userCall">
+                <div class="loginBtn">
+                    <div>
+                        <button class="submitBtn" class="btn" (click)="openAdminDashBored()">Dash bored</button>
+                    </div>
                 </div>
             </div>
+            <ng-template #userCall>
+                <div class="loginBtn">
+                    <div>
+                        <button class="submitBtn" class="btn">MANAGE ADDRESSES</button>
+                    </div>
+                </div>
+            </ng-template>
         </div>
     </div>
 </div>
