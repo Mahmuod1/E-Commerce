@@ -18,7 +18,7 @@ export class ProductsComponent implements OnInit {
   plusOrMins:boolean=false;
   productsCategory:ICategory[]=[
     {name:"iPhone",model:[
-      {modelName:"IPhone 12 Min",type:["Cases","Wireless Charging","Cables","Power Sources","Speakers"]},
+      {modelName:"IPhone 12 Min",type:["Cases","Wireless Charging","Cables","Power Sources"]},
       {modelName:"IPhone 12",type:["Cases","Wireless Charging","Cables","Power Sources","Speakers"]},
       {modelName:"iPhone 12 Pro",type:["Cases","Wireless Charging","Cables","Power Sources","Speakers"]},{modelName:"iPhone 12 Pro Max",type:["Cases","Wireless Charging","Cables","Power Sources","Speakers"]},
       {modelName:"iPhone 11 Pro",type:["Cases","Wireless Charging","Cables","Power Sources","Speakers"]},
@@ -47,7 +47,10 @@ export class ProductsComponent implements OnInit {
       this.allProducts=this.productServer.allProducts(this.activeLink);
       this.allProducts = this.productServer.allProducts(this.activeLink).subscribe(
         (products)=>{
-          this.productsList = products
+          this.productsList = products;
+          document.querySelector('.collapse .active')?.parentElement?.parentElement?.classList.add('show');
+          document.querySelector('.collapse .active')?.parentElement?.parentElement?.previousElementSibling?.querySelector('.icon')?.firstElementChild?.classList.add('fa-minus')
+          document.querySelector('.collapse .active')?.parentElement?.parentElement?.previousElementSibling?.querySelector('.icon')?.firstElementChild?.classList.remove('fa-plus')
         },
         (err)=>{
           console.log("e")
@@ -56,9 +59,6 @@ export class ProductsComponent implements OnInit {
       )
     })
 
-    document.querySelector('.collapse .active')?.parentElement?.classList.add('show');
-    document.querySelector('.collapse .active')?.parentElement?.previousElementSibling?.querySelector('.fas')?.classList.remove('fa-plus');
-    document.querySelector('.collapse .active')?.parentElement?.previousElementSibling?.querySelector('.fas')?.classList.add('fa-minus');
   }
 
 

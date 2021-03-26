@@ -1,14 +1,16 @@
 <header class="pt-3">
   <div class="container">
+    <!-- Start Search & Logo & Icons (Cart & SignIn) -->
     <div class="row">
       <!-- Start Search Section -->
-      <div class="">
-        <!-- Show Menu Button -->
+      <div>
+        <!-- Show Mobil Menu Button -->
         <button class="open-menu d-xl-none" (click)="openMenu()"><i class="fas fa-bars"></i></button>
         <!-- Search Form  -->
         <form class="search-form" [class.active]="searchMod">
-          <input type="search" placeholder="SEARCH..." class="search" (focus)="openSearchBox()" [(ngModel)]="SearchValue" autocomplete="off"name="Search" (keyup)="search()">
+          <input type="search" placeholder="SEARCH..." class="search" (focus)="openSearchBox()" [(ngModel)]="SearchValue" autocomplete="off" name="Search" (keyup)="search()">
           <button type="submit"><i class="fas fa-search"></i></button>
+          <!-- result Search While Be Open Here -->
           <div class="search-box" [class.open]="searchMod" #searchBox>
             <div>
               <button (click)="closeSearchBox()">X</button>
@@ -16,22 +18,20 @@
             <div *ngIf="SearchValue!==''">
               <div class="border-bottom d-flex mb-5 mt-5 pt-5 text-capitalize justify-content-between">
                 <p>{{productsSearch.length}} results</p>
-                <a routerLink="search" (click)="saveSearchData()">View all</a>
+                <a [routerLink]="['/search',SearchValue]" (click)="saveSearchData()">View all</a>
               </div>
               <div class="d-flex">
-                <!-- Start -->
                 <!-- Start Product Search Conatiner -->
-                <div class="d-flex">
                   <div class="col-3" *ngFor="let product of productsSearch | slice: 0: 4" >
                     <img src="{{product.image}}" alt="">
                     <h5>{{product.name}}</h5>
                     <p>{{product.price | currency :"EGP":"code"}}</p>
-                  </div>
                 </div>
                 <!-- End Product Search Container -->
               </div>
             </div>
           </div>
+          <!-- End Search Result -->
         </form>
       </div>
       <!-- End Search Section -->
@@ -40,7 +40,19 @@
       </div>
       <div class="icons">
         <a routerLink='/profile-page'><i class="far fa-user-circle"></i></a>
-        <a><i class="fas fa-shopping-bag"></i></a>
+        <a (click)="showCart(cart)"><i class="fas fa-shopping-bag"></i></a>
+      </div>
+    </div>
+    <!-- End Search & Logo & Icons (Cart & SignIn) -->
+    <div class="user-cart" #cart>
+      <div class="card">
+        <div class="card-header d-flex justify-content-between">
+          <h3>cart</h3>
+          <span class="close" (click)="closeCart(cart)">X</span>
+        </div>
+        <div class="card-body">
+          <p>your cart is empty</p>
+        </div>
       </div>
     </div>
     <!-- End Logo And Search Section -->
