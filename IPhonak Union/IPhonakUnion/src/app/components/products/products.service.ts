@@ -8,7 +8,7 @@ import { IProduct } from 'src/app/shared/product';
   providedIn: 'root'
 })
 export class ProductsService {
-  _url:string = "http://localhost:4750/collection/products/getAll";
+  _url:string = "http://localhost:4750/collection/products/all-products";
   constructor(private _http:HttpClient) { }
 
   fetchProds():Observable<IProduct[]>{

@@ -8,7 +8,8 @@
         <button class="open-menu d-xl-none" (click)="openMenu()"><i class="fas fa-bars"></i></button>
         <!-- Search Form  -->
         <form class="search-form" [class.active]="searchMod">
-          <input type="search" placeholder="SEARCH..." class="search" (focus)="openSearchBox()" [(ngModel)]="SearchValue" autocomplete="off" name="Search" (keyup)="search()">
+          <input type="search" placeholder="SEARCH..." class="search" (focus)="openSearchBox()"
+            [(ngModel)]="SearchValue" autocomplete="off" name="Search" (keyup)="search()">
           <button type="submit"><i class="fas fa-search"></i></button>
           <!-- result Search While Be Open Here -->
           <div class="search-box" [class.open]="searchMod" #searchBox>
@@ -22,10 +23,10 @@
               </div>
               <div class="d-flex">
                 <!-- Start Product Search Conatiner -->
-                  <div class="col-3" *ngFor="let product of productsSearch | slice: 0: 4" >
-                    <img src="{{product.image}}" alt="">
-                    <h5>{{product.name}}</h5>
-                    <p>{{product.price | currency :"EGP":"code"}}</p>
+                <div class="col-3" *ngFor="let product of productsSearch | slice: 0: 4">
+                  <img src="{{product.image}}" alt="">
+                  <h5>{{product.name}}</h5>
+                  <p>{{product.price | currency :"EGP":"code"}}</p>
                 </div>
                 <!-- End Product Search Container -->
               </div>
@@ -62,60 +63,51 @@
           <a>Shop By Collection</a>
           <div class="submenu">
             <div>
-              <h5><a>Shop</a></h5>
+              <h5><a routerLink='products/all-products'>Shop</a></h5>
               <ul>
-                <li><a routerLink='products/getAll'>All Product</a></li>
-                <li><a routerLink='products/newReleases'>New Releases</a></li>
-                <li><a routerLink='products/lastchance'>Last Chance To Buy</a></li>
+                <li><a routerLink='products/all-products'>All Product</a></li>
+                <li><a routerLink='products/new-releases'>New Releases</a></li>
+                <li><a routerLink='products/best-sellers'>Best Sellers</a></li>
+                <li><a routerLink="/products/bundles">Bundles</a></li>
+                <li><a routerLink='products/last-chance-to-buy'>Last Chance To Buy</a></li>
               </ul>
-              <h5><a>Wireless Charging</a></h5>
+              <h5><a routerLink="/types/Wireless Charging">Wireless Charging</a></h5>
               <ul>
-                <li><a>Multi-Device Wireless Chargers</a></li>
-                <li><a>Single-Device Wireless Chargers</a></li>
-                <li><a>Portable Wireless Chargers</a></li>
+                <li><a routerLink="/wireless/MULTI-DEVICE WIRELESS CHARGERS">Multi-Device Wireless Chargers</a></li>
+                <li><a routerLink="/wireless/SINGLE-DEVICE WIRELESS CHARGERS">Single-Device Wireless Chargers</a></li>
+                <li><a routerLink="/wireless/PORTABLE WIRELESS CHARGERS">Portable Wireless Chargers</a></li>
               </ul>
             </div>
             <div>
               <h5><a>Protect & Carry</a></h5>
               <ul>
-                <li><a>iPhone Cases</a></li>
-                <li><a>AirPods Cases</a></li>
-                <li><a>iPad Sleeves</a></li>
-                <li><a>MacBook Sleeves</a></li>
-                <li><a>Accessory Organizers</a></li>
-                <li><a>iPhone Screen Protector</a></li>
-                <li><a>Apple Watch Straps</a></li>
+                <li><a routerLink="/categorys/IPhone/Cases">iPhone Cases</a></li>
+                <li><a routerLink="/categorys/AirPods/Cases">AirPods Cases</a></li>
+                <li><a routerLink="/categorys/iPad/Sleeves">iPad Sleeves</a></li>
+                <li><a routerLink="/categorys/MacBook/Sleeves">MacBook Sleeves</a></li>
+                <li><a routerLink="/categorys/Accessory/Organizers">Accessory Organizers</a></li>
+                <li><a routerLink="/categorys/iPhone-Screen/Protector">iPhone Screen Protector</a></li>
+                <li><a routerLink="/categorys/Apple-Watch/Straps">Apple Watch Straps</a></li>
               </ul>
             </div>
             <div>
-              <h5><a>Cables</a></h5>
+              <h5><a routerLink="/types/Cables">Cables</a></h5>
               <ul>
-                <li><a>USB-A to Lightning</a></li>
-                <li><a>USB-C to Lightning</a></li>
-                <li><a>USB-A to USB-C</a></li>
-                <li><a>USB-C to USB-C</a></li>
-                <li><a>Universal Cable</a></li>
-                <li><a>Apple Watch Cable</a></li>
-                <li><a>Audio & Video</a></li>
-                <li><a>Which Cable Do I Need?</a></li>
+                <li><a routerLink="/wireless/USB-A to Lightning">USB-A to Lightning</a></li>
+                <li><a routerLink="/wireless/USB-C to Lightning">USB-C to Lightning</a></li>
+                <li><a routerLink="/wireless/USB-A to USB-C">USB-A to USB-C</a></li>
+                <li><a routerLink="/wireless/USB-C to USB-C">USB-C to USB-C</a></li>
+                <li><a routerLink="/wireless/Universal Cable">Universal Cable</a></li>
+                <li><a routerLink="/wireless/Apple Watch Cable">Apple Watch Cable</a></li>
+                <li><a routerLink="/wireless/Audio & Video">Audio & Video</a></li>
               </ul>
             </div>
             <div>
-              <h5><a>Power Sources</a></h5>
+              <h5><a routerLink="/types/Power Sources">Power Sources</a></h5>
               <ul>
-                <li><a>Wall Chargers</a></li>
-                <li><a>Power Banks</a></li>
-                <li><a>Car Chargers</a></li>
-              </ul>
-              <h5><a>Hubs</a></h5>
-              <ul>
-                <li><a>USB-C Smart Hub</a></li>
-              </ul>
-            </div>
-            <div>
-              <h5><a>Speakers</a></h5>
-              <ul>
-                <li><a>PR/01 Speaker</a></li>
+                <li><a routerLink='/wireless/Wall Chargers'>Wall Chargers</a></li>
+                  <li><a routerLink='/wireless/Power Banks'>Power Banks</a></li>
+                  <li><a routerLink='/wireless/Car Chargers'>Car Chargers</a></li>
               </ul>
             </div>
           </div>
@@ -124,81 +116,52 @@
           <a>Shop By Device</a>
           <div class="submenu">
             <div>
-              <h5><a>iPhone</a></h5>
+              <h5><a routerLink="">iPhone</a></h5>
               <ul>
-                <li><a>iPhone 12 Mini</a></li>
-                <li><a>iPhone 12</a></li>
-                <li><a>iPhone 12 Pro</a></li>
-                <li><a>iPhone 12 Pro Max</a></li>
-                <li><a>iPhone 11 Pro</a></li>
-                <li><a>iPhone 11</a></li>
-                <li><a>iPhone 11 Pro Max</a></li>
+                <li><a routerLink="/model/IPhone 12 Min">iPhone 12 Mini</a></li>
+                <li><a routerLink="/model/IPhone 12">iPhone 12</a></li>
+                <li><a routerLink="/model/IPhone 12 Pro">iPhone 12 Pro</a></li>
+                <li><a routerLink="/model/IPhone 12 Pro Max">iPhone 12 Pro Max</a></li>
+                <li><a routerLink="/model/IPhone 11 Pro">iPhone 11 Pro</a></li>
+                <li><a routerLink="/model/IPhone 11">iPhone 11</a></li>
+                <li><a routerLink="/model/IPhone 12 Pro Max">iPhone 11 Pro Max</a></li>
               </ul>
             </div>
             <div>
               <h5><a>iPhone</a></h5>
               <ul>
-                <li><a>iPhone Xs</a></li>
-                <li><a>iPhone XR</a></li>
-                <li><a>iPhone Xs Max</a></li>
-                <li><a>iPhone SE</a></li>
+                <li><a routerLink="/model/IPhone Xs">iPhone Xs</a></li>
+                <li><a routerLink="/model/IPhone XR">iPhone XR</a></li>
+                <li><a routerLink="/model/IPhone Xs Max">iPhone Xs Max</a></li>
+                <li><a routerLink="/model/IPhone Xs Max">iPhone SE</a></li>
               </ul>
               <h5><a>AirPods</a></h5>
               <ul>
-                <li><a>AirPods Pro</a></li>
-                <li><a>AirPods Gen 1 &amp; 2</a></li>
+                <li><a routerLink="/model/AirPods Pro">AirPods Pro</a></li>
+                <li><a routerLink="/model/AirPods Gen 1 &amp; 2">AirPods Gen 1 &amp; 2</a></li>
               </ul>
             </div>
             <div>
               <h5><a>MacBook</a></h5>
               <ul>
-                <li><a>12" MacBooks</a></li>
-                <li><a>13" MacBooks</a></li>
-                <li><a>15" MacBooks</a></li>
-                <li><a>16" MacBooks</a></li>
+                <li><a routerLink='/model/12" MacBooks'>12" MacBooks</a></li>
+                <li><a routerLink='/model/13" MacBooks'>13" MacBooks</a></li>
+                <li><a routerLink='/model/15" MacBooks'>15" MacBooks</a></li>
+                <li><a routerLink='/model/16" MacBooks'>16" MacBooks</a></li>
               </ul>
               <h5><a>Apple Watch</a></h5>
               <ul>
-                <li><a>Apple Watch (38mm / 40mm)</a></li>
-                <li><a>Apple Watch (42mm / 44mm)</a></li>
+                <li><a routerLink='/model/Apple Watch (38mm / 40mm)'>Apple Watch (38mm / 40mm)</a></li>
+                <li><a routerLink='/model/Apple Watch (42mm / 44mm)'>Apple Watch (42mm / 44mm)</a></li>
               </ul>
             </div>
             <div>
               <h5><a>iPad</a></h5>
               <ul>
-                <li><a>iPad Pro 11"</a></li>
-                <li><a>iPad Pro 12.9"</a></li>
-                <li><a>iPad Air (4th Gen)</a></li>
-                <li><a>iPad (7th &amp; 8th Gen)</a></li>
-              </ul>
-            </div>
-          </div>
-        </li>
-        <li>
-          <a>Explore</a>
-          <div class="submenu">
-            <div>
-              <h5><a>Collections</a></h5>
-              <ul>
-                <li><a>The Heritage Collection</a></li>
-                <li><a>Sage Collection</a></li>
-                <li><a>Classic Leather Collection</a></li>
-                <li><a>PD Charging Collection</a></li>
-                <li><a>Work from Home</a></li>
-              </ul>
-            </div>
-            <div>
-              <h5><a>Collaborations</a></h5>
-              <ul>
-                <li><a>Maison Kitsuné x Native Union</a></li>
-                <li><a>Tom Dixon x Native Union</a></li>
-                <li><a>La Boite Concept x Native Union</a></li>
-              </ul>
-            </div>
-            <div>
-              <h5><a>Journal</a></h5>
-              <ul>
-                <li><a>Discover Our Journal</a></li>
+                <li><a routerLink='/model/iPad Pro 11"'>iPad Pro 11"</a></li>
+                <li><a routerLink='/model/iPad Pro 12.9"'>iPad Pro 12.9"</a></li>
+                <li><a routerLink='/model/iPad Air (4th Gen)'>iPad Air (4th Gen)</a></li>
+                <li><a routerLink='/model/iPad (7th &amp; 8th Gen)'>iPad (7th &amp; 8th Gen)</a></li>
               </ul>
             </div>
           </div>
@@ -206,13 +169,14 @@
       </ul>
     </div>
     <!-- Start Mobil Nav Bar -->
-    <nav class="menu-md mobil-menu"  [class.animat]="screenMdActive">
+    <nav class="menu-md mobil-menu" [class.animat]="screenMdActive">
       <button (click)="openMenu()">X</button>
 
       <div class="menu-container">
         <ul class="main-menu-md">
           <li>
-            <div class="main-links-container navbar-toggle mb-3" data-toggle="collapse" data-target="#ShopByCollection" (click)="togglePLus(toggleBtn)">
+            <div class="main-links-container navbar-toggle mb-3" data-toggle="collapse" data-target="#ShopByCollection"
+              (click)="togglePLus(toggleBtn)">
               <a>Shop By Collection</a>
               <button class="toggle-button">
                 <i #toggleBtn class="toggle-plus"></i>
@@ -220,101 +184,88 @@
             </div>
             <div class="submenu collapse" id="ShopByCollection">
               <div>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#all-products" (click)="togglePLus(toggleBtn1)">
+                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#all-products"
+                  (click)="togglePLus(toggleBtn1)">
                   <h5><a>All Products</a></h5>
-                  <button  class="toggle-button">
+                  <button class="toggle-button">
                     <i #toggleBtn1 class="toggle-plus"></i>
                   </button>
                 </div>
                 <ul class="collapse " id="all-products">
-                  <li><a routerLink="products">All Product</a></li>
-                  <li><a>New Releases</a></li>
-                  <li><a>Last Chance To Buy</a></li>
+                  <li><a routerLink='products/all-products'>All Product</a></li>
+                  <li><a routerLink='products/new-releases'>New Releases</a></li>
+                  <li><a routerLink='products/best-sellers'>Best Sellers</a></li>
+                  <li><a routerLink="/products/bundles">Bundles</a></li>
+                  <li><a routerLink='products/last-chance-to-buy'>Last Chance To Buy</a></li>
                 </ul>
-                <div class="d-flex justify-content-between px-2 py-3"  data-toggle="collapse" data-target="#WirelessCharging" (click)="togglePLus(toggleBtn3)">
+                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse"
+                  data-target="#WirelessCharging" (click)="togglePLus(toggleBtn3)">
                   <h5><a>Wireless Charging</a></h5>
-                  <button  class="toggle-button">
+                  <button class="toggle-button">
                     <i #toggleBtn3 class="toggle-plus"></i>
                   </button>
                 </div>
                 <ul class="collapse" id="WirelessCharging">
-                  <li><a>Multi-Device Wireless Chargers</a></li>
-                  <li><a>Single-Device Wireless Chargers</a></li>
-                  <li><a>Portable Wireless Chargers</a></li>
+                  <li><a routerLink="/wireless/MULTI-DEVICE WIRELESS CHARGERS">Multi-Device Wireless Chargers</a></li>
+                <li><a routerLink="/wireless/SINGLE-DEVICE WIRELESS CHARGERS">Single-Device Wireless Chargers</a></li>
+                <li><a routerLink="/wireless/PORTABLE WIRELESS CHARGERS">Portable Wireless Chargers</a></li>
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#ProtectCarry" (click)="togglePLus(toggleBtn4)">
+                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#ProtectCarry"
+                  (click)="togglePLus(toggleBtn4)">
                   <h5><a>Protect & Carry</a></h5>
-                  <button  class="toggle-button">
+                  <button class="toggle-button">
                     <i #toggleBtn4 class="toggle-plus"></i>
                   </button>
                 </div>
                 <ul class="collapse" id="ProtectCarry">
-                  <li><a>iPhone Cases</a></li>
-                  <li><a>AirPods Cases</a></li>
-                  <li><a>iPad Sleeves</a></li>
-                  <li><a>MacBook Sleeves</a></li>
-                  <li><a>Accessory Organizers</a></li>
-                  <li><a>iPhone Screen Protector</a></li>
-                  <li><a>Apple Watch Straps</a></li>
+                  <li><a routerLink="/categorys/IPhone/Cases">iPhone Cases</a></li>
+                <li><a routerLink="/categorys/AirPods/Cases">AirPods Cases</a></li>
+                <li><a routerLink="/categorys/iPad/Sleeves">iPad Sleeves</a></li>
+                <li><a routerLink="/categorys/MacBook/Sleeves">MacBook Sleeves</a></li>
+                <li><a routerLink="/categorys/Accessory/Organizers">Accessory Organizers</a></li>
+                <li><a routerLink="/categorys/iPhone-Screen/Protector">iPhone Screen Protector</a></li>
+                <li><a routerLink="/categorys/Apple-Watch/Straps">Apple Watch Straps</a></li>
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3"  data-toggle="collapse" data-target="#cables" (click)="togglePLus(toggleBtn5)">
+                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#cables"
+                  (click)="togglePLus(toggleBtn5)">
                   <h5><a>Cables</a></h5>
-                  <button  class="toggle-button">
+                  <button class="toggle-button">
                     <i #toggleBtn5 class="toggle-plus"></i>
                   </button>
                 </div>
                 <ul class="collapse" id="cables">
-                  <li><a>USB-A to Lightning</a></li>
-                  <li><a>USB-C to Lightning</a></li>
-                  <li><a>USB-A to USB-C</a></li>
-                  <li><a>USB-C to USB-C</a></li>
-                  <li><a>Universal Cable</a></li>
-                  <li><a>Apple Watch Cable</a></li>
-                  <li><a>Audio & Video</a></li>
-                  <li><a>Which Cable Do I Need?</a></li>
+                  <li><a routerLink="/wireless/USB-A to Lightning">USB-A to Lightning</a></li>
+                <li><a routerLink="/wireless/USB-C to Lightning">USB-C to Lightning</a></li>
+                <li><a routerLink="/wireless/USB-A to USB-C">USB-A to USB-C</a></li>
+                <li><a routerLink="/wireless/USB-C to USB-C">USB-C to USB-C</a></li>
+                <li><a routerLink="/wireless/Universal Cable">Universal Cable</a></li>
+                <li><a routerLink="/wireless/Apple Watch Cable">Apple Watch Cable</a></li>
+                <li><a routerLink="/wireless/Audio & Video">Audio & Video</a></li>
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#powerSources" (click)="togglePLus(toggleBtn6)">
+                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#powerSources"
+                  (click)="togglePLus(toggleBtn6)">
                   <h5><a>Power Sources</a></h5>
-                  <button  class="toggle-button">
+                  <button class="toggle-button">
                     <i #toggleBtn6 class="toggle-plus"></i>
                   </button>
                 </div>
                 <ul class="collapse" id="powerSources">
-                  <li><a>Wall Chargers</a></li>
-                  <li><a>Power Banks</a></li>
-                  <li><a>Car Chargers</a></li>
-                </ul>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#hubs" (click)="togglePLus(toggleBtn7)">
-                  <h5><a>Hubs</a></h5>
-                  <button  class="toggle-button">
-                    <i #toggleBtn7 class="toggle-plus"></i>
-                  </button>
-                </div>
-                <ul class="collapse" id="hubs">
-                  <li><a>USB-C Smart Hub</a></li>
-                </ul>
-              </div>
-              <div>
-                <div class="d-flex justify-content-between px-2 py-3"  data-toggle="collapse" data-target="#speakers" (click)="togglePLus(toggleBtn8)">
-                  <h5><a>Speakers</a></h5>
-                  <button  class="toggle-button">
-                    <i #toggleBtn8 class="toggle-plus"></i>
-                  </button>
-                </div>
-                <ul class="collapse" id="speakers">
-                  <li><a>PR/01 Speaker</a></li>
+                  <li><a routerLink='/types/Wall Chargers'>Wall Chargers</a></li>
+                  <li><a routerLink='/types/Power Banks'>Power Banks</a></li>
+                  <li><a routerLink='/types/Car Chargers'>Car Chargers</a></li>
                 </ul>
               </div>
             </div>
           </li>
           <li>
-            <div class="main-links-container my-3"  data-toggle="collapse" data-target="#ShopBySevice" (click)="togglePLus(toggleBtn9)">
+            <div class="main-links-container my-3" data-toggle="collapse" data-target="#ShopBySevice"
+              (click)="togglePLus(toggleBtn9)">
               <a>Shop By Device</a>
               <button class="toggle-button">
                 <i #toggleBtn9 class="toggle-plus"></i>
@@ -322,124 +273,79 @@
             </div>
             <div class="submenu collapse" id="ShopBySevice">
               <div>
-                <div class="d-flex justify-content-between px-2 py-3"  data-toggle="collapse" data-target="#iphone" (click)="togglePLus(iphone)">
+                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#iphone"
+                  (click)="togglePLus(iphone)">
                   <h5><a>iPhone</a></h5>
                   <button class="toggle-button">
                     <i #iphone class="toggle-plus"></i>
                   </button>
                 </div>
                 <ul class="collapse" id="iphone">
-                  <li><a>iPhone 12 Mini</a></li>
-                  <li><a>iPhone 12</a></li>
-                  <li><a>iPhone 12 Pro</a></li>
-                  <li><a>iPhone 12 Pro Max</a></li>
-                  <li><a>iPhone 11 Pro</a></li>
-                  <li><a>iPhone 11</a></li>
-                  <li><a>iPhone 11 Pro Max</a></li>
-                  <li><a>iPhone Xs</a></li>
-                  <li><a>iPhone XR</a></li>
-                  <li><a>iPhone Xs Max</a></li>
-                  <li><a>iPhone SE</a></li>
+                  <li><a routerLink="/model/IPhone 12 Min">iPhone 12 Mini</a></li>
+                  <li><a routerLink="/model/IPhone 12">iPhone 12</a></li>
+                  <li><a routerLink="/model/IPhone 12 Pro">iPhone 12 Pro</a></li>
+                  <li><a routerLink="/model/IPhone 12 Pro Max">iPhone 12 Pro Max</a></li>
+                  <li><a routerLink="/model/IPhone 11 Pro">iPhone 11 Pro</a></li>
+                  <li><a routerLink="/model/IPhone 11">iPhone 11</a></li>
+                  <li><a routerLink="/model/IPhone 12 Pro Max">iPhone 11 Pro Max</a></li>
+                  <li><a routerLink="/model/IPhone Xs">iPhone Xs</a></li>
+                  <li><a routerLink="/model/IPhone XR">iPhone XR</a></li>
+                  <li><a routerLink="/model/IPhone Xs Max">iPhone Xs Max</a></li>
+                  <li><a routerLink="/model/IPhone Xs Max">iPhone SE</a></li>
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#airPods"(click)="togglePLus(airPods)">
+                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#airPods"
+                  (click)="togglePLus(airPods)">
                   <h5><a>AirPods</a></h5>
                   <button class="toggle-button">
                     <i #airPods class="toggle-plus"></i>
                   </button>
                 </div>
                 <ul class="collapse" id="airPods">
-                  <li><a>AirPods Pro</a></li>
-                  <li><a>AirPods Gen 1 &amp; 2</a></li>
-                  <li><a>All AirPods</a></li>
+                  <li><a routerLink="/model/AirPods Pro">AirPods Pro</a></li>
+                <li><a routerLink="/model/AirPods Gen 1 &amp; 2">AirPods Gen 1 &amp; 2</a></li>
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#macBook" (click)="togglePLus(macBook)">
+                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#macBook"
+                  (click)="togglePLus(macBook)">
                   <h5><a>MacBook</a></h5>
                   <button class="toggle-button">
                     <i #macBook class="toggle-plus"></i>
                   </button>
                 </div>
                 <ul class="collapse" id="macBook">
-                  <li><a>12" MacBooks</a></li>
-                  <li><a>13" MacBooks</a></li>
-                  <li><a>15" MacBooks</a></li>
-                  <li><a>16" MacBooks</a></li>
+                  <li><a routerLink='/model/12" MacBooks'>12" MacBooks</a></li>
+                  <li><a routerLink='/model/13" MacBooks'>13" MacBooks</a></li>
+                  <li><a routerLink='/model/15" MacBooks'>15" MacBooks</a></li>
+                  <li><a routerLink='/model/16" MacBooks'>16" MacBooks</a></li>
                 </ul>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#appleWatch" (click)="togglePLus(appleWatch)">
+                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#appleWatch"
+                  (click)="togglePLus(appleWatch)">
                   <h5><a>Apple Watch</a></h5>
                   <button class="toggle-button">
                     <i #appleWatch class="toggle-plus"></i>
                   </button>
                 </div>
                 <ul class="collapse" id="appleWatch">
-                  <li><a>Apple Watch (38mm / 40mm)</a></li>
-                  <li><a>Apple Watch (42mm / 44mm)</a></li>
+                  <li><a routerLink='/model/Apple Watch (38mm / 40mm)'>Apple Watch (38mm / 40mm)</a></li>
+                <li><a routerLink='/model/Apple Watch (42mm / 44mm)'>Apple Watch (42mm / 44mm)</a></li>
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#iPad" (click)="togglePLus(iPad)">
+                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#iPad"
+                  (click)="togglePLus(iPad)">
                   <h5><a>iPad</a></h5>
                   <button class="toggle-button">
                     <i #iPad class="toggle-plus"></i>
                   </button>
                 </div>
                 <ul class="collapse" id="iPad">
-                  <li><a>iPad Pro 11"</a></li>
-                  <li><a>iPad Pro 12.9"</a></li>
-                  <li><a>iPad Air (4th Gen)</a></li>
-                  <li><a>iPad (7th &amp; 8th Gen)</a></li>
-                </ul>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="main-links-container my-3" data-toggle="collapse" data-target="#explore" (click)="togglePLus(explore)">
-              <a>Explore</a>
-              <button class="toggle-button">
-                <i #explore class="toggle-plus"></i>
-              </button>
-            </div>
-            <div class="submenu collapse" id="explore">
-              <div>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#collections" (click)="togglePLus(collections)">
-                  <h5><a>Collections</a></h5>
-                  <button class="toggle-button">
-                    <i #collections class="toggle-plus"></i>
-                  </button>
-                </div>
-                <ul class="collapse" id="collections">
-                  <li><a>The Heritage Collection</a></li>
-                  <li><a>Sage Collection</a></li>
-                  <li><a>Classic Leather Collection</a></li>
-                  <li><a>PD Charging Collection</a></li>
-                  <li><a>Work from Home</a></li>
-                </ul>
-              </div>
-              <div>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#collaborations" (click)="togglePLus(collaborations)">
-                  <h5><a>Collaborations</a></h5>
-                  <button class="toggle-button">
-                    <i #collaborations class="toggle-plus"></i>
-                  </button>
-                </div>
-                <ul class="collapse" id="collaborations">
-                  <li><a>Maison Kitsuné x Native Union</a></li>
-                  <li><a>Tom Dixon x Native Union</a></li>
-                  <li><a>La Boite Concept x Native Union</a></li>
-                </ul>
-              </div>
-              <div>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#journal" (click)="togglePLus(journal)">
-                  <h5><a>Journal</a></h5>
-                  <button class="toggle-button">
-                    <i #journal class="toggle-plus"></i>
-                  </button>
-                </div>
-                <ul class="collapse" id="journal">
-                  <li><a>Discover Our Journal</a></li>
+                  <li><a routerLink='/model/iPad Pro 11"'>iPad Pro 11"</a></li>
+                <li><a routerLink='/model/iPad Pro 12.9"'>iPad Pro 12.9"</a></li>
+                <li><a routerLink='/model/iPad Air (4th Gen)'>iPad Air (4th Gen)</a></li>
+                <li><a routerLink='/model/iPad (7th &amp; 8th Gen)'>iPad (7th &amp; 8th Gen)</a></li>
                 </ul>
               </div>
             </div>
@@ -453,10 +359,10 @@
 
       </div>
       <div class="links">
-        <a ><i class="fab fa-instagram"></i></a>
-        <a ><i class="fab fa-facebook-f"></i></a>
-        <a ><i class="fab fa-twitter"></i></a>
-        <a ><i class="fab fa-linkedin"></i></a>
+        <a><i class="fab fa-instagram"></i></a>
+        <a><i class="fab fa-facebook-f"></i></a>
+        <a><i class="fab fa-twitter"></i></a>
+        <a><i class="fab fa-linkedin"></i></a>
       </div>
 
     </nav>

@@ -16,7 +16,7 @@ router.post('/create',(req,resp)=> {
 })
 
 ///////////// Get "get" all Products
-router.get('/all-produts',(req,resp)=>{
+router.get('/all-products',(req,resp)=>{
     Product.find({},(err,data)=>{
       if(!err){
          resp.status(200).send(data)
@@ -91,9 +91,17 @@ router.get('/bundles',(req,resp)=>{
     }else resp.status(400).send(err)
   })
 })
+///////////// Get "get" Products by type.kind Only
+router.get('/kind/:productKind',(req,resp)=>{
+  Product.find({"type.kind":req.params.productKind},(err,data) =>{
+    if(!err){
+      resp.status(200).send(data)
+    }else resp.status(400).send(err)
+  })
+})
 
 ///////////// Get "get" Products by typeModel and typeType 
-router.get('/:productName/:productType',(req,resp)=>{
+router.get('/full-type/:productName/:productType',(req,resp)=>{
   Product.find({"type.model":req.params.productName,"type.type":req.params.productType},(err,data) =>{
     if(!err){
       resp.status(200).send(data)
@@ -101,8 +109,16 @@ router.get('/:productName/:productType',(req,resp)=>{
   })
 })
 
+router.get('/model/:modelName',(req,resp)=>{
+  Product.find({"type.model":req.params.modelName},(err,data)=>{
+    if(!err){
+      resp.status(200).send(data)
+    }else resp.status(400).send(err)
+  })
+})
+
 ///////////// Get "get" Products by type.Type Only
-router.get('/:productType',(req,resp)=>{
+router.get('/type/:productType',(req,resp)=>{
   Product.find({"type.type":req.params.productType},(err,data) =>{
     if(!err){
       resp.status(200).send(data)
@@ -111,21 +127,15 @@ router.get('/:productType',(req,resp)=>{
 })
 
 ///////////// Get "get" Products by category type.Type
-router.get('/:category/:productType',(req,resp)=>{
-  Product.find({"category":req.params.productName,"type.type":req.params.productType},(err,data) =>{
+router.get('/category-type/:category/:productType',(req,resp)=>{
+  Product.find({category:req.params.category,"type.type":req.params.productType},(err,data) =>{
     if(!err){
+      console.log('don')
       resp.status(200).send(data)
     }else resp.status(400).send(err)
   })
 })
 
-///////////// Get "get" Products by type.kind Only
-router.get('/:productKind',(req,resp)=>{
-  Product.find({"type.kind":req.params.productKind},(err,data) =>{
-    if(!err){
-      resp.status(200).send(data)
-    }else resp.status(400).send(err)
-  })
-})
+
 
 module.exports=router

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ProductsService } from 'src/app/components/products/products.service';
-import { ICategory, IProduct } from 'src/app/shared/product';
+import { IProduct } from 'src/app/shared/product';
 
 @Component({
   selector: 'app-collection',
@@ -12,25 +12,6 @@ export class CollectionComponent implements OnInit {
 
   activeParamsType:any='';
   activeMedol:any='';
-  productsCategory:ICategory[]=[
-    {name:"iPhone",model:[
-      {modelName:"IPhone 12 Min",type:["Cases","Wireless Charging","Cables","Power Sources","Speakers"]},
-      {modelName:"IPhone 12",type:["Cases","Wireless Charging","Cables","Power Sources","Speakers"]},
-      {modelName:"iPhone 12 Pro",type:["Cases","Wireless Charging","Cables","Power Sources","Speakers"]},{modelName:"iPhone 12 Pro Max",type:["Cases","Wireless Charging","Cables","Power Sources","Speakers"]},
-      {modelName:"iPhone 11 Pro",type:["Cases","Wireless Charging","Cables","Power Sources","Speakers"]},
-      {modelName:"iPhone 11",type:["Cases","Wireless Charging","Cables","Power Sources","Speakers"]},
-      {modelName:"iPhone 11 Pro Max",type:["Cases","Wireless Charging","Cables","Power Sources","Speakers"]},
-      {modelName:"iPhone Xs",type:["Wireless Charging","Cables","Power Sources","Speakers"]},
-      {modelName:"iPhone XR",type:["Wireless Charging","Cables","Power Sources","Speakers"]}
-
-    ]
-  },
-    {name:"AirPods",model:[
-      {modelName:"AirPods Pro",type:["Cases","Wireless Charging","Cables","Power Sources","Speakers"]},
-      {modelName:"AirPods Pro",type:["Cases","Wireless Charging","Cables","Power Sources","Speakers"]}
-    ]
-  }
-  ];
   productsList:IProduct[]=[];
   errorMessage:string= '';
   constructor(private collection: ProductsService,private activetedType: ActivatedRoute,private router:Router) {
@@ -41,13 +22,10 @@ export class CollectionComponent implements OnInit {
     this.activetedType.paramMap.subscribe((params:ParamMap)=>{
       this.activeMedol = params.get('model')
       this.activeParamsType = params.get('type')
-      console.log("type",this.activeParamsType)
-      console.log("medol",this.activeMedol)
-      this.collection.fetchProductType('http://localhost:4750/collection/products/'+this.activeMedol+"/"+this.activeParamsType).subscribe(
+      this.collection.fetchProductType('http://localhost:4750/collection/products/full-type/'+this.activeMedol+"/"+this.activeParamsType).subscribe(
         (data)=>{
           if(data){
-          this.productsList = data
-          console.log(this.productsList)
+            this.productsList = data
             if (this.productsList.length == 0) {
               this.errorMessage = `COLLECTION ${this.activeMedol} / ${this.activeParamsType} IS EMPTY`
             }
@@ -69,14 +47,5 @@ export class CollectionComponent implements OnInit {
     productImg.classList.add('active');
     let image = this.productsList[productIndex].quantity[colorIndex].srcImage;
     productImg.parentElement.previousElementSibling.parentElement.querySelector('img').setAttribute('src',image)
-  }
-  togglePLus(ele:HTMLElement){
-    ele.firstElementChild?.classList.toggle('fa-minus');
-    ele.firstElementChild?.classList.toggle('fa-plus');
-  }
-  roterNa(type:any,medol:any){
-    // console.log("type",type)
-    // console.log("medol",medol)
-    // this.router.navigate(['/collection',[medol,type]])
   }
 }
