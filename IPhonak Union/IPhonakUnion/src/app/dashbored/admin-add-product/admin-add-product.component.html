@@ -1,1 +1,204 @@
 <p>admin-add-product works!</p>
+
+<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <h5 class="text-center">Welcome to Admin InterFace</h5>
+    <div class="container">
+        <div class="row h-100 justify-content-center align-items-center py-4">
+            <div class="col">
+                <div class="card">
+                    <div class="card-footer text-center">
+                        <h5>Add new product</h5>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="registerationForm">
+                            <div class="form-group">
+                                <label for="productName">ProductName</label>
+                                <input id="productName" type="text" formControlName="productName" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="price">Price</label>
+                                <input id="price" type="text" formControlName="price" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <input id="category" type="text" formControlName="category" class="form-control">
+                            </div>
+
+                            <div class="card">
+                                <h5 class="card-header">Quantity Form </h5>
+                                <div class="card-body">
+
+                                    <div formGroupName="quantity">
+
+                                        <div class="form-group">
+                                            <label>Quantity</label>
+                                            <input type="text" formControlName="quantity"  class="form-control">
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>SrcColor</label>
+                                            <input type="text"  formControlName="srcColor" class="form-control">
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>SrcImage</label>
+                                            <input type="text" formControlName="srcImage"  class="form-control">
+
+                                        </div>
+
+                                        <button class="btn btn-primary float-right" (click)="addNewQuantity()">Add New
+                                            Quantity Form</button>
+                                    </div>
+
+                                    <div formArrayName="alternativeQuantity"
+                                        *ngFor="let quantity of alternativeQuantity.controls let i=index">
+                                        <br> <br>
+                                        <label>Quantity Form Number {{i+1}}</label>
+                                        <br>
+                                        <label>New Quantity</label>
+                                        <input type="text" class="form-control" [formControlName]="i">
+
+                                        <label>New SrcColor</label>
+                                        <input type="text" class="form-control" [formControlName]="i">
+
+                                        <label>New SrcImage</label>
+                                        <input type="text" class="form-control" [formControlName]="i">
+
+                                        <button class="btn btn-danger float-right" (click)="removeQuantity(i)">Remove
+                                            This
+                                            Quantity</button>
+                                        <br>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <br />
+
+                            <div class="card">
+                                <h5 class="card-header">Type Form </h5>
+                                <div class="card-body">
+
+                                    <div formGroupName="type">
+                                        <div class="form-group">
+                                            <label>Model</label>
+                                            <input type="text" formControlName="model"  class="form-control">
+                                                        
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Type</label>
+                                            <input type="text"  formControlName="type" class="form-control">
+                                                        
+                                        </div>
+
+                                        <button class="btn btn-primary float-right" (click)="addNewType()">Add New Type
+                                            Form</button>
+                                    </div>
+
+                                    <div formArrayName="alternativeType"
+                                        *ngFor="let type of alternativeType.controls let i=index">
+                                        <br> <br>
+                                        <label>Type Form Number {{i+1}}</label>
+                                        <br>
+                                        <label>New Model</label>
+                                        <input type="text" class="form-control" [formControlName]="i">
+
+                                        <label>New Type</label>
+                                        <input type="text" class="form-control" [formControlName]="i">
+
+                                        <button class="btn btn-danger float-right" (click)="removeType(i)">Remove This
+                                            Type</button>
+                                        <br>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <div class="form-group">
+                                <label for="rating">Rating</label>
+                                <input id="rating" type="text" formControlName="rating" class="form-control">
+                            </div>
+
+
+
+                            <div class="card">
+                                <h5 class="card-header">Description Form </h5>
+                                <div class="card-body">
+
+                                    <div class="form-group">
+                                        <label for="description">Description</label>
+                                        <input id="description" type="text" formControlName="description"
+                                            class="form-control">
+                                        <button class="btn btn-primary float-right" (click)="addNewDescription()">Add New
+                                            Description
+                                            Form</button>
+                                    </div>
+
+                                    <div formArrayName="alternativeDescription"
+                                        *ngFor="let type of alternativeDescription.controls let i=index">
+                                        <br> <br>
+                                        <label>Type Form Number {{i+1}}</label>
+                                        <br>
+                                        <label>New Description</label>
+                                        <input type="text" class="form-control" [formControlName]="i">
+
+                                        <button class="btn btn-danger float-right" (click)="removeDescription(i)">Remove This
+                                            Description</button>
+                                        <br>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <div class="card">
+                                <h5 class="card-header">Images Form </h5>
+                                <div class="card-body">
+
+                                    <div class="form-group">
+                                        <label for="images">Images</label>
+                                        <input id="images" type="text" formControlName="images" class="form-control">
+                                        <button class="btn btn-primary float-right" (click)="addNewImages()">Add New
+                                            Images
+                                            Form</button>
+                                    </div>
+
+                                    <div formArrayName="alternativeImages"
+                                        *ngFor="let type of alternativeImages.controls let i=index">
+                                        <br> <br>
+                                        <label>Type Form Number {{i+1}}</label>
+                                        <br>
+                                        <label>New Images</label>
+                                        <input type="text" class="form-control" [formControlName]="i">
+
+                                        <button class="btn btn-danger float-right" (click)="removeImages(i)">Remove This
+                                            Images</button>
+                                        <br>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <button type="submit" class="btn btn-primary float-right">Add Prouduct</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
