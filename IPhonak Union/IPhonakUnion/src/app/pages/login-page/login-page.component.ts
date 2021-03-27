@@ -45,7 +45,6 @@ export class LoginPageComponent implements OnInit {
   submitData(formData: User,event:Event){
     this.registrationService.registerForm(formData).subscribe(
       data => {
-        console.log("Success:",data)
         this.router.navigate(['/login']);
       },
       error => {

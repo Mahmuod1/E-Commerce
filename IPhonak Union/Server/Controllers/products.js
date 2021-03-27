@@ -16,7 +16,7 @@ router.post('/create',(req,resp)=> {
 })
 
 ///////////// Get "get" all Products
-router.get('/all-produts',(req,resp)=>{
+router.get('/all-products',(req,resp)=>{
     Product.find({},(err,data)=>{
       if(!err){
          resp.status(200).send(data)
@@ -24,9 +24,9 @@ router.get('/all-produts',(req,resp)=>{
     })
 })
 
-///////////// Delete "delete" Product by Product Name
-router.delete('/delete/:productName',(req,resp)=>{
-    Product.deleteOne({productName:req.params.productName},(err,data)=>{
+///////////// Delete "delete" Product by Product id
+router.delete('/delete/:id',(req,resp)=>{
+    Product.deleteOne({_id:req.params.id},(err,data)=>{
       if(!err){
         if(data.deletedCount == 0 )  resp.status(200).send("Product Name is not correct!!")
         else resp.status(200).send(data)

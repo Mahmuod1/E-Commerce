@@ -8,7 +8,7 @@
             aria-controls="allProduct" aria-selected="false">Show Products</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="allProduct-tab" data-toggle="tab" href="#allProduct" role="tab"
+        <a class="nav-link" id="addProduct-tab" data-toggle="tab" href="#addProduct" role="tab"
             aria-controls="addProduct" aria-selected="false">Add Product</a>
     </li>
 </ul>
@@ -25,25 +25,70 @@
                             Add new user
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form [formGroup]="adminRegistrationForm"
+                                (ngSubmit)="submitData(adminRegistrationForm.value,$event)">
                                 <div class="form-group">
                                     <label for="firstName">First Name</label>
-                                    <input id="firstName" type="text" class="form-control">
+                                    <input id="firstName" type="text" class="form-control" formControlName="firstName"
+                                        [class.is-invalid]="firstName!.invalid && firstName!.touched"
+                                        placeholder="PS: To access dash-bored this field must include admin in it">
+                                    <div *ngIf="firstName!.invalid && firstName!.touched">
+                                        <small *ngIf="firstName!.errors?.required" class="text-danger">
+                                            First name field is required!!
+                                        </small>
+                                        <small *ngIf="firstName!.errors?.minlength" class="text-danger">
+                                            First name can't be less than 2 characters!!
+                                        </small>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="lastName">Last Name</label>
-                                    <input id="lastName" type="text" class="form-control">
+                                    <input id="lastName" type="text" class="form-control" formControlName="lastName"
+                                        [class.is-invalid]="lastName!.invalid && lastName!.touched">
+                                    <div *ngIf="lastName!.invalid && lastName!.touched">
+                                        <small *ngIf="lastName!.errors?.required" class="text-danger">
+                                            Last name field is required!!
+                                        </small>
+                                        <small *ngIf="lastName!.errors?.minlength" class="text-danger">
+                                            Last name can't be less than 2 characters!!
+                                        </small>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input id="email" type="text" class="form-control">
+                                    <input id="email" type="text" class="form-control" formControlName="email"
+                                        [class.is-invalid]="email!.invalid && email!.touched">
+                                    <div *ngIf="email!.invalid && email!.touched">
+                                        <small *ngIf="email!.errors?.required" class="text-danger">
+                                            Email address field is required!!
+                                        </small>
+                                        <small *ngIf="email!.errors?.pattern" class="text-danger" class="text-danger">
+                                            Invalid Email address!!
+                                        </small>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="password">password</label>
-                                    <input id="password" type="text" class="form-control">
+                                    <input id="password" type="text" class="form-control" formControlName="password"
+                                        [class.is-invalid]="password!.invalid && password!.touched">
+                                    <div *ngIf="password!.invalid && password!.touched">
+                                        <small *ngIf="password!.errors?.required" class="text-danger">
+                                            Password field is required!!
+                                        </small>
+                                        <small *ngIf="password!.errors?.pattern" class="text-danger">
+                                            Password must be at least 6 characters, and must include at least one
+                                            capital character & one number!!
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="loginBtn">
+                                    <div>
+                                        <button class="submitBtn" class="btn" type="submit">Create My Account</button>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -53,6 +98,118 @@
         </div>
     </div>
     <div class="tab-pane fade" id="allProduct" role="tabpanel" aria-labelledby="allProduct-tab">
-        All Product
+        <div class="container-fluid py-2">
+            <h1 class="text-center"><small>IPHONEK PRODUCTS</small></h1>
+            <div class="raw">
+                <div class="col py-2">
+                    <div class="card my-4" *ngFor="let product of productList index as x">
+                        
+                            <div class="card-header text-center">
+                                <input type="text" name="productName" value={{product.productName}} class="text-center" disabled>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-inline">
+                                    <div class="row align-center" style="width: 100%;">
+                                        <div class="col-md-4">
+                                            <label for="category">Category</label>
+                                            <input type="text" value={{product.category}} class="form-inline text-center" disabled>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="category">Price</label>
+                                            <input type="text" value='{{product.price | currency :"EGP":"code"}}' class="form-inline text-center px-2" disabled style="width: 100%;">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="category">Rating</label>
+                                            <input type="text" value={{product.rating}} class="form-inline text-center" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="row align-center py-2" style="width: 100%;">
+                                        <div class="col-md-4">
+                                            <label for="category">Model</label>
+                                            <input type="text" value='{{product.type["model"]}}'
+                                                class="form-inline text-center" disabled>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="category">Type</label>
+                                            <input type="text" value='{{product.type["type"]}}'
+                                                class="form-inline text-center px-2" disabled>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="category">Kind</label>
+                                            <input type="text" value='{{product.type["kind"]}}'
+                                                class="form-inline text-center" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="row py-3 h-100 w-100">
+                                        <div class="col-4 mb-4" *ngFor="let quantity of product.quantity index as i">
+                                            <div class="card w-100">
+                                                <div class="card-body">
+                                                    <label for="category">Quantity</label>
+                                                    <input type="text" value={{quantity.quantity}}
+                                                        class="form-inline text-center" disabled>
+
+                                                    <label for="category">Src Color</label>
+                                                    <input type="text" value={{quantity.srcColor}}
+                                                        class="form-inline text-center px-2" readonly>
+
+                                                    <label for="category">Src Image</label>
+                                                    <input type="text" value={{quantity.srcImage}}
+                                                        class="form-inline text-center" readonly>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row py-3">
+                                        <div class="col" *ngFor="let images of product.images index as i">
+                                            <label>Image {{i+1}}</label>
+                                            <input type="text" value={{images}} readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="row py-3">
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <label>Description</label>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p>{{product.description[0]}}</p>
+                                                    <ul *ngFor="let decrip of product.description index as i">
+                                                        <li *ngIf="i != 0">{{decrip}}</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <input type="button" class="btn btn-primary" value="Edit Product" (click)="updateProductComp(updateComp)">
+                                <input type="button" id={{product._id}} class="btn btn-danger float-right"
+                                    value="Delete Product" (click)="deleteProductCard(deleteDiv)">
+                                <div class="card-body text-center" #deleteDiv style="display: none;">
+                                    <label class="text-danger">Are you sure u want to delete this product!!!</label><br>
+                                    <input type="submit" class="btn btn-danger" value="Yes" style="width: 200px;"
+                                        (click)="deleteProduct(product._id)">&nbsp;
+                                    <input type="button" class="btn btn-danger" value="No" style="width: 200px;"
+                                        (click)="closeDelete(deleteDiv)">
+                                </div>
+                                <div #updateComp style="display: none;">
+                                    <app-admin-edit-product [parentProductData]="product"></app-admin-edit-product>
+                                </div>
+
+                            </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+    <div class="tab-pane fade" id="addProduct" role="tabpanel" aria-labelledby="addProduct-tab">
+        <div class="container-fluid">
+            <h1 class="text-center"><small>Add Product</small></h1>
+        </div>
+    </div>

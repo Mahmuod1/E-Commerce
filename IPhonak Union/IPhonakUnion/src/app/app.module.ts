@@ -26,6 +26,7 @@ import { AuthInterceptor } from './auth/auth.interceptor'
 import { CollectionComponent } from './pages/collection/collection.component';
 import { AdminAddProductComponent } from './dashbored/admin-add-product/admin-add-product.component';
 import { AdminInterFaceComponent } from './dashbored/admin-inter-face/admin-inter-face.component';
+import { AdminEditProductComponent } from './dashbored/admin-edit-product/admin-edit-product.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { AdminInterFaceComponent } from './dashbored/admin-inter-face/admin-inte
     ProfilePageComponent,
     CollectionComponent,
     AdminAddProductComponent,
-    AdminInterFaceComponent
+    AdminInterFaceComponent,
+    AdminEditProductComponent
   ],
   imports: [
     BrowserModule,

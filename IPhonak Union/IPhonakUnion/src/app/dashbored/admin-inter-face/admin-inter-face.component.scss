@@ -1,0 +1,29 @@
+form .loginBtn {
+    display: inline-block;
+    text-align: center;
+	width: 100%;
+    color: white;
+    background: black;
+
+    background: linear-gradient(to left, black 50%, white 50%) right;
+    background-size: 200%;
+    transition: 1s ease-out;
+}
+form .loginBtn:hover {
+    background-position: left;
+	color: black;
+}
+
+.loginBtn button{
+	color: #fff;
+	width: 100%;
+	left: 50px;
+}
+
+.loginBtn button:hover{
+	color: black;
+}
+
+input{
+    width: 100%;
+}
