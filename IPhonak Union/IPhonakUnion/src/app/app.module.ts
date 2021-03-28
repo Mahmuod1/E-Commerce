@@ -21,7 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
-import { AuthGuard } from './auth/auth.guard';
+import { RoleGuard,AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor'
 import { CollectionComponent } from './pages/collection/collection.component';
 import { AdminAddProductComponent } from './dashbored/admin-add-product/admin-add-product.component';
@@ -70,7 +70,7 @@ import { TypeModelComponent } from './pages/type-model/type-model.component';
     FormsModule
 
   ],
-  providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},AuthGuard],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},RoleGuard,AuthGuard],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

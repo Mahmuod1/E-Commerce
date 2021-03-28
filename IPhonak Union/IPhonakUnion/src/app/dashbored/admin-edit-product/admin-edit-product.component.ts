@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { IQuantity } from 'src/app/classes/user';
 
 @Component({
   selector: 'app-admin-edit-product',
@@ -8,50 +9,65 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AdminEditProductComponent implements OnInit {
 
-  @Input() parentProductData:any;
-  productUpdateForm:any;
+  @Input() parentProductData: any;
 
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb: FormBuilder) { }
+  /* productUpdateForm!:FormGroup */
 
   ngOnInit(): void {
 
-    this.productUpdateForm=this.fb.group({
-      productName:[this.parentProductData.productName],
-      category:[this.parentProductData.category],
-      price:[this.parentProductData.price],
-      rating:[this.parentProductData.rating],
-  
-      type:this.fb.group({
-        model:[this.parentProductData.type.model],
-        type:[this.parentProductData.type.type],
-        kind:[this.parentProductData.type.kind]
-      }),
-  
-      quantity:this.fb.group({
-        quantity:[this.parentProductData.quantity],
-        srcColor:[this.parentProductData.quantity],
-        srcImage:[this.parentProductData.quantity]
-      }),
-  
-      images:[[]],
-      description:[[]]
+    console.log(this.parentProductData)
+
+    this.productUpdateForm.patchValue({
+      productName: this.parentProductData.productName,
+      category: this.parentProductData.category,
+      price: this.parentProductData.price,
+      rating: this.parentProductData.rating,
+      type: this.parentProductData.type,
+      images:[this.parentProductData.images]
+      
     })
-  
-    
-      /* this.productUpdateForm.patchValue({
-        productName:this.parentProductData.productName,
-        category:this.parentProductData.category,
-        price:this.parentProductData.price,
-        rating:this.parentProductData.rating,
-        type:this.parentProductData.type
-        
-      }) */
+
+
   }
 
+  /* ngAfterViewInit(){
+    this.parentProductData.map((d:IQuantity) =>
+    this.quantity.push(this.fb.group({quantity: d.quantity, srcColor: d.srcColor, srcImage:d.srcImage }))
+  );
+  } */
+
+  /* get quantity() {
+    return this.parentProductData.get("quantity") as FormArray;
+  } */
+
   //Update Product
- 
-  addFormContols(controls: any){
-    
+  productUpdateForm = this.fb.group({
+    productName: [''],
+    category: [''],
+    price: [''],
+    rating: [''],
+
+    type: this.fb.group({
+      model: [''],
+      type: [''],
+      kind: ['']
+    }),
+
+
+    quantity: this.fb.group({
+      quantity: [''],
+      srcColor: [''],
+      srcImage: [''],
+    }),
+
+    images: this.fb.array([]),
+    description: this.fb.array([])
+  })
+
+
+  addFormContols(controls: any) {
+
   }
 
 }

@@ -14,42 +14,43 @@ export class AdminAddProductComponent implements OnInit {
     price: [''],
     category: [''],
 
-    quantity: this.fb.group({
-      quantity: [''],
-      srcColor: [''],
-      srcImage: ['']
-    }),
-    alternativeQuantity: this.fb.array([]),
+    quantity: this.fb.array([
+      {
+        quantity: [''],
+        srcColor: [''],
+        srcImage: ['']
+      }
+    ]),
 
     type: this.fb.group({
       model: [''],
-      type: ['']
+      type: [''],
+      knid:['']
     }),
-    alternativeType: this.fb.array([]),
+    /* alternativeType: this.fb.array([]), */
 
     rating: [''],
-    description: [''],
-    alternativeDescription: this.fb.array([]),
+    description: this.fb.array([]),
 
-    images: [''],
-    alternativeImages: this.fb.array([]),
+    
+    images: this.fb.array([]),
 
   });
 
-  get alternativeQuantity() {
-    return this.registerationForm.get('alternativeQuantity') as FormArray;
+  get quantity() {
+    return this.registerationForm.get('quantity') as FormArray;
   }
 
-  get alternativeType() {
+  /* get alternativeType() {
     return this.registerationForm.get('alternativeType') as FormArray;
+  } */
+
+  get description() {
+    return this.registerationForm.get('description') as FormArray;
   }
 
-  get alternativeDescription() {
-    return this.registerationForm.get('alternativeDescription') as FormArray;
-  }
-
-  get alternativeImages() {
-    return this.registerationForm.get('alternativeImages') as FormArray;
+  get images() {
+    return this.registerationForm.get('images') as FormArray;
   }
 
   constructor(private fb: FormBuilder) { }
@@ -58,34 +59,34 @@ export class AdminAddProductComponent implements OnInit {
   }
 
   addNewQuantity() {
-    this.alternativeQuantity.push(this.fb.control(''))
+    this.quantity.push(this.fb.control(''))
   }
   removeQuantity(i: any) {
-    this.alternativeQuantity.removeAt(i);
+    this.quantity.removeAt(i);
   }
 
 
-  addNewType() {
+  /* addNewType() {
     this.alternativeType.push(this.fb.control(''))
   }
   removeType(i: any) {
     this.alternativeType.removeAt(i);
   }
-
+ */
 
   addNewDescription() {
-    this.alternativeDescription.push(this.fb.control(''))
+    this.description.push(this.fb.control(''))
   }
   removeDescription(i: any) {
-    this.alternativeDescription.removeAt(i);
+    this.description.removeAt(i);
   }
 
 
   addNewImages() {
-    this.alternativeImages.push(this.fb.control(''))
+    this.images.push(this.fb.control(''))
   }
   removeImages(i: any) {
-    this.alternativeImages.removeAt(i);
+    this.images.removeAt(i);
   }
 
 

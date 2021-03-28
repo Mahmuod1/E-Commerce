@@ -4,10 +4,14 @@ import { Observable } from 'rxjs';
 import { LoginServiceService } from '../pages/registration-page/login-service.service';
 
 
+
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
+
 
   constructor(private loginService:LoginServiceService,private router:Router){}
 
@@ -21,5 +25,21 @@ export class AuthGuard implements CanActivate {
       }
     return true;
   }
-  
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class RoleGuard implements CanActivate {
+
+  constructor(private loginService:LoginServiceService,private router:Router){}
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):boolean {
+
+    if(this.loginService.getCookie("firstName") === ""){
+      this.router.navigate(['/home-page'])
+      return false;
+    }
+    return true;
+  }
 }

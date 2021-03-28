@@ -23,6 +23,25 @@ export class LoginServiceService {
     return this._http.get<any>(this._urlProfile);
   }
 
+  getCookie(cname:string) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  fetchName(){
+    return this.getCookie("firstName")
+  }
 
   setToken(token:any){
     localStorage.setItem('token',token);

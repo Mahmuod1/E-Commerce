@@ -1,5 +1,3 @@
-<p>admin-add-product works!</p>
-
 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
     <h5 class="text-center">Welcome to Admin InterFace</h5>
     <div class="container">
@@ -9,6 +7,7 @@
                     <div class="card-footer text-center">
                         <h5>Add new product</h5>
                     </div>
+                    {{registerationForm.value |json}}
                     <div class="card-body">
                         <form [formGroup]="registerationForm">
                             <div class="form-group">
@@ -30,7 +29,7 @@
                                 <h5 class="card-header">Quantity Form </h5>
                                 <div class="card-body">
 
-                                    <div formGroupName="quantity">
+                                  <!--   <div formGroupName="quantity">
 
                                         <div class="form-group">
                                             <label>Quantity</label>
@@ -48,14 +47,13 @@
                                             <label>SrcImage</label>
                                             <input type="text" formControlName="srcImage"  class="form-control">
 
-                                        </div>
+                                        </div> -->
 
                                         <button class="btn btn-primary float-right" (click)="addNewQuantity()">Add New
                                             Quantity Form</button>
-                                    </div>
+                                    <!-- </div> -->
 
-                                    <div formArrayName="alternativeQuantity"
-                                        *ngFor="let quantity of alternativeQuantity.controls let i=index">
+                                    <div formArrayName="quantity" *ngFor="let quantity of quantity.controls let i=index">
                                         <br> <br>
                                         <label>Quantity Form Number {{i+1}}</label>
                                         <br>
@@ -100,11 +98,17 @@
                                                         
                                         </div>
 
-                                        <button class="btn btn-primary float-right" (click)="addNewType()">Add New Type
-                                            Form</button>
+                                        <div class="form-group">
+                                            <label>Kind</label>
+                                            <input type="text"  formControlName="kind" class="form-control">
+                                                        
+                                        </div>
+
+                                        <!-- <button class="btn btn-primary float-right" (click)="addNewType()">Add New Type
+                                            Form</button> -->
                                     </div>
 
-                                    <div formArrayName="alternativeType"
+                                   <!--  <div formArrayName="alternativeType"
                                         *ngFor="let type of alternativeType.controls let i=index">
                                         <br> <br>
                                         <label>Type Form Number {{i+1}}</label>
@@ -118,7 +122,7 @@
                                         <button class="btn btn-danger float-right" (click)="removeType(i)">Remove This
                                             Type</button>
                                         <br>
-                                    </div>
+                                    </div> -->
 
                                 </div>
                             </div>
@@ -138,15 +142,15 @@
 
                                     <div class="form-group">
                                         <label for="description">Description</label>
-                                        <input id="description" type="text" formControlName="description"
-                                            class="form-control">
+                                        <!-- <input id="description" type="text" formControlName="description"
+                                            class="form-control"> -->
                                         <button class="btn btn-primary float-right" (click)="addNewDescription()">Add New
                                             Description
                                             Form</button>
                                     </div>
 
-                                    <div formArrayName="alternativeDescription"
-                                        *ngFor="let type of alternativeDescription.controls let i=index">
+                                    <div formArrayName="description"
+                                        *ngFor="let type of description.controls let i=index">
                                         <br> <br>
                                         <label>Type Form Number {{i+1}}</label>
                                         <br>
@@ -169,14 +173,14 @@
 
                                     <div class="form-group">
                                         <label for="images">Images</label>
-                                        <input id="images" type="text" formControlName="images" class="form-control">
+                                        <!-- <input id="images" type="text" formControlName="images" class="form-control"> -->
                                         <button class="btn btn-primary float-right" (click)="addNewImages()">Add New
                                             Images
                                             Form</button>
                                     </div>
 
-                                    <div formArrayName="alternativeImages"
-                                        *ngFor="let type of alternativeImages.controls let i=index">
+                                    <div formArrayName="images"
+                                        *ngFor="let type of images.controls let i=index">
                                         <br> <br>
                                         <label>Type Form Number {{i+1}}</label>
                                         <br>

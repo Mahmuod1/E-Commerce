@@ -18,3 +18,9 @@ export interface IProfile{
     lastName:string,
     email:string
 }
+
+export interface IQuantity{
+    quantity:number,
+    srcColor:string,
+    srcImage:string
+}

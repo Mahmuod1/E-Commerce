@@ -9,7 +9,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
-import { AuthGuard } from './auth/auth.guard';
+import { RoleGuard,AuthGuard } from './auth/auth.guard';
 import { CollectionComponent } from './pages/collection/collection.component';
 import { AdminInterFaceComponent } from './dashbored/admin-inter-face/admin-inter-face.component';
 import { WirelessComponent } from './pages/wireless/wireless.component';
@@ -33,7 +33,7 @@ const routes: Routes = [
   {path:'profile-page',component:ProfilePageComponent,canActivate:[AuthGuard]},
   {path:'products/:type',component:ProductsComponent},
   {path:'collection/:model/:type',component:CollectionComponent},
-  {path:'dash-bored',component:AdminInterFaceComponent},
+  {path:'dash-bored',component:AdminInterFaceComponent,canActivate:[RoleGuard]},
   {path:'wireless/:kind',component:WirelessComponent},
   {path:'types/:type',component:AllTypeComponent},
   {path:'categorys/:category/:type',component:AllCategoryComponent},
