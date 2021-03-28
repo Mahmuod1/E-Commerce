@@ -82,6 +82,7 @@ rating: 4}];
       this.cartService.items=items;
       this.items=items
     })
+    this.cartService.cartStyle.next(this.cartStyle)
     this.cartService.cartStyle.subscribe(style=>{
 
       this.cartStyle=style;
@@ -238,14 +239,14 @@ navigateToCartPage(){
     document.body.style.overflow = "auto";
   }
   showCart(cart:HTMLElement){
-    /* this.cartService.cartStyle.next('transform: translateX(0)') */
-    cart.style.transform= 'translateX(0%)';
+    this.cartService.cartStyle.next('transform: translateX(0)')
+    /* cart.style.transform= 'translateX(0%)'; */
   }
 
   closeCart(cart:HTMLElement){
-    // this.cartStyle='transform: translateX(100%)';
-   /* this.cartService.cartStyle.next('transform: translateX(100%)') */
-   cart.style.transform= 'translateX(100%)';
+    this.cartStyle='transform: translateX(100%)';
+   this.cartService.cartStyle.next('transform: translateX(100%)')
+   /* cart.style.transform= 'translateX(100%)'; */
   }
 
 
