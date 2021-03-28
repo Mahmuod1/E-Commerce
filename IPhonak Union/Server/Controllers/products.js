@@ -16,7 +16,7 @@ router.post('/create',(req,resp)=> {
 })
 
 ///////////// Get "get" all Products
-router.get('/getAll',(req,resp)=>{
+router.get('/all-products',(req,resp)=>{
     Product.find({},(err,data)=>{
       if(!err){
          resp.status(200).send(data)
@@ -24,9 +24,9 @@ router.get('/getAll',(req,resp)=>{
     })
 })
 
-///////////// Delete "delete" Product by Product Name
-router.delete('/delete/:productName',(req,resp)=>{
-    Product.deleteOne({productName:req.params.productName},(err,data)=>{
+///////////// Delete "delete" Product by Product id
+router.delete('/delete/:id',(req,resp)=>{
+    Product.deleteOne({_id:req.params.id},(err,data)=>{
       if(!err){
         if(data.deletedCount == 0 )  resp.status(200).send("Product Name is not correct!!")
         else resp.status(200).send(data)
@@ -56,7 +56,7 @@ router.get('/find/:productName',(req,resp)=>{
 })
 
 ////////////// Find "get" last 5 products added to the collection
-router.get('/newReleases',(req,resp)=>{
+router.get('/new-releases',(req,resp)=>{
     Product.find({},(err,data)=>{
       if(!err){
          resp.status(200).send(data)
@@ -65,7 +65,7 @@ router.get('/newReleases',(req,resp)=>{
 })
 
 ////////////// Find "get" last 5 products with price less than 1000$
-router.get('/bestSellers',(req,resp)=>{
+router.get('/best-sellers',(req,resp)=>{
   Product.find({$or:[{price:{$lt:1000}}]},(err,data)=>{
     if(!err){
        resp.status(200).send(data)
@@ -74,7 +74,7 @@ router.get('/bestSellers',(req,resp)=>{
 })
 
 ////////////// Find "get" last 5 products with price less than 1000$
-router.get('/lastchance',(req,resp)=>{
+router.get('/last-chance-to-buy',(req,resp)=>{
   Product.find({"quantity.quantity":{ $lt: 10 }},(err,data)=>{
     if(!err){
        resp.status(200).send(data)
@@ -84,16 +84,24 @@ router.get('/lastchance',(req,resp)=>{
 
 
 ///////////// Get "get" all Products with Bundle
-router.get('/getBundle',(req,resp)=>{
+router.get('/bundles',(req,resp)=>{
   Product.find({"bundle":{$exists: true}},(err,data)=>{
     if(!err){
        resp.status(200).send(data)
     }else resp.status(400).send(err)
   })
 })
+///////////// Get "get" Products by type.kind Only
+router.get('/kind/:productKind',(req,resp)=>{
+  Product.find({"type.kind":req.params.productKind},(err,data) =>{
+    if(!err){
+      resp.status(200).send(data)
+    }else resp.status(400).send(err)
+  })
+})
 
 ///////////// Get "get" Products by typeModel and typeType 
-router.get('/:productName/:productType',(req,resp)=>{
+router.get('/full-type/:productName/:productType',(req,resp)=>{
   Product.find({"type.model":req.params.productName,"type.type":req.params.productType},(err,data) =>{
     if(!err){
       resp.status(200).send(data)
@@ -101,13 +109,33 @@ router.get('/:productName/:productType',(req,resp)=>{
   })
 })
 
-///////////// Get "get" Products by typeType Only
-router.get('/:productType',(req,resp)=>{
+router.get('/model/:modelName',(req,resp)=>{
+  Product.find({"type.model":req.params.modelName},(err,data)=>{
+    if(!err){
+      resp.status(200).send(data)
+    }else resp.status(400).send(err)
+  })
+})
+
+///////////// Get "get" Products by type.Type Only
+router.get('/type/:productType',(req,resp)=>{
   Product.find({"type.type":req.params.productType},(err,data) =>{
     if(!err){
       resp.status(200).send(data)
     }else resp.status(400).send(err)
   })
 })
+
+///////////// Get "get" Products by category type.Type
+router.get('/category-type/:category/:productType',(req,resp)=>{
+  Product.find({category:req.params.category,"type.type":req.params.productType},(err,data) =>{
+    if(!err){
+      console.log('don')
+      resp.status(200).send(data)
+    }else resp.status(400).send(err)
+  })
+})
+
+
 
 module.exports=router

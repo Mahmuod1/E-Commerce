@@ -29,6 +29,8 @@ window.location.href='http://localhost:4200/profile-page'
       },
       err => {
         this.serverErrorMessage = err.error.message;
+        console.log(this.serverErrorMessage);
+        
         event.preventDefault();
       }
     )

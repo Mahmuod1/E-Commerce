@@ -1,0 +1,88 @@
+            <div class="card my-4">
+                <form [formGroup]="productUpdateForm">
+                    <div class="card-header text-center">
+                        <input type="text" name="productName" formControlName="productName" [(value)]="parentProductData.productName" class="text-center">
+                    </div>
+                    <div class="card-body">
+                        <div class="form-inline">
+                            <div class="row align-center" style="width: 100%;">
+                                <div class="col-md-4">
+                                    <label for="category">Category</label>
+                                    <input type="text" value="" formControlName="category" class="form-inline text-center">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="category">Price</label>
+                                    <input type="text" value="" formControlName="price"
+                                        class="form-inline text-center px-2" style="width: 100%;">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="category">Rating</label>
+                                    <input type="text" value="" formControlName="rating" class="form-inline text-center">
+                                </div>
+                            </div>
+
+                            <div class="row align-center py-2" style="width: 100%;" formGroupName="type">
+                                <div class="col-md-4">
+                                    <label for="category">Model</label>
+                                    <input type="text" value="" formControlName="model" class="form-inline text-center">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="category">Type</label>
+                                    <input type="text" value="" formControlName="type"
+                                        class="form-inline text-center px-2" readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="category">Kind</label>
+                                    <input type="text" value="" formControlName="kind" class="form-inline text-center">
+                                </div>
+                            </div>
+
+                            <div class="row py-3 h-100 w-100" formGroupName="quantity">
+                                <div class="col-4 mb-4">
+                                    <div class="card w-100">
+                                        <div class="card-body" *ngFor="let quantity of parentProductData.quantity index as i">
+                                            <label for="category">Quantity</label>
+                                            <input type="text" value="" formControlName="quantity" class="form-inline text-center">
+
+                                            <label for="category">Src Color</label>
+                                            <input type="text" value="" class="form-inline text-center px-2" formControlName="srcColor">
+
+                                            <label for="category">Src Image</label>
+                                            <input type="text" value="" class="form-inline text-center" formControlName="srcImage">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row py-3">
+                                <div class="col">
+                                    <label>Image</label>
+                                    <ng-template *ngFor="let image of parentProductData.images index as i">
+                                        <input type="text" value="" formControlName="images">
+                                    </ng-template>
+                                </div>
+                            </div>
+
+                            <div class="row py-3">
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <label>Description</label>
+                                        </div>
+                                        <div class="card-body">
+                                            <ng-template *ngFor="let description of parentProductData.description index as i">
+                                                <input type="text" value="" class="py-1" style="width: 100%;" formControlName="description">
+                                            </ng-template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <input type="button" class="btn btn-primary" value="Save" (click)="addFormContols(productUpdateForm)">
+                    </div>
+                </form>
+            </div>
+            
+        

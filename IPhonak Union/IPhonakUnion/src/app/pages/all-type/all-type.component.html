@@ -12,7 +12,7 @@
   </div>
   <div *ngIf="productsList.length != 0" class="d-flex flex-wrap align-content-start">
     <div class="col-12 py-2 text-center bg-white border component-title">
-      <h2>{{activeMedol}} / {{activeParamsType}}</h2>
+      <h2>{{type}} </h2>
     </div>
     <div *ngFor="let product of productsList index as x" class="col-lg-4 col-md-6 col-sm-12 text-center">
       <a class="text-body text-decoration-none" routerLink="/product-details/{{product.productName}}">

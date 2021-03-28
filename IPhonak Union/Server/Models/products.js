@@ -18,7 +18,7 @@ const productSchema = new Schema(
     },
     type:{
       type:Object,
-      required:true
+      required:true,
     },
     bundle:{
       type:Boolean

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormArray, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/classes/user';
+import { ForbiddenNameValidator } from 'src/app/shared/userNameValidation';
 import { RigistrationServiceService } from './service/rigistration-service.service';
 
 @Component({
@@ -16,10 +17,10 @@ export class LoginPageComponent implements OnInit {
 
 
   registerationForm = this.fb.group({
-    firstName: ['',[Validators.required,Validators.minLength(4)]],
+    firstName: ['',[Validators.required,Validators.minLength(4),ForbiddenNameValidator(/admin/)]],
     lastName: ['',[Validators.required,Validators.minLength(4)]],
     email: ['',[Validators.required,Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]],
-    password: ['',[Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$/)]]
+    password: ['',[Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$/)]]
   })
 
   get firstName() {
@@ -44,8 +45,7 @@ export class LoginPageComponent implements OnInit {
   submitData(formData: User,event:Event){
     this.registrationService.registerForm(formData).subscribe(
       data => {
-        console.log("Success:",data)
-        this.router.navigate(['/home-page']);
+        this.router.navigate(['/login']);
       },
       error => {
         this.errorFromServer=true;

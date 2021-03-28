@@ -25,6 +25,13 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor'
 import { CollectionComponent } from './pages/collection/collection.component';
 import { AdminAddProductComponent } from './dashbored/admin-add-product/admin-add-product.component';
+import { AdminInterFaceComponent } from './dashbored/admin-inter-face/admin-inter-face.component';
+import { AdminEditProductComponent } from './dashbored/admin-edit-product/admin-edit-product.component';
+import { AsideLinksComponent } from './components/aside-links/aside-links.component';
+import { WirelessComponent } from './pages/wireless/wireless.component';
+import { AllTypeComponent } from './pages/all-type/all-type.component';
+import { AllCategoryComponent } from './pages/all-category/all-category.component';
+import { TypeModelComponent } from './pages/type-model/type-model.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +51,14 @@ import { AdminAddProductComponent } from './dashbored/admin-add-product/admin-ad
     CartComponent,
     ProfilePageComponent,
     CollectionComponent,
-    AdminAddProductComponent
+    AdminAddProductComponent,
+    AdminInterFaceComponent,
+    AdminEditProductComponent,
+    AsideLinksComponent,
+    WirelessComponent,
+    AllTypeComponent,
+    AllCategoryComponent,
+    TypeModelComponent
   ],
   imports: [
     BrowserModule,
