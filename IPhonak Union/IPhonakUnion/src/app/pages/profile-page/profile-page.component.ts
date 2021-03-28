@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IProfile } from 'src/app/classes/user';
+import IUser from 'src/app/shared/user';
 import { LoginServiceService } from '../registration-page/login-service.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { LoginServiceService } from '../registration-page/login-service.service'
 })
 export class ProfilePageComponent implements OnInit {
 
-  userDetails:any;
+  userDetails:IUser={cart:[],email:'',firstName:'',lastName:'',password:''};
   checkAdmin:boolean=false;
 
   checkFirstName(){
@@ -41,6 +41,6 @@ export class ProfilePageComponent implements OnInit {
   }
 
   openAdminDashBored(){
-    console.log('Open Admin dash bored');
+    this.router.navigate(['/dash-bored']);
   }
 }

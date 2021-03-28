@@ -16,9 +16,9 @@ export class AdminAddProductComponent implements OnInit {
 
     quantity: this.fb.array([
       {
-        quantity: [''],
-        srcColor: [''],
-        srcImage: ['']
+        quantity: new FormControl(''),
+        srcColor: new FormControl(''),
+        srcImage: new FormControl('')
       }
     ]),
 
