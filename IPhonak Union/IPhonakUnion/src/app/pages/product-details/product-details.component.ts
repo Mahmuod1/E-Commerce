@@ -1,7 +1,7 @@
 import { CartService } from './../cart/cart.service';
 import { ProductsService } from './../../components/products/products.service';
 import { IProduct } from './../../shared/product';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap, NavigationEnd } from '@angular/router';
 import { ProductByNameService } from './product-by-name.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
@@ -12,12 +12,15 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
+
+
   constructor(private productByName: ProductByNameService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private cartService:CartService
-  ) { }
+  ) {
 
+   }
 imageColorIndex=0;
   quantityIsExceed=false;
   recommendedProducts: any;
@@ -25,21 +28,36 @@ imageColorIndex=0;
   isLoaded = false;
   addToCard = 'addToCard'
   productName: any;
-  product: IProduct | any;
-  // when Initial the Component
+
   user:any;
+  product:IProduct[]=[{images: [''],quantity: [
+    {srcColor: "",
+        srcImage: "",
+        quantity: 0}],
+description: [
+    ""
+],
+productName: "",
+price: 0,
+category: "",
+type: {
+    model: "",
+    type: ""
+},
+rating: 0}];
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((product: ParamMap) => {
       this.productName = product.get('productName')
 
 
       this.productByName.getProductByName(this.productName).subscribe(product => {
-        if (product) {
+        // if (product) {
 
-          this.isLoaded = true;
-        }
+        //   this.isLoaded = true;
+        // }
 
         this.product = product;
+        console.log(this.product)
       })
     })
     this.productByName.getNewReleasesProducts().subscribe(products => {
@@ -51,7 +69,11 @@ imageColorIndex=0;
     })
 
   }
-
+  ngOnDestroy(){
+    // if (this.mySubscription) {
+    //   this.mySubscription.unsubscribe();
+    // }
+  }
   // After Initial the Component
   customOptions: OwlOptions = {
     animateOut: 'fadeOut',
@@ -226,13 +248,14 @@ if(this.quantity<=this.product[0]?.quantity[this.imageColorIndex].quantity){
 
 
 addToCartFromDetailsPage(product:any){
-  // this.productByName.getUserToke();
+const token=this.cartService.getUserToken();
+if(token !==''){
+  this.cartService.cartStyle.next('transform:translateX(0)')
   this.cartService.addToCart(this.user[0].cart,product);
-  console.log(this.user[0])
+this.cartService.subscriptProduct.next(this.user)
  try {
 
   this.cartService.updateUserCart({cart:this.user[0].cart}).subscribe(user=>{
-    console.log(user)
 
   })
  } catch (error) {
@@ -240,7 +263,11 @@ addToCartFromDetailsPage(product:any){
  }
 
 }
+else{
+  this.router.navigate(['login'])
+}
 
+}
 
 
 }

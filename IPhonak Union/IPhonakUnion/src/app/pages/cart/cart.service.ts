@@ -1,4 +1,4 @@
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
@@ -9,6 +9,17 @@ import { catchError } from 'rxjs/operators';
 export class CartService {
 
   constructor(private _http:HttpClient) { }
+product:any=''
+subscriptProduct=new BehaviorSubject(this.product)
+style='transform:translateX(100%)'
+cartStyle=new BehaviorSubject(this.style)
+items=0
+
+cartItems=new BehaviorSubject(this.items)
+
+
+
+
 addToCart(cart:any,productAddedToCart:any){
   const isInCart= cart.some((product:any,index:any)=>{
 return product.productName == productAddedToCart.productName
@@ -50,16 +61,42 @@ return cart;
 }
 _url='http://localhost:4750/account/users/get/'
 getUserFromDataBase(){
-  const userId=JSON.parse(this.getUserToken())
- return this._http.get(this._url+userId).pipe(
-catchError((error)=>{
-  return throwError(error.message)
-})
- )
+  if(this.getUserToken() !==''){
+    const userId:string=JSON.parse(this.getUserToken())
 
+    return this._http.get(this._url+userId).pipe(
+   catchError((error)=>{
+     return throwError(error.message)
+   })
+    )
+  }
+else{
+  return throwError('user Not Login')
+}
+
+}
+total=0;
+user:any;
+
+updateTotalPrice(){
+  this.items=0;
+  this.total=0;
+  this.getUserFromDataBase().subscribe((user:any)=>{
+    this.user=user;
+  })
+  this.user[0].cart.forEach((cart:any) => {
+  this.total+=(cart.price * cart.quantity)
+  this.items++;
+  this.cartItems.next(this.items)
+  });
+  return this.total;
 }
 
 updateUserCart(user:any){
+  if(!this.getUserToken()){
+return throwError('error')
+  }
+else{
   const userId=JSON.parse(this.getUserToken())
   return this._http.put('http://localhost:4750/account/users/update/'+userId,user).pipe(
     catchError(error=>{
@@ -67,14 +104,20 @@ updateUserCart(user:any){
     })
   )
 }
+}
 
 
 getUserToken(){
   const token= localStorage.getItem('token');
-  const user_id=token!.split('.')[1];
-  console.log(token?.split('.')[1])
-  const id=window.atob(user_id).split(',')[0].split(':')[1]
- return id;
+  if(token !== null){
+    const user_id=token!.split('.')[1];
+    console.log(token?.split('.')[1])
+    const id=window.atob(user_id).split(',')[0].split(':')[1]
+   return id;
+  }
+else{
+  return ''
+}
 }
 
 

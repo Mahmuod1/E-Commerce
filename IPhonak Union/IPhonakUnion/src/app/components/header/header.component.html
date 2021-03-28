@@ -4,28 +4,48 @@
       <!-- Start Search Section -->
       <div class="">
         <!-- Show Menu Button -->
-        <button class="open-menu d-xl-none" (click)="openMenu()"><i class="fas fa-bars"></i></button>
+        <button class="open-menu d-xl-none" (click)="openMenu()">
+          <i class="fas fa-bars"></i>
+        </button>
         <!-- Search Form  -->
         <form class="search-form" [class.active]="searchMod">
-          <input type="search" placeholder="SEARCH..." class="search" (focus)="openSearchBox()" [(ngModel)]="SearchValue" autocomplete="off"name="Search" (keyup)="search()">
+          <input
+            type="search"
+            placeholder="SEARCH..."
+            class="search"
+            (focus)="openSearchBox()"
+            [(ngModel)]="SearchValue"
+            autocomplete="off"
+            name="Search"
+            (keyup)="search()"
+          />
           <button type="submit"><i class="fas fa-search"></i></button>
           <div class="search-box" [class.open]="searchMod" #searchBox>
             <div>
               <button (click)="closeSearchBox()">X</button>
             </div>
-            <div *ngIf="SearchValue!==''">
-              <div class="border-bottom d-flex mb-5 mt-5 pt-5 text-capitalize justify-content-between">
-                <p>{{productsSearch.length}} results</p>
-                <a [routerLink]="['/search',SearchValue]" (click)="saveSearchData()">View all</a>
+            <div *ngIf="SearchValue !== ''">
+              <div
+                class="border-bottom d-flex mb-5 mt-5 pt-5 text-capitalize justify-content-between"
+              >
+                <p>{{ productsSearch.length }} results</p>
+                <a
+                  [routerLink]="['/search', SearchValue]"
+                  (click)="saveSearchData()"
+                  >View all</a
+                >
               </div>
               <div class="d-flex">
                 <!-- Start -->
                 <!-- Start Product Search Conatiner -->
                 <div class="d-flex">
-                  <div class="col-3" *ngFor="let product of productsSearch | slice: 0: 4" >
-                    <img src="{{product.image}}" alt="">
-                    <h5>{{product.name}}</h5>
-                    <p>{{product.price | currency :"EGP":"code"}}</p>
+                  <div
+                    class="col-3"
+                    *ngFor="let product of productsSearch | slice: 0:4"
+                  >
+                    <img src="{{ product.image }}" alt="" />
+                    <h5>{{ product.name }}</h5>
+                    <p>{{ product.price | currency: "EGP":"code" }}</p>
                   </div>
                 </div>
                 <!-- End Product Search Container -->
@@ -36,24 +56,92 @@
       </div>
       <!-- End Search Section -->
       <div class="logo">
-        <h2><a routerLink="home-page" class="text-body text-decoration-none">IPhonak union</a></h2>
+        <h2>
+          <a routerLink="home-page" class="text-body text-decoration-none"
+            >IPhonak union</a
+          >
+        </h2>
       </div>
       <div class="icons">
-        <a routerLink='/profile-page'><i class="far fa-user-circle"></i></a>
-        <a (click)="showCart(cart)"><i class="fas fa-shopping-bag"></i></a>
+        <a routerLink="/profile-page"><i class="far fa-user-circle"></i></a>
+
+        <a (click)="showCart(cart)"><i class="fas fa-shopping-bag"  ></i>
+        <span class="items" style="position: relative;
+        top: -16px;
+        left: -8px;
+        font-size: 14px;
+        background-color: #222;
+        border-radius: 50%;
+        padding: 1px 2px;
+        color: white;
+        font-weight: 700;" >{{items}}</span>
+        </a>
       </div>
     </div>
-    <div class="user-cart" #cart>
+    <!-- Start CART Modal  -->
+    <div class="user-cart" [style]="cartStyle" #cart>
       <div class="card">
         <div class="card-header d-flex justify-content-between">
           <h3>cart</h3>
           <span class="close" (click)="closeCart(cart)">X</span>
         </div>
-        <div class="card-body">
-          <p>your cart is empty</p>
+        <div class="card-body" style="overflow: auto">
+   <div *ngIf='items==0'>Cart Is Empty</div>
+   <div *ngIf='items>0'>
+    <div class="mb-5">
+      <div *ngFor="let product of user![0]?.cart">
+        <div class="row">
+          <div class="col-5">
+            <img [src]="product.image" class="w-100 rounded" />
+          </div>
+          <div class="col-7 d-flex flex-column">
+            <small style="font-size: small">{{
+              product.productName
+            }}</small>
+            <div class="price">
+              <small>{{product.price}}</small>
+            </div>
+            <div class="border-gray">
+              <div class="cart_item_text">
+                <i
+                  #add
+                  class="fas fa-plus notFinished"
+                  (click)="addQuantity(product.quantity, product, $event)"
+                  style="font-size: smaller"
+                ></i>
+                {{ product.quantity }}
+                <i
+                  class="fas fa-window-minimize notFinished"
+                  (click)="minQuantity(product.quantity, product, add)"
+                  style="font-size: smaller"
+                ></i>
+              </div>
+            </div>
+            <div>
+              <span
+                (click)="deleteProductFromCart(product)"
+                class="remove-btn"
+                >Remove</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="total-price mt-5 bg-white" style="position: fixed ; bottom: 0;">
+      <h5>Total:      {{total}}</h5>
+
+<div class="btn-container" (click)='navigateToCartPage()'>
+<div class="btn from-left carousel-Btn" >view cart</div>
+</div>
+</div>
+   </div>
         </div>
       </div>
     </div>
+    <!-- End Cart Modal -->
     <!-- End Logo And Search Section -->
     <div class="row menu">
       <ul class="main-menu">
@@ -63,9 +151,11 @@
             <div>
               <h5><a>Shop</a></h5>
               <ul>
-                <li><a routerLink='products/getAll'>All Product</a></li>
-                <li><a routerLink='products/newReleases'>New Releases</a></li>
-                <li><a routerLink='products/lastchance'>Last Chance To Buy</a></li>
+                <li><a routerLink="products/getAll">All Product</a></li>
+                <li><a routerLink="products/newReleases">New Releases</a></li>
+                <li>
+                  <a routerLink="products/lastchance">Last Chance To Buy</a>
+                </li>
               </ul>
               <h5><a>Wireless Charging</a></h5>
               <ul>
@@ -205,13 +295,18 @@
       </ul>
     </div>
     <!-- Start Mobil Nav Bar -->
-    <nav class="menu-md mobil-menu"  [class.animat]="screenMdActive">
+    <nav class="menu-md mobil-menu" [class.animat]="screenMdActive">
       <button (click)="openMenu()">X</button>
 
       <div class="menu-container">
         <ul class="main-menu-md">
           <li>
-            <div class="main-links-container navbar-toggle mb-3" data-toggle="collapse" data-target="#ShopByCollection" (click)="togglePLus(toggleBtn)">
+            <div
+              class="main-links-container navbar-toggle mb-3"
+              data-toggle="collapse"
+              data-target="#ShopByCollection"
+              (click)="togglePLus(toggleBtn)"
+            >
               <a>Shop By Collection</a>
               <button class="toggle-button">
                 <i #toggleBtn class="toggle-plus"></i>
@@ -219,20 +314,30 @@
             </div>
             <div class="submenu collapse" id="ShopByCollection">
               <div>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#all-products" (click)="togglePLus(toggleBtn1)">
+                <div
+                  class="d-flex justify-content-between px-2 py-3"
+                  data-toggle="collapse"
+                  data-target="#all-products"
+                  (click)="togglePLus(toggleBtn1)"
+                >
                   <h5><a>All Products</a></h5>
-                  <button  class="toggle-button">
+                  <button class="toggle-button">
                     <i #toggleBtn1 class="toggle-plus"></i>
                   </button>
                 </div>
-                <ul class="collapse " id="all-products">
+                <ul class="collapse" id="all-products">
                   <li><a routerLink="products">All Product</a></li>
                   <li><a>New Releases</a></li>
                   <li><a>Last Chance To Buy</a></li>
                 </ul>
-                <div class="d-flex justify-content-between px-2 py-3"  data-toggle="collapse" data-target="#WirelessCharging" (click)="togglePLus(toggleBtn3)">
+                <div
+                  class="d-flex justify-content-between px-2 py-3"
+                  data-toggle="collapse"
+                  data-target="#WirelessCharging"
+                  (click)="togglePLus(toggleBtn3)"
+                >
                   <h5><a>Wireless Charging</a></h5>
-                  <button  class="toggle-button">
+                  <button class="toggle-button">
                     <i #toggleBtn3 class="toggle-plus"></i>
                   </button>
                 </div>
@@ -243,9 +348,14 @@
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#ProtectCarry" (click)="togglePLus(toggleBtn4)">
+                <div
+                  class="d-flex justify-content-between px-2 py-3"
+                  data-toggle="collapse"
+                  data-target="#ProtectCarry"
+                  (click)="togglePLus(toggleBtn4)"
+                >
                   <h5><a>Protect & Carry</a></h5>
-                  <button  class="toggle-button">
+                  <button class="toggle-button">
                     <i #toggleBtn4 class="toggle-plus"></i>
                   </button>
                 </div>
@@ -260,9 +370,14 @@
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3"  data-toggle="collapse" data-target="#cables" (click)="togglePLus(toggleBtn5)">
+                <div
+                  class="d-flex justify-content-between px-2 py-3"
+                  data-toggle="collapse"
+                  data-target="#cables"
+                  (click)="togglePLus(toggleBtn5)"
+                >
                   <h5><a>Cables</a></h5>
-                  <button  class="toggle-button">
+                  <button class="toggle-button">
                     <i #toggleBtn5 class="toggle-plus"></i>
                   </button>
                 </div>
@@ -278,9 +393,14 @@
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#powerSources" (click)="togglePLus(toggleBtn6)">
+                <div
+                  class="d-flex justify-content-between px-2 py-3"
+                  data-toggle="collapse"
+                  data-target="#powerSources"
+                  (click)="togglePLus(toggleBtn6)"
+                >
                   <h5><a>Power Sources</a></h5>
-                  <button  class="toggle-button">
+                  <button class="toggle-button">
                     <i #toggleBtn6 class="toggle-plus"></i>
                   </button>
                 </div>
@@ -289,9 +409,14 @@
                   <li><a>Power Banks</a></li>
                   <li><a>Car Chargers</a></li>
                 </ul>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#hubs" (click)="togglePLus(toggleBtn7)">
+                <div
+                  class="d-flex justify-content-between px-2 py-3"
+                  data-toggle="collapse"
+                  data-target="#hubs"
+                  (click)="togglePLus(toggleBtn7)"
+                >
                   <h5><a>Hubs</a></h5>
-                  <button  class="toggle-button">
+                  <button class="toggle-button">
                     <i #toggleBtn7 class="toggle-plus"></i>
                   </button>
                 </div>
@@ -300,9 +425,14 @@
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3"  data-toggle="collapse" data-target="#speakers" (click)="togglePLus(toggleBtn8)">
+                <div
+                  class="d-flex justify-content-between px-2 py-3"
+                  data-toggle="collapse"
+                  data-target="#speakers"
+                  (click)="togglePLus(toggleBtn8)"
+                >
                   <h5><a>Speakers</a></h5>
-                  <button  class="toggle-button">
+                  <button class="toggle-button">
                     <i #toggleBtn8 class="toggle-plus"></i>
                   </button>
                 </div>
@@ -313,7 +443,12 @@
             </div>
           </li>
           <li>
-            <div class="main-links-container my-3"  data-toggle="collapse" data-target="#ShopBySevice" (click)="togglePLus(toggleBtn9)">
+            <div
+              class="main-links-container my-3"
+              data-toggle="collapse"
+              data-target="#ShopBySevice"
+              (click)="togglePLus(toggleBtn9)"
+            >
               <a>Shop By Device</a>
               <button class="toggle-button">
                 <i #toggleBtn9 class="toggle-plus"></i>
@@ -321,7 +456,12 @@
             </div>
             <div class="submenu collapse" id="ShopBySevice">
               <div>
-                <div class="d-flex justify-content-between px-2 py-3"  data-toggle="collapse" data-target="#iphone" (click)="togglePLus(iphone)">
+                <div
+                  class="d-flex justify-content-between px-2 py-3"
+                  data-toggle="collapse"
+                  data-target="#iphone"
+                  (click)="togglePLus(iphone)"
+                >
                   <h5><a>iPhone</a></h5>
                   <button class="toggle-button">
                     <i #iphone class="toggle-plus"></i>
@@ -342,7 +482,12 @@
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#airPods"(click)="togglePLus(airPods)">
+                <div
+                  class="d-flex justify-content-between px-2 py-3"
+                  data-toggle="collapse"
+                  data-target="#airPods"
+                  (click)="togglePLus(airPods)"
+                >
                   <h5><a>AirPods</a></h5>
                   <button class="toggle-button">
                     <i #airPods class="toggle-plus"></i>
@@ -355,7 +500,12 @@
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#macBook" (click)="togglePLus(macBook)">
+                <div
+                  class="d-flex justify-content-between px-2 py-3"
+                  data-toggle="collapse"
+                  data-target="#macBook"
+                  (click)="togglePLus(macBook)"
+                >
                   <h5><a>MacBook</a></h5>
                   <button class="toggle-button">
                     <i #macBook class="toggle-plus"></i>
@@ -367,7 +517,12 @@
                   <li><a>15" MacBooks</a></li>
                   <li><a>16" MacBooks</a></li>
                 </ul>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#appleWatch" (click)="togglePLus(appleWatch)">
+                <div
+                  class="d-flex justify-content-between px-2 py-3"
+                  data-toggle="collapse"
+                  data-target="#appleWatch"
+                  (click)="togglePLus(appleWatch)"
+                >
                   <h5><a>Apple Watch</a></h5>
                   <button class="toggle-button">
                     <i #appleWatch class="toggle-plus"></i>
@@ -379,7 +534,12 @@
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#iPad" (click)="togglePLus(iPad)">
+                <div
+                  class="d-flex justify-content-between px-2 py-3"
+                  data-toggle="collapse"
+                  data-target="#iPad"
+                  (click)="togglePLus(iPad)"
+                >
                   <h5><a>iPad</a></h5>
                   <button class="toggle-button">
                     <i #iPad class="toggle-plus"></i>
@@ -395,7 +555,12 @@
             </div>
           </li>
           <li>
-            <div class="main-links-container my-3" data-toggle="collapse" data-target="#explore" (click)="togglePLus(explore)">
+            <div
+              class="main-links-container my-3"
+              data-toggle="collapse"
+              data-target="#explore"
+              (click)="togglePLus(explore)"
+            >
               <a>Explore</a>
               <button class="toggle-button">
                 <i #explore class="toggle-plus"></i>
@@ -403,7 +568,12 @@
             </div>
             <div class="submenu collapse" id="explore">
               <div>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#collections" (click)="togglePLus(collections)">
+                <div
+                  class="d-flex justify-content-between px-2 py-3"
+                  data-toggle="collapse"
+                  data-target="#collections"
+                  (click)="togglePLus(collections)"
+                >
                   <h5><a>Collections</a></h5>
                   <button class="toggle-button">
                     <i #collections class="toggle-plus"></i>
@@ -418,7 +588,12 @@
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#collaborations" (click)="togglePLus(collaborations)">
+                <div
+                  class="d-flex justify-content-between px-2 py-3"
+                  data-toggle="collapse"
+                  data-target="#collaborations"
+                  (click)="togglePLus(collaborations)"
+                >
                   <h5><a>Collaborations</a></h5>
                   <button class="toggle-button">
                     <i #collaborations class="toggle-plus"></i>
@@ -431,7 +606,12 @@
                 </ul>
               </div>
               <div>
-                <div class="d-flex justify-content-between px-2 py-3" data-toggle="collapse" data-target="#journal" (click)="togglePLus(journal)">
+                <div
+                  class="d-flex justify-content-between px-2 py-3"
+                  data-toggle="collapse"
+                  data-target="#journal"
+                  (click)="togglePLus(journal)"
+                >
                   <h5><a>Journal</a></h5>
                   <button class="toggle-button">
                     <i #journal class="toggle-plus"></i>
@@ -446,18 +626,16 @@
         </ul>
 
         <div class="login-search">
-          <p><a routerLink='/login'>log in</a></p>
+          <p><a routerLink="/login">log in</a></p>
           <p><a (click)="openSearchBox()">search</a></p>
         </div>
-
       </div>
       <div class="links">
-        <a ><i class="fab fa-instagram"></i></a>
-        <a ><i class="fab fa-facebook-f"></i></a>
-        <a ><i class="fab fa-twitter"></i></a>
-        <a ><i class="fab fa-linkedin"></i></a>
+        <a><i class="fab fa-instagram"></i></a>
+        <a><i class="fab fa-facebook-f"></i></a>
+        <a><i class="fab fa-twitter"></i></a>
+        <a><i class="fab fa-linkedin"></i></a>
       </div>
-
     </nav>
     <!-- End Mobil Nav Bar -->
   </div>

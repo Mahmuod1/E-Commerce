@@ -2,7 +2,7 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a routerLink="/home-page" class="text-dark">Home</a></li>
-      <li class="breadcrumb-item active" >{{product[0]?.productName}}</li>
+      <li class="breadcrumb-item active">{{product[0]?.productName}}</li>
     </ol>
   </nav>
   <div class="row d-flex">
@@ -48,12 +48,14 @@
           <div class="row justify-content-between d-flex flex-row">
             <div class="quantity col-md-4 col-sm border">
               <div class="d-flex row">
-                <div class="col-md-4"><i class="fas fa-window-minimize notFinished" (click)='minQuantity($event,add)' style=" font-size: large;"></i>
+                <div class="col-md-4"><i class="fas fa-window-minimize notFinished" (click)='minQuantity($event,add)'
+                    style=" font-size: large;"></i>
                 </div>
                 <div class="col-md-4">
                   <div>{{quantity}}</div>
                 </div>
-                <div class="mt-1 col-md-4 "><i #add class="fas fa-plus notFinished   " (click)='addQuantity($event)' style="font-size: large; "></i>
+                <div class="mt-1 col-md-4 "><i #add class="fas fa-plus notFinished   " (click)='addQuantity($event)'
+                    style="font-size: large; "></i>
                 </div>
 
               </div>
@@ -87,11 +89,18 @@
 
           <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
             <div class="card-body">
-              {{product[0].description[0]}}
+
               <ul>
-                <li>{{product[0].description[1]}}</li>
-                <li>{{product[0].description[2]}}</li>
-                <li>{{product[0].description[3]}}</li>
+                <li> {{product[0].description[0]}}</li>
+                <div *ngFor='let description of product[0].description index as indx'>
+
+                  <div *ngIf='indx>0'>
+                    <li>{{description}}</li>
+                  </div>
+
+                </div>
+
+
               </ul>
             </div>
           </div>
@@ -118,14 +127,9 @@
       </div>
     </div>
     <div class="col-md-5 order-1 product-img ">
-      <div *ngIf='!isLoaded'>
-        <div class="spinner-grow text-dark" role="status">
 
-        </div>
 
-      </div>
-
-      <div *ngIf='isLoaded'>
+      <div>
         <div class="owl-container">
 
           <owl-carousel-o #owl [options]="customOptions">
