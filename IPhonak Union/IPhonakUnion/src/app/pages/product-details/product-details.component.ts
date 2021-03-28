@@ -30,21 +30,7 @@ imageColorIndex=0;
   productName: any;
 
   user:any;
-  product:IProduct[]=[{images: [''],quantity: [
-    {srcColor: "",
-        srcImage: "",
-        quantity: 0}],
-description: [
-    ""
-],
-productName: "",
-price: 0,
-category: "",
-type: {
-    model: "",
-    type: ""
-},
-rating: 0}];
+  product:IProduct={ productName:"",price:0,quantity:[{quantity:0,srcColor:"",srcImage:""}],category:"",type:{model:"",type:""},description:[],images:[],rating:0};
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((product: ParamMap) => {
       this.productName = product.get('productName')
@@ -56,7 +42,7 @@ rating: 0}];
         //   this.isLoaded = true;
         // }
 
-        this.product = product;
+        this.product = product[0];
         console.log(this.product)
       })
     })
@@ -162,12 +148,12 @@ rating: 0}];
 
   showSmallSlider(e: any) {
     let src = e.target.getAttribute('src')
-    this.product[0].images[0] = src
+    this.product.images[0] = src
   }
 
   replaceImage(colorIndex: any) {
 this.imageColorIndex=colorIndex;
-    this.product[0].images[0] = this.product[0].quantity[colorIndex].srcImage;
+    this.product.images[0] = this.product.quantity[colorIndex].srcImage;
     this.quantity=1;
   }
 
@@ -211,7 +197,7 @@ this.imageColorIndex=colorIndex;
     owl.next()
   }
   addQuantity(e: any) {
-    const productQuantity = this.product[0].quantity[this.imageColorIndex].quantity;
+    const productQuantity = this.product.quantity[this.imageColorIndex].quantity;
     if (this.quantity >= productQuantity) {
       e.target.classList.remove('notFinished')
       e.target.classList.add('finished')
@@ -235,7 +221,7 @@ minQuantity(e: any,add:any) {
     else {
       this.quantity--;
       this.quantityIsExceed=false;
-if(this.quantity<=this.product[0]?.quantity[this.imageColorIndex].quantity){
+if(this.quantity<=this.product.quantity[this.imageColorIndex].quantity){
   add.classList.add('notFinished')
   add.classList.remove('finished')
 

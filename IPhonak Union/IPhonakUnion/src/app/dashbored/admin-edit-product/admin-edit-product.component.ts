@@ -15,9 +15,6 @@ export class AdminEditProductComponent implements OnInit {
   /* productUpdateForm!:FormGroup */
 
   ngOnInit(): void {
-
-    console.log(this.parentProductData)
-
     this.productUpdateForm.patchValue({
       productName: this.parentProductData.productName,
       category: this.parentProductData.category,

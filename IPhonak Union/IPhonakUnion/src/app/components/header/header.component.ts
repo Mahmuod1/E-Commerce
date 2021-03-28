@@ -238,12 +238,14 @@ navigateToCartPage(){
     document.body.style.overflow = "auto";
   }
   showCart(cart:HTMLElement){
-    this.cartService.cartStyle.next('transform: translateX(0)')
+    /* this.cartService.cartStyle.next('transform: translateX(0)') */
+    cart.style.transform= 'translateX(0%)';
   }
 
   closeCart(cart:HTMLElement){
     // this.cartStyle='transform: translateX(100%)';
-   this.cartService.cartStyle.next('transform: translateX(100%)')
+   /* this.cartService.cartStyle.next('transform: translateX(100%)') */
+   cart.style.transform= 'translateX(100%)';
   }
 
 

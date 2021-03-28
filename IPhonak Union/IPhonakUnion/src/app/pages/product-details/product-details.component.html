@@ -2,19 +2,19 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a routerLink="/home-page" class="text-dark">Home</a></li>
-      <li class="breadcrumb-item active">{{product[0]?.productName}}</li>
+      <li class="breadcrumb-item active">{{product.productName}}</li>
     </ol>
   </nav>
   <div class="row d-flex">
     <div class="col-md-6 order-2 product-details pl-4 ml-4 pb-5 mb-5">
       <div class="product-name">
-        <h3 *ngIf='product[0]?.productName'>{{product[0]?.productName}}</h3>
+        <h3 *ngIf='product.productName'>{{product.productName}}</h3>
       </div>
       <p>The Textured Italian leather Iphone case</p>
       <div class="row">
         <div class="col-6 ">
           <div class="colors-container d-flex">
-            <div *ngFor='let colorImage of product[0].quantity index as indx'>
+            <div *ngFor='let colorImage of product.quantity index as indx'>
               <span class="img-color-src"><img class="src" (click)='replaceImage(indx)' style="cursor: pointer;"
                   [src]="colorImage.srcColor" alt=""></span>
             </div>
@@ -42,7 +42,7 @@
           </div>
         </div>
         <div class="col-6">
-          <div class="row pt-4 pr-1 pl-1 pb-4 custome-border text-center">{{product[0].price | currency:'EPG'}}
+          <div class="row pt-4 pr-1 pl-1 pb-4 custome-border text-center">{{product.price | currency:'EPG'}}
 
           </div>
           <div class="row justify-content-between d-flex flex-row">
@@ -65,9 +65,9 @@
               cannot buy more than this quantity</div>
             <div class="btn-container col-md-8 col-sm-12" style="width:73% ;">
               <div class="btn from-left carousel-Btn" (click)='addToCartFromDetailsPage({
-                productName:product[0].productName,
-                image:product[0].images[0],
-                price:product[0].price,
+                productName:product.productName,
+                image:product.images[0],
+                price:product.price,
                 quantity:quantity,
                 imgIndex:imageColorIndex
 
@@ -91,8 +91,8 @@
             <div class="card-body">
 
               <ul>
-                <li> {{product[0].description[0]}}</li>
-                <div *ngFor='let description of product[0].description index as indx'>
+                <li> {{product.description[0]}}</li>
+                <div *ngFor='let description of product.description index as indx'>
 
                   <div *ngIf='indx>0'>
                     <li>{{description}}</li>
@@ -133,7 +133,7 @@
         <div class="owl-container">
 
           <owl-carousel-o #owl [options]="customOptions">
-            <ng-container *ngFor="let slide of product[0].images index as i;" ;>
+            <ng-container *ngFor="let slide of product.images index as i;" ;>
 
               <ng-template carouselSlide>
 
@@ -155,7 +155,7 @@
           <div class="owl-container">
 
             <owl-carousel-o #owl [options]="customOptionsSmallSlider">
-              <ng-container *ngFor="let slide of product[0].images index as i;" ;>
+              <ng-container *ngFor="let slide of product.images index as i;" ;>
 
                 <ng-template carouselSlide>
 
