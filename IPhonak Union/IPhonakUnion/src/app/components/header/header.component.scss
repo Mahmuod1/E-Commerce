@@ -129,9 +129,10 @@ header{
     .fa-shopping-bag {
       cursor: pointer;
     }
-    @media (max-width:100px) {
+    @media (max-width:600px) {
       & {
         flex-basis: 20% !important;
+        max-width: 20% !important;
       }
     }
   }
