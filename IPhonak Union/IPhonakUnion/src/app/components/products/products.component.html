@@ -1,15 +1,15 @@
-<div class="d-flex">
+<div class="d-flex flex-wrap">
   <!-- Start Side Bar Menu -->
-  <div class="sidebar col-2 border p-3 pl-5">
+  <div class="sidebar col-lg-2 col-md-12 border p-3">
     <!-- Start Nav Bar For  -->
     <app-aside-links></app-aside-links>
   </div>
   <!-- End Side Bar Menu -->
   <!-- Start Products Section -->
-  <div class="products col-10 p-0">
-    <h2>{{activeLink}}</h2>
+  <div class="products p-0 col-lg-10 col-md-12">
+    <h2>{{activeLink|replaceDash}}</h2>
     <div class="container-products d-flex flex-wrap">
-      <div class="col-4 mb-4"  *ngFor="let product of productsList index as x">
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-4"  *ngFor="let product of productsList index as x">
         <div  class="bg-transparent border-0 card text-center">
           <a routerLink="/product-details/{{product.productName}}">
             <img class="w-100" src="{{product.quantity[0].srcImage}}" alt="">
