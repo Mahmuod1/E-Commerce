@@ -28,6 +28,8 @@ nav {
         }
       }
       .icon {
+        display: flex;
+        align-items: baseline;
         font-size: 14px;
       }
     }
@@ -54,5 +56,12 @@ nav {
         }
       }
     }
+  }
+}
+@media (min-width: 992px) {
+  .main-collapse {
+    width: 100%;
+    letter-spacing: 1px;
+    display: block !important;
   }
 }

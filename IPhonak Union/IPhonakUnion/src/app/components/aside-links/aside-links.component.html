@@ -1,5 +1,11 @@
-<nav>
-  <ul>
+<div class=" justify-content-between pl-1 menu-header d-lg-none d-md-flex" (click)="togglePLus(fillter)" data-toggle="collapse" data-target="#fillter">
+  <h4>flitter</h4>
+  <span class="icon" #fillter>
+    (<i class="fas fa-plus"></i>)
+  </span>
+</div>
+<nav class="collapse main-collapse" id="fillter">
+  <ul >
     <h4>shop by collection</h4>
     <li class="my-2">
       <div class="d-flex justify-content-between pl-1 menu-header" (click)="togglePLus(shop)" data-toggle="collapse" data-target="#shop">

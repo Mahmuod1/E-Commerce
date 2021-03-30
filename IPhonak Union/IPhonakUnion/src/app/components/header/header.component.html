@@ -1,7 +1,7 @@
 <header class="pt-3">
   <div class="container">
     <!-- Start Search & Logo & Icons (Cart & SignIn) -->
-    <div class="row">
+    <div class="row flex-nowrap">
       <!-- Start Search Section -->
       <div>
         <!-- Show Mobil Menu Button -->
@@ -52,16 +52,8 @@
       <div class="icons">
         <a routerLink="/profile-page"><i class="far fa-user-circle"></i></a>
 
-        <a (click)="showCart(cart)"><i class="fas fa-shopping-bag"  ></i>
-        <span class="items" style="position: relative;
-        top: -16px;
-        left: -8px;
-        font-size: 14px;
-        background-color: #222;
-        border-radius: 50%;
-        padding: 1px 2px;
-        color: white;
-        font-weight: 700;" >{{items}}</span>
+        <a class="shop-icon" (click)="showCart(cart)"><i class="fas fa-shopping-bag"  ></i>
+        <span class="items" *ngIf="items > 0">{{items}}</span>
         </a>
       </div>
     </div>

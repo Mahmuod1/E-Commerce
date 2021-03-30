@@ -32,6 +32,7 @@ import { WirelessComponent } from './pages/wireless/wireless.component';
 import { AllTypeComponent } from './pages/all-type/all-type.component';
 import { AllCategoryComponent } from './pages/all-category/all-category.component';
 import { TypeModelComponent } from './pages/type-model/type-model.component';
+import { ReplaceDashPipe } from './custm-pipes/replace-dash.pipe';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { TypeModelComponent } from './pages/type-model/type-model.component';
     WirelessComponent,
     AllTypeComponent,
     AllCategoryComponent,
-    TypeModelComponent
+    TypeModelComponent,
+    ReplaceDashPipe
   ],
   imports: [
     BrowserModule,

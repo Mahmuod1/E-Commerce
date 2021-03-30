@@ -21,6 +21,7 @@ header{
       position: absolute;
       left: 0;
       width: 98%;
+      z-index: 1000;
       .search {
         position: absolute;
         width: calc(100% - 30px);
@@ -44,6 +45,7 @@ header{
       border: none;
       outline: none;
       color: #333;
+      z-index: 1000;
     }
     .search-box{
       position: fixed;
@@ -82,17 +84,59 @@ header{
   .logo {
     text-transform: uppercase;
     text-align: center;
+    h2 {
+      white-space: nowrap;
+      @media (max-width:816px) {
+        & {
+          font-size: 1.5rem;
+        }
+      }
+      @media (max-width:636px) {
+        &{
+          font-size: 1.25rem;
+        }
+      }
+      @media (max-width:400px) {
+        & {
+          font-size: 1rem;
+        }
+      }
+    }
   }
   .icons {
     text-align: right;
+
     a {
       font-size: 28px;
       display: inline-block;
       margin-left: 15px;
       cursor: pointer;
     }
+    .shop-icon {
+      position: relative;
+      z-index: 900;
+      span{
+        width: 20px;
+        height: 20px;
+        font-size: 14px;
+        border-radius: 50%;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        line-height: 20px;
+        position: absolute;
+        right: -2px;
+        top: -2px;
+      }
+    }
     .fa-shopping-bag {
       cursor: pointer;
+    }
+    @media (max-width:600px) {
+      & {
+        flex-basis: 20% !important;
+        max-width: 20% !important;
+      }
     }
   }
   .menu {

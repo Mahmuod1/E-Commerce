@@ -1,29 +1,33 @@
-<div class="d-flex">
+<div class="d-flex flex-wrap">
   <!-- Start Side Bar Menu -->
-  <div class="sidebar col-2 border p-3 pl-5">
+  <div class="sidebar col-lg-2 col-md-12 border p-3">
     <!-- Start Nav Bar For  -->
     <app-aside-links></app-aside-links>
   </div>
   <!-- End Side Bar Menu -->
   <!-- Products Container -->
-  <div *ngIf="productsList.length == 0" class="text-center w-100">
+  <div *ngIf="productsList.length == 0" class="text-center w-100 col-lg-10 col-md-12">
     <p>{{errorMessage}}</p>
     <a routerLink="/home-page" class="btn btn-dark">Back To Home Page</a>
   </div>
-  <div *ngIf="productsList.length != 0" class="d-flex flex-wrap align-content-start">
+  <div *ngIf="productsList.length != 0" class="products p-0 col-lg-10 col-md-12">
     <div class="component-title col-12 py-2 text-center bg-white border">
       <h2>{{kind}}</h2>
     </div>
-    <div *ngFor="let product of productsList index as x" class="col-lg-4 col-md-6 col-sm-12 text-center">
-      <a class="text-body text-decoration-none" routerLink="/product-details/{{product.productName}}">
-        <img class="w-100" src="{{product.quantity[0].srcImage}}" alt="">
-        <p>{{product.productName}}</p>
-        <p>{{product.price | currency:'EGP':'code'}}</p>
-      </a>
-      <ul class="product-color" *ngIf="product.quantity[0].srcColor">
-        <li *ngFor="let color of product.quantity index as i" [ngStyle]="{'background-image': 'url(' + color.srcColor + ')'}" #productImg (click)="changeImage(productImg,i,x)">
-        </li>
-      </ul>
+    <div class="container-products d-flex flex-wrap">
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-4"  *ngFor="let product of productsList index as x">
+        <div  class="bg-transparent border-0 card text-center">
+          <a routerLink="/product-details/{{product.productName}}">
+            <img class="w-100" src="{{product.quantity[0].srcImage}}" alt="">
+            <p>{{product.productName}}</p>
+            <p>{{product.price | currency :"EGP":"code"}}</p>
+          </a>
+          <ul class="product-color">
+            <li *ngFor="let color of product.quantity index as i" [ngStyle]="{'background-image': 'url(' + color.srcColor + ')'}" #productImg (click)="changeImage(productImg,i,x)">
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
   <!-- End Products  -->
