@@ -12,7 +12,7 @@ export class ProductByNameService {
   constructor(private _http:HttpClient) { }
 
   getProductByName(productName:string|null):Observable<IProduct[]>{
-  
+
     return this._http.get<IProduct[]>(`http://localhost:4750/collection/products/find/${productName}`).pipe(
       catchError((error)=>{
         return throwError (error.message)
@@ -38,7 +38,7 @@ getBestSellersProduct():Observable<IProduct>{
   )
 }
 getNewReleasesProduct():Observable<IProduct>{
-  return this._http.get<IProduct>(`http://localhost:4750/collection/products/newReleases`).pipe(
+  return this._http.get<IProduct>(`http://localhost:4750/collection/products/new-releases`).pipe(
     catchError((error)=>{
       return throwError (error.message)
     })
