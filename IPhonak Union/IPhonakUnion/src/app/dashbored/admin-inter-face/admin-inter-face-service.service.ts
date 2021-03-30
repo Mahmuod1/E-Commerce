@@ -2,11 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { IProduct } from 'src/app/shared/product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminInterFaceServiceService {
+
+  _urlAdd="http://localhost:4750/collection/products/create"
 
   _urlDelete='http://localhost:4750/collection/products/delete'
 
@@ -20,5 +23,9 @@ export class AdminInterFaceServiceService {
         return throwError(error.message)
       })
     )
+  }
+
+  AddProductToDatabase(product:IProduct){
+    return this._http.post<IProduct>(this._urlAdd,product)
   }
 }

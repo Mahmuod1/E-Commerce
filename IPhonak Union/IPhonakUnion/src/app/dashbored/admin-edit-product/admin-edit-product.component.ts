@@ -21,13 +21,10 @@ export class AdminEditProductComponent implements OnInit {
       price: this.parentProductData.price,
       rating: this.parentProductData.rating,
       type: this.parentProductData.type,
-      images:[this.parentProductData.images]
-      
+     /*  quantity:[{quantity:this.parentProductData.quantity.quantity,srcColor:this.parentProductData.quantity.srcColor,srcImage:this.parentProductData.quantity.srcImage}] */
+      images:this.parentProductData.images
     })
-
-
   }
-
   /* ngAfterViewInit(){
     this.parentProductData.map((d:IQuantity) =>
     this.quantity.push(this.fb.group({quantity: d.quantity, srcColor: d.srcColor, srcImage:d.srcImage }))
@@ -52,11 +49,13 @@ export class AdminEditProductComponent implements OnInit {
     }),
 
 
-    quantity: this.fb.group({
-      quantity: [''],
-      srcColor: [''],
-      srcImage: [''],
-    }),
+    quantity: this.fb.array([
+      this.fb.group({
+        quantity: [''],
+        srcColor: [''],
+        srcImage: [''],
+      })
+    ]),
 
     images: this.fb.array([]),
     description: this.fb.array([])

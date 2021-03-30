@@ -24,7 +24,7 @@ export class ProfilePageComponent implements OnInit {
       res => {
         this.userDetails = res['user']
         console.log(this.loginService.getCookie("firstName"))
-        if(this.userDetails.firstName === 'admin'){
+        if(this.userDetails.firstName.includes("admin")){
           this.checkAdmin=true;
           document.cookie=`firstName=${this.userDetails.firstName}`
         }

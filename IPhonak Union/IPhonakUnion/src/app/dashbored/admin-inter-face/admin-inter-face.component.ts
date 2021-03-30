@@ -43,12 +43,7 @@ export class AdminInterFaceComponent implements OnInit {
     this.registrationService.registerForm(formData).subscribe(
       data => {
         alert("User Registered Successfully")
-        this.adminRegistrationForm.setValue({
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: ""
-        })
+        this.adminRegistrationForm.reset();
       },
       error => {
         console.log(error)

@@ -37,29 +37,33 @@
                                 </div>
                             </div>
 
-                            <div class="row py-3 h-100 w-100" formGroupName="quantity">
+                            <!-- <div class="row py-3 h-100 w-100" formArrayName="quantity">
                                 <div class="col-4 mb-4">
                                     <div class="card w-100">
                                         <div class="card-body" *ngFor="let quantity of parentProductData.quantity index as i">
-                                            <label for="category">Quantity</label>
-                                            <input type="text" value="" formControlName="quantity" class="form-inline text-center">
+                                            <div formGroupName="quantity[i]">
+                                                <label for="category">Quantity</label>
+                                                <input type="text" value="" class="form-inline text-center" formControlName="quantity">
 
-                                            <label for="category">Src Color</label>
-                                            <input type="text" value="" class="form-inline text-center px-2" formControlName="srcColor">
+                                                <label for="category">Src Color</label>
+                                                <input type="text" value="" class="form-inline text-center px-2" formControlName="srcColor">
 
-                                            <label for="category">Src Image</label>
-                                            <input type="text" value="" class="form-inline text-center" formControlName="srcImage">
+                                                <label for="category">Src Image</label>
+                                                <input type="text" value="" class="form-inline text-center" formControlName="srcImage">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="row py-3">
                                 <div class="col">
                                     <label>Image</label>
-                                    <ng-template *ngFor="let image of parentProductData.images index as i">
-                                        <input type="text" value="" formControlName="images">
-                                    </ng-template>
+                                    <div formArrayName="images">
+                                        <ng-template *ngFor="let image of parentProductData.images index as i">
+                                            <input type="text" value="" formControlName="i">
+                                        </ng-template>
+                                    </div>
                                 </div>
                             </div>
 
