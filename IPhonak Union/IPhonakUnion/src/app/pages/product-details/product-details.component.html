@@ -19,12 +19,18 @@
                   [src]="colorImage.srcColor" alt=""></span>
             </div>
           </div>
+
           <div class="rating-and-reviews d-flex ">
             <div class="rating">
               <div class="container d-flex justify-content-start">
                 <div class="row">
                   <div class="col-md-12">
-                    <div class="stars">
+                    <i class="far fa-star icon " [class.fas]='1<= product.rating'></i>
+                    <i class="far fa-star icon" [class.fas]='2<= product.rating'></i>
+                    <i class="far fa-star icon" [class.fas]='3 <=product.rating'></i>
+                    <i class="far fa-star icon" [class.fas]='4<=product.rating'></i>
+                    <i class="far fa-star icon" [class]='5<=product.rating'></i>
+                    <!-- <div class="stars">
                       <form action=""> <input class="star star-5" id="star-5" type="radio" name="star" /> <label
                           class="star star-5" for="star-5"></label> <input class="star star-4" checked id="star-4"
                           type="radio" name="star" /> <label class="star star-4" for="star-4"></label> <input
@@ -33,7 +39,7 @@
                         <label class="star star-2" for="star-2"></label> <input class="star star-1" id="star-1"
                           type="radio" name="star" /> <label class="star star-1" for="star-1"></label>
                       </form>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -91,7 +97,7 @@
             <div class="card-body">
 
               <ul>
-                <li> {{product.description[0]}}</li>
+                {{product.description[0]}}
                 <div *ngFor='let description of product.description index as indx'>
 
                   <div *ngIf='indx>0'>
@@ -190,7 +196,7 @@
         <owl-carousel-o #owlRec [options]="customOptionsRec">
           <ng-container *ngFor="let slide of recommendedProducts">
             <ng-template carouselSlide>
-              <a [routerLink]="['/product-details/',slide.productName]">
+              <a [routerLink]="['/product-details/',slide.productName]" (click)='gotTopPage()'>
                 <img [srcset]="slide.images[0]" class="rounded" data-id='{{slide.price}}' />
               </a>
               <p>{{slide.productName}}</p>

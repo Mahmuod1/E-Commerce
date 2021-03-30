@@ -43,7 +43,6 @@ imageColorIndex=0;
         // }
 
         this.product = product[0];
-        console.log(this.product)
       })
     })
     this.productByName.getNewReleasesProducts().subscribe(products => {
@@ -255,5 +254,11 @@ else{
 
 }
 
+gotTopPage(){
+  window.scroll({
+    top:0,
+    behavior:'smooth'
 
+  })
+}
 }

@@ -3,7 +3,7 @@
   <owl-carousel-o #owl  [options]="customOptions">
     <ng-container *ngFor="let slide of products" >
       <ng-template carouselSlide >
-     <a  [routerLink]="['/product-details/',slide.productName]"   >   <img  [srcset]="slide.images[0]"  class="d-block"  style="cursor: grab;"></a>
+     <a  [routerLink]="['/product-details/',slide.productName]" (click)='gotTopPage()'   >   <img  [srcset]="slide.images[0]"  class="d-block"  style="cursor: grab;"></a>
 
             <h5 class="carousel-title">{{slide.productName}}</h5>
           <h4 class="">{{slide.price |currency:'EGP'}}</h4>

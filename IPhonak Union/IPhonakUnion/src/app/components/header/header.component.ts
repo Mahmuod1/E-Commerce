@@ -79,7 +79,7 @@ rating: 4}];
 
   ngOnInit(): void {
     this.cartService.cartItems.subscribe(items=>{
-      this.cartService.items=items;
+
       this.items=items
     })
     this.cartService.cartStyle.next(this.cartStyle)
@@ -97,7 +97,7 @@ rating: 4}];
       this.cartService.subscriptProduct.subscribe(user=>{
         this.user=user;
         this.total= this.updateTotalPrice()
-        
+
       })
 
 

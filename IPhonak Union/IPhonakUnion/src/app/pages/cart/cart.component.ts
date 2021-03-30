@@ -28,7 +28,7 @@ ngOnInit(): void {
 
 
 
-    
+
    const userId= this.cartService.getUserToken()
 this.cartService.getUserFromDataBase().subscribe(user=>{
 this.user=user;
@@ -43,6 +43,7 @@ updateTotalPrice(){
   this.user[0].cart.forEach((cart:any) => {
   this.total+=(cart.price * cart.quantity)
   this.items++;
+this.cartService.cartItems.next(this.items)
   });
   return this.total;
 }

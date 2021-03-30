@@ -1,5 +1,5 @@
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 
@@ -13,9 +13,10 @@ product:any=''
 subscriptProduct=new BehaviorSubject(this.product)
 style='transform:translateX(100%)'
 cartStyle=new BehaviorSubject(this.style)
-items=0
 
+items=0
 cartItems=new BehaviorSubject(this.items)
+
 
 
 

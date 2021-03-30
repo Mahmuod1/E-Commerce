@@ -54,7 +54,7 @@ autoWidth:true,
     public activedRout:ActivatedRoute,
     public router:Router,
     private productService:ProductByNameService
-    
+
     ) { }
   slidesStore:any;
 
@@ -177,4 +177,11 @@ else{
 })
   }
 
+  gotTopPage(){
+    window.scroll({
+      top:0,
+      behavior:'smooth'
+
+    })
+  }
 }
