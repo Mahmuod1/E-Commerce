@@ -7,6 +7,7 @@
                     <div class="card-footer text-center">
                         <h5>Add new product</h5>
                     </div>
+                    {{addProductForm.value |json}}
                     <div class="card-body">
                         <form [formGroup]="addProductForm" ngNativeValidate>
 
@@ -62,10 +63,17 @@
                             <div class="card">
                                 <h5 class="card-header">Quantity Form </h5>
                                 <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="quantity">Quantity</label>
+                                        <button type="button" class="btn btn-primary float-right"
+                                            (click)="addNewQuantity()">Add New
+                                            Quantity Form</button>
+                                    </div>
+
                                     <div formArrayName="quantity">
-                                        <br> <br>
                                         <div *ngFor="let quantity of quantity.controls let i=index">
                                             <div [formGroupName]="i">
+                                                <br> <br>
                                                 <label>Quantity Form Number {{i+1}}</label>
                                                 <br>
                                                 <label>New Quantity</label>
@@ -79,9 +87,7 @@
                                                 <input type="text" class="form-control" formControlName="srcImage"
                                                     required>
                                                 <div class="mx-2">
-                                                    <button type="button" class="btn btn-primary float-right"
-                                                        (click)="addNewQuantity()">Add New
-                                                        Quantity Form</button>
+
                                                     <button type="button" class="btn btn-danger float-right"
                                                         (click)="removeQuantity(i)">Remove
                                                         This
@@ -101,19 +107,21 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="description">Description</label>
-                                        <button type="button" class="btn btn-primary float-right" (click)="addNewDescription()">Add
+                                        <button type="button" class="btn btn-primary float-right"
+                                            (click)="addNewDescription()">Add
                                             New Description</button>
                                     </div>
 
                                     <div formArrayName="description"
                                         *ngFor="let type of description.controls let i=index">
                                         <br> <br>
-                                        <label>Type Form Number {{i+1}}</label>
+                                        <label>Description Number {{i+1}}</label>
                                         <br>
                                         <label>New Description</label>
                                         <input type="text" class="form-control" [formControlName]="i" required>
 
-                                        <button type="button" class="btn btn-danger float-right" (click)="removeDescription(i)">Remove
+                                        <button type="button" class="btn btn-danger float-right"
+                                            (click)="removeDescription(i)">Remove
                                             This
                                             Description</button>
                                         <br>
@@ -130,26 +138,28 @@
 
                                     <div class="form-group">
                                         <label for="images">Images</label>
-                                        <button type="button" class="btn btn-primary float-right" (click)="addNewImages()">Add New
+                                        <button type="button" class="btn btn-primary float-right"
+                                            (click)="addNewImages()">Add New
                                             Image</button>
                                     </div>
 
                                     <div formArrayName="images" *ngFor="let type of images.controls let i=index">
                                         <br> <br>
-                                        <label>Type Form Number {{i+1}}</label>
+                                        <label>Images Number {{i+1}}</label>
                                         <br>
                                         <label>New Images</label>
                                         <input type="text" class="form-control" [formControlName]="i">
 
-                                        <button type="button" class="btn btn-danger float-right" (click)="removeImages(i)">Remove This
+                                        <button type="button" class="btn btn-danger float-right"
+                                            (click)="removeImages(i)">Remove This
                                             Image</button>
                                         <br>
                                     </div>
                                 </div>
                             </div>
                             <div>
-                                <input type="submit" class="btn btn-primary" value="Add Product" class="text-center"
-                                    style="width: 100%;" (click)="submitData(addProductForm.value,$event)">
+                                <input type="submit" class="btn btn-primary" value="Add Product" style="width: 100%;"
+                                    (click)="submitData(addProductForm.value,$event)">
                             </div>
                         </form>
                     </div>
